@@ -1,0 +1,474 @@
+:root {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Deep Cosmic Black Palette */
+  --bg-dark-0: #020306;
+  --bg-dark-1: #05080f;
+  --bg-dark-2: #090e1a;
+  --bg-dark-3: #101626;
+
+  /* Frosted Blur White Glass Tokens */
+  --glass-white-subtle: rgba(255, 255, 255, 0.025);
+  --glass-white-card: rgba(255, 255, 255, 0.045);
+  --glass-white-hover: rgba(255, 255, 255, 0.085);
+  --glass-white-active: rgba(255, 255, 255, 0.13);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-bright: rgba(255, 255, 255, 0.18);
+  --glass-border-glow: rgba(255, 255, 255, 0.35);
+
+  /* Vivid Neon Aura Accents */
+  --neon-cyan: #00f2fe;
+  --neon-cyan-glow: rgba(0, 242, 254, 0.45);
+  --neon-violet: #8a2be2;
+  --neon-violet-glow: rgba(138, 43, 226, 0.45);
+  --neon-emerald: #00f5a0;
+  --neon-emerald-glow: rgba(0, 245, 160, 0.45);
+  --neon-rose: #ff2a85;
+  --neon-rose-glow: rgba(255, 42, 133, 0.45);
+  --neon-amber: #ffaa00;
+  --neon-amber-glow: rgba(255, 170, 0, 0.45);
+  --neon-blue: #2563eb;
+  --neon-blue-glow: rgba(37, 99, 235, 0.45);
+
+  /* Text Colors */
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark-0);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-0);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 254, 0.4);
+}
+
+/* Cosmic Ambient Background Grid & Noise */
+.cosmic-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(13, 22, 45, 0.7) 0%, transparent 65%),
+    radial-gradient(circle at 10% 40%, rgba(0, 242, 254, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 64px 64px, 64px 64px;
+}
+
+/* Blurred Floating Aurora Orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+.orb-cyan {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--neon-cyan) 0%, rgba(0, 242, 254, 0) 70%);
+  top: -100px;
+  right: -50px;
+}
+
+.orb-violet {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--neon-violet) 0%, rgba(138, 43, 226, 0) 70%);
+  top: 35%;
+  left: -200px;
+  animation-duration: 24s;
+}
+
+.orb-emerald {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, var(--neon-emerald) 0%, rgba(0, 245, 160, 0) 70%);
+  bottom: 10%;
+  right: -100px;
+  animation-duration: 20s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 60px) scale(1.12);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+/* Container Utility */
+.app-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ====================================================
+   FROSTED BLUR WHITE GLASSMORPHISM COMPONENTS
+   ==================================================== */
+
+.glass-panel {
+  background: var(--glass-white-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel:hover {
+  background: var(--glass-white-hover);
+  border-color: var(--glass-border-bright);
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.5), 
+              0 0 24px 0 rgba(255, 255, 255, 0.05),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #03060d;
+  background: linear-gradient(135deg, #ffffff 0%, #b8e2f2 50%, #00f2fe 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  position: relative;
+}
+
+.glass-button-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.65), 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.glass-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+/* ====================================================
+   BLUR COLOR FOR TEXT & GLOW HEADINGS
+   ==================================================== */
+
+.text-glow-cyan {
+  color: #00f2fe;
+  text-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 0 0 40px rgba(0, 242, 254, 0.3);
+}
+
+.text-glow-violet {
+  color: #a78bfa;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.6), 0 0 40px rgba(138, 43, 226, 0.35);
+}
+
+.text-glow-emerald {
+  color: #00f5a0;
+  text-shadow: 0 0 20px rgba(0, 245, 160, 0.6), 0 0 40px rgba(0, 245, 160, 0.3);
+}
+
+.text-gradient-aurora {
+  background: linear-gradient(135deg, #ffffff 15%, #67e8f9 50%, #c084fc 80%, #00f5a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.35));
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #ffffff 30%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Subtle Blurred Color Aura Backdrops behind section titles */
+.title-aura-container {
+  position: relative;
+  display: inline-block;
+}
+
+.title-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(0, 242, 254, 0.25) 0%, rgba(138, 43, 226, 0.15) 50%, transparent 80%);
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ====================================================
+   BLUR COLOR FOR ICONS & ICON HOLDERS
+   ==================================================== */
+
+.icon-box-blur {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* The Blurred Color Aura Halo behind the icon */
+.icon-blur-halo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 20px;
+  filter: blur(16px);
+  opacity: 0.65;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.halo-cyan {
+  background: radial-gradient(circle, var(--neon-cyan) 20%, transparent 75%);
+}
+.halo-violet {
+  background: radial-gradient(circle, var(--neon-violet) 20%, transparent 75%);
+}
+.halo-emerald {
+  background: radial-gradient(circle, var(--neon-emerald) 20%, transparent 75%);
+}
+.halo-amber {
+  background: radial-gradient(circle, var(--neon-amber) 20%, transparent 75%);
+}
+.halo-rose {
+  background: radial-gradient(circle, var(--neon-rose) 20%, transparent 75%);
+}
+.halo-blue {
+  background: radial-gradient(circle, var(--neon-blue) 20%, transparent 75%);
+}
+
+.glass-panel:hover .icon-box-blur {
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.glass-panel:hover .icon-blur-halo {
+  opacity: 0.95;
+  filter: blur(22px);
+}
+
+/* Glowing dot indicator */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-emerald);
+  box-shadow: 0 0 12px var(--neon-emerald);
+  display: inline-block;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
+/* Interactive Spotlight Card effect */
+.spotlight-card {
+  position: relative;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+/* Terminal / Code / Telemetry style */
+.terminal-window {
+  background: rgba(4, 7, 14, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  font-family: var(--font-mono);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.07);
+}
+
+/* Glass Tabs */
+.glass-tab-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.glass-tab-btn.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text-white);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-tab-btn:hover:not(.active) {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Glass Inputs */
+.glass-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-white);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.glass-input:focus {
+  border-color: var(--neon-cyan);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.glass-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Responsive grid layout helpers */
+.grid-cols-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 16px;
+  }
+  .grid-cols-auto {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
