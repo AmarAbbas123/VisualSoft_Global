@@ -53,7 +53,7 @@ export default function Home({ onOpenModal }) {
 
   const heroSlides = [
     {
-      kicker: 'Engineering Software Solutions Since 2007',
+      kicker: 'Engineering Software Solutions for 30+ Years',
       line1: 'We Accelerate',
       line2Prefix: 'With ',
       isDynamic: true,
@@ -212,10 +212,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'custom-software',
       category: 'ai',
+      badge: '01 // ENTERPRISE AI',
       title: 'AI-Enabled Custom Software Development',
       desc: 'We create AI-enabled custom software solutions that streamline operations and boost productivity. Our expertise in custom AI development, AI integration, and intelligent automation software ensures seamless, scalable systems.',
       tags: ['Custom AI Development', 'AI Integration', 'Intelligent Automation', 'Scalable Systems'],
       halo: 'halo-brand-blue',
+      accentColor: '#38bdf8',
       textColor: 'text-glow-blue',
       icon: Terminal,
       link: '/ai-enabled-custom-software-development'
@@ -223,10 +225,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'embedded-systems',
       category: 'hardware',
+      badge: '02 // EMBEDDED & EDGE',
       title: 'AI-Enabled Embedded Systems Design',
       desc: 'We design AI-enabled embedded systems with IoT and edge AI to deliver smart, real-time solutions. Our expertise in embedded software development, on-device AI, and system architecture ensures seamless, connected devices.',
       tags: ['IoT & Edge AI', 'Embedded Software', 'On-Device AI', 'System Architecture'],
       halo: 'halo-cyan',
+      accentColor: '#00f5a0',
       textColor: 'text-glow-cyan',
       icon: Cpu,
       link: '/ai-enabled-embedded-system-design'
@@ -234,10 +238,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'ai-agents',
       category: 'ai',
-      title: 'AI Agent Development',
+      badge: '03 // AGENTIC SYSTEMS',
+      title: 'AI Agent Development & Automation',
       desc: 'We engineer enterprise-grade AI agents that automate decisions, optimize workflows, and elevate customer experiences. Every agent is built for scale, transparency, and compliance.',
       tags: ['Decision Automation', 'Workflow Agents', 'SDR Sales Agents', 'Enterprise Scale'],
       halo: 'halo-violet',
+      accentColor: '#c084fc',
       textColor: 'text-glow-violet',
       icon: Bot,
       link: '/ai-agent-development'
@@ -245,10 +251,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'managed-it',
       category: 'cloud',
-      title: 'Managed IT Services',
+      badge: '04 // CLOUD INFRASTRUCTURE',
+      title: 'Managed IT & Infrastructure Services',
       desc: '24/7 monitoring, helpdesk support, and infrastructure management so your team can focus on the business, not the servers. We offer KPI-driven HelpDesk and application support designed to keep your business running smoothly.',
       tags: ['24/7 Monitoring', 'KPI-Driven HelpDesk', 'Offshore & On-Site Resources', 'Infrastructure'],
       halo: 'halo-amber',
+      accentColor: '#f59e0b',
       textColor: 'text-glow-amber',
       icon: Server,
       link: '/managed-it-services'
@@ -256,10 +264,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'data-analytics',
       category: 'cloud',
-      title: 'Data & Analytics',
+      badge: '05 // INTELLIGENCE & DATA',
+      title: 'Data Engineering & Advanced Analytics',
       desc: 'Develop advanced tools that collect and process vast datasets, analyze data to discover patterns and correlations and empower businesses to make informed and data-driven decisions.',
       tags: ['Data Visualization', 'Business Intelligence (BI)', 'Predictive Analytics & ML', 'Data Cleansing'],
       halo: 'halo-cyan',
+      accentColor: '#38bdf8',
       textColor: 'text-glow-cyan',
       icon: Database,
       link: '/data-analytics'
@@ -267,10 +277,12 @@ export default function Home({ onOpenModal }) {
     {
       id: 'digital-marketing',
       category: 'cloud',
-      title: 'Digital Marketing Services',
+      badge: '06 // GROWTH TECHNOLOGY',
+      title: 'Digital Marketing & Growth Solutions',
       desc: 'We empower businesses with cutting-edge marketing technologies to drive growth, enhance customer experiences, and unlock new opportunities across trade, digital marketing, and e-commerce.',
       tags: ['Social Media Marketing', 'Search Engine Optimization (SEO)', 'Content Marketing', 'Email Automation'],
       halo: 'halo-brand-blue',
+      accentColor: '#60a5fa',
       textColor: 'text-glow-blue',
       icon: TrendingUp,
       link: '/digital-marketing'
@@ -435,106 +447,111 @@ export default function Home({ onOpenModal }) {
         <div className="of6BXG_bottomBorder" />
       </section>
 
-      {/* About Us / Company Overview Section (Elevated Executive Design) */}
+      {/* About Us / Company Overview Section (Modern Bento Architecture) */}
       <section className="about-enterprise-section" id="about-us">
         <div className="app-container">
-          <div className="about-layout-split">
-            {/* Left Column: Visual Vision & Mission Feature Cards */}
-            <div className="about-cards-column">
-              {/* Vision Card */}
-              <div className="about-card-featured">
-                <div 
-                  className="about-card-bg" 
-                  style={{ backgroundImage: "url('/about-vision.jpg')" }} 
-                />
-                <div className="about-card-gradient" />
-                <div className="about-card-inner">
-                  <div className="about-icon-emblem emblem-vision">
-                    <Compass size={28} />
-                  </div>
-                  <div className="about-card-text">
-                    <h3 className="about-card-title">Our Vision</h3>
-                    <p className="about-card-description">
-                      Our aim is to be acknowledged as an icon of reliable and effective information technology partner offering cutting edge solutions.
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="about-header-wrap">
+            <div className="glass-pill section-tag mb-3">
+              <span className="pulse-dot" />
+              <span>ABOUT VISUALSOFT GLOBAL</span>
+            </div>
+            <h2 className="about-modern-headline">
+              Turning Bold Ideas into <span className="text-gradient-brand">Market-Leading Products</span>
+            </h2>
+            <div className="about-modern-sub-wrap">
+              <p className="about-modern-sub">
+                VisualSoft Global (VS) offers top-notch ICT services to clients in the <strong>USA, UK, UAE, and Pakistan</strong>, focusing on turning ideas into innovative products. With a strong team of professionals, we are committed to delivering high-quality services to our customers.
+              </p>
+              <p className="about-modern-sub" style={{ marginTop: '12px' }}>
+                Our portfolio features enriched solutions across various industries, enabling our customers to achieve exceptional business growth. We are unique in that our executive management are technology leaders, providing technical mastery and hands-on guidance at every stage.
+              </p>
+            </div>
+          </div>
 
-              {/* Mission Card */}
-              <div className="about-card-featured">
-                <div 
-                  className="about-card-bg" 
-                  style={{ backgroundImage: "url('/about-mission.jpg')" }} 
-                />
-                <div className="about-card-gradient" />
-                <div className="about-card-inner">
-                  <div className="about-icon-emblem emblem-mission">
-                    <TrendingUp size={28} />
-                  </div>
-                  <div className="about-card-text">
-                    <h3 className="about-card-title">Our Mission</h3>
-                    <p className="about-card-description">
-                      Assist customers during each stage of digital transformation to achieve agility and operational efficiency.
-                    </p>
-                  </div>
+          <div className="about-bento-grid">
+            <div className="about-bento-card card-leadership">
+              <div className="bento-badge">
+                <Sparkles size={14} style={{ color: '#38bdf8' }} />
+                <span>EXCELLENCE & MASTERY</span>
+              </div>
+              <div className="bento-metric-wrap">
+                <span className="bento-big-stat">+30 Years</span>
+                <span className="bento-stat-label">of Proven Engineering Excellence</span>
+              </div>
+              <p className="bento-card-body">
+                Our portfolio enriched solutions across diverse industries, enabling customers to achieve exceptional business growth. Our executive management are hands-on technology innovators—providing technical mastery at every phase.
+              </p>
+              <div className="bento-features-list">
+                <div className="bento-feature-chip">
+                  <CheckCircle2 size={14} style={{ color: '#38bdf8' }} />
+                  <span>Hands-on Tech Executives</span>
+                </div>
+                <div className="bento-feature-chip">
+                  <CheckCircle2 size={14} style={{ color: '#00f5a0' }} />
+                  <span>100% Code & IP Ownership</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Company Story, Global Presence, Experience & CTA */}
-            <div className="about-story-column">
-              <h2 className="about-main-title">About Us</h2>
-
-              <p className="about-story-paragraph">
-                <strong>VisualSoft Global (VS)</strong> offers top-notch ICT services to clients in the <strong>USA</strong>, <strong>UK</strong>, <strong>UAE</strong>, and <strong>Pakistan</strong>, focusing on turning ideas into innovative products. With a strong team of professionals, we are committed to deliver high quality services to our customers.
-              </p>
-
-              <p className="about-story-paragraph">
-                Our portfolio enriched solutions across various industries and enabled our customers to achieve exceptional business growth. We are unique in a sense that our management are technology leaders and this gives us an exceptional level of expertise in our fields.
-              </p>
-
-              <p className="about-story-paragraph">
-                VS Vision is to be acknowledged as an icon of reliable and effective information technology partner offering cutting edge solutions. Our Mission is to assist customers during each stage of digital transformation to achieve agility and operational efficiency.
-              </p>
-
-              {/* Strategic Global Hubs */}
-              <div className="about-regions-row">
-                <span className="region-chip">🇺🇸 USA</span>
-                <span className="region-chip">🇬🇧 UK</span>
-                <span className="region-chip">🇦🇪 UAE</span>
-                <span className="region-chip">🇵🇰 Pakistan</span>
-              </div>
-
-              {/* Experience Milestone + Contact Action */}
-              <div className="about-footer-row">
-                <div className="about-exp-block">
-                  <div className="about-exp-number">+30 years</div>
-                  <div className="about-exp-label">of Experience</div>
+            <div className="about-bento-card card-vision">
+              <div className="bento-card-top">
+                <div className="bento-icon-box vision-icon">
+                  <Compass size={26} />
                 </div>
-
-                <button
-                  type="button"
-                  onClick={onOpenModal}
-                  className="about-cta-btn"
-                >
-                  <span>CONTACT US</span>
-                  <ArrowRight size={16} />
-                </button>
+                <span className="bento-tag vision-tag">OUR VISION</span>
+              </div>
+              <h3 className="bento-card-title">Transformative Technology Partner</h3>
+              <p className="bento-card-body">
+                Our aim is to be globally acknowledged as an icon of reliable and effective information technology partner—architecting cutting-edge AI software and embedded solutions that redefine digital performance.
+              </p>
+              <div className="bento-card-footer vision-footer">
+                <span>Enterprise Scale • AI Leadership • Trust</span>
               </div>
             </div>
+
+            <div className="about-bento-card card-mission">
+              <div className="bento-card-top">
+                <div className="bento-icon-box mission-icon">
+                  <TrendingUp size={26} />
+                </div>
+                <span className="bento-tag mission-tag">OUR MISSION</span>
+              </div>
+              <h3 className="bento-card-title">Accelerating Digital Evolution</h3>
+              <p className="bento-card-body">
+                Assist customers during each stage of digital transformation to achieve agility, operational efficiency, and rock-solid security—turning visionary concepts into resilient, market-defining products.
+              </p>
+              <div className="bento-card-footer mission-footer">
+                <span>Agility • Velocity • Measurable ROI</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="about-hubs-bar">
+            <div className="about-hubs-left">
+              <span className="hubs-label">Strategic Engineering Hubs:</span>
+              <div className="hubs-pill-group">
+                <span className="hub-pill">🇺🇸 United States</span>
+                <span className="hub-pill">🇬🇧 United Kingdom</span>
+                <span className="hub-pill">🇦🇪 UAE</span>
+                <span className="hub-pill">🇵🇰 Pakistan</span>
+              </div>
+            </div>
+            <button type="button" onClick={onOpenModal} className="about-modern-cta-btn">
+              <span>Contact Leadership</span>
+              <ArrowRight size={16} />
+            </button>
           </div>
         </div>
       </section>
 
 
-      {/* Services Section from visualsoft-inc.com */}
-      <section className="section-spacing" id="services">
+      {/* Services Section (High-Tech Enterprise Redesign) */}
+      <section className="services-enterprise-section" id="services">
         <div className="app-container">
-          <div className="section-header">
+          <div className="section-header text-center">
             <div className="glass-pill section-tag">
-              <Layers size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>OUR SERVICES</span>
+              <Layers size={14} style={{ color: '#38bdf8' }} />
+              <span>OUR SERVICES & CORE COMPETENCIES</span>
             </div>
             <h2 className="section-title">
               Innovative Technology Solutions for <span className="text-gradient-brand">Business Growth</span>
@@ -543,63 +560,75 @@ export default function Home({ onOpenModal }) {
               We create AI-enabled custom software solutions, embedded systems, AI agents, and managed IT services that streamline operations and boost productivity.
             </p>
 
-            {/* Filter Tabs */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '32px', flexWrap: 'wrap' }}>
+            {/* Filter Tabs Navigation */}
+            <div className="services-filter-nav">
               <button
+                type="button"
                 onClick={() => setServiceCategory('all')}
-                className={`glass-tab-btn ${serviceCategory === 'all' ? 'active' : ''}`}
+                className={`services-filter-btn ${serviceCategory === 'all' ? 'active' : ''}`}
               >
-                View ALL SERVICES
+                <span>View ALL SERVICES</span>
+                <span className="filter-count">6</span>
               </button>
               <button
+                type="button"
                 onClick={() => setServiceCategory('ai')}
-                className={`glass-tab-btn ${serviceCategory === 'ai' ? 'active' : ''}`}
+                className={`services-filter-btn ${serviceCategory === 'ai' ? 'active' : ''}`}
               >
-                AI & Software Development
+                <Terminal size={14} />
+                <span>AI & Software Development</span>
               </button>
               <button
+                type="button"
                 onClick={() => setServiceCategory('hardware')}
-                className={`glass-tab-btn ${serviceCategory === 'hardware' ? 'active' : ''}`}
+                className={`services-filter-btn ${serviceCategory === 'hardware' ? 'active' : ''}`}
               >
-                Embedded Systems & IoT
+                <Cpu size={14} />
+                <span>Embedded Systems & IoT</span>
               </button>
               <button
+                type="button"
                 onClick={() => setServiceCategory('cloud')}
-                className={`glass-tab-btn ${serviceCategory === 'cloud' ? 'active' : ''}`}
+                className={`services-filter-btn ${serviceCategory === 'cloud' ? 'active' : ''}`}
               >
-                Managed IT & Data
+                <Server size={14} />
+                <span>Managed IT & Data</span>
               </button>
             </div>
           </div>
 
-          <div className="grid-cols-auto">
+          <div className="services-modern-grid">
             {filteredServices.map((srv) => {
               const IconComp = srv.icon;
               return (
-                <div key={srv.id} className="glass-panel service-card">
-                  <div>
-                    <div className="service-header">
-                      <div className="icon-box-blur">
-                        <div className={`icon-blur-halo ${srv.halo}`} />
-                        <IconComp size={26} className="text-white" />
-                      </div>
-                      <h3 className="service-title">{srv.title}</h3>
-                      <p className="service-desc">{srv.desc}</p>
+                <div key={srv.id} className="service-card-modern">
+                  <div className="service-card-header">
+                    <div className="service-badge-pill">
+                      <span>{srv.badge}</span>
                     </div>
+                    <div className="service-icon-wrapper">
+                      <div className={`service-icon-halo ${srv.halo}`} />
+                      <IconComp size={24} style={{ color: srv.accentColor }} />
+                    </div>
+                  </div>
 
-                    <div className="service-tags">
+                  <div className="service-card-content">
+                    <h3 className="service-card-title">{srv.title}</h3>
+                    <p className="service-card-desc">{srv.desc}</p>
+
+                    <div className="service-tags-wrap">
                       {srv.tags.map((tag, i) => (
-                        <span key={i} className="tag-badge">
+                        <span key={i} className="service-tag-chip">
                           {tag}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="service-footer">
-                    <Link to={srv.link} className="learn-more-link">
+                  <div className="service-card-footer">
+                    <Link to={srv.link} className="service-explore-link">
                       <span>Learn More</span>
-                      <ChevronRight size={16} />
+                      <ChevronRight size={16} className="explore-arrow" />
                     </Link>
                   </div>
                 </div>

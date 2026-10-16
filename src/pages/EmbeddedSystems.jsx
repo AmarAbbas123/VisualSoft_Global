@@ -287,13 +287,13 @@ export default function EmbeddedSystems({ onOpenModal }) {
 
               <div className="title-aura-container">
                 <div className="title-aura" />
-                <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.4vw, 3.8rem)' }}>
+                <h1 className="hero-title service-hero-title">
                   AI-Enabled Embedded System <span className="text-gradient-brand">Design for Smarter Devices</span>
                 </h1>
               </div>
 
-              <p className="hero-description" style={{ maxWidth: '640px' }}>
-                We design embedded systems with intelligence on the device itself. Hardware, firmware, connectivity and edge AI are engineered together, so your product can sense, decide and act in real time, with or without a cloud connection.
+              <p className="hero-description">
+                We design embedded systems with intelligence on the device itself. Hardware, firmware, connectivity and edge AI are engineered together, so your product senses, decides, and acts in real time with or without cloud connectivity.
               </p>
 
               <div className="hero-cta-group">

@@ -263,18 +263,18 @@ export default function CustomSoftware({ onOpenModal }) {
 
               <div className="title-aura-container">
                 <div className="title-aura" />
-                <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.4vw, 3.8rem)' }}>
+                <h1 className="hero-title service-hero-title">
                   AI-Enabled Custom <span className="text-gradient-brand">Software Development</span>
                 </h1>
               </div>
 
-              <p className="hero-description" style={{ maxWidth: '640px' }}>
-                We design, build and support custom software with AI built into the business logic, from internal platforms and customer apps to automation, analytics and intelligent assistants. One engineering team takes you from the first workshop to post-launch support.
+              <p className="hero-description">
+                We design, build and support custom software with AI built into the business logic—from internal platforms and customer apps to automation, analytics and intelligent assistants. One engineering team takes you from discovery to post-launch support.
               </p>
 
               <div className="hero-cta-group">
                 <Link to="/contactus" className="glass-button-primary">
-                  <span>Scope Your AI Software Project</span>
+                  <span>Scope Your AI Project</span>
                   <ArrowRight size={18} />
                 </Link>
                 <Link to="/case-studies" className="glass-button-secondary">
@@ -289,7 +289,7 @@ export default function CustomSoftware({ onOpenModal }) {
                   <span>One Team From Discovery to Support</span>
                 </div>
                 <div className="trust-badge-item">
-                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                  <CheckCircle2 size={16} style={{ color: 'var(--neon-emerald)' }} />
                   <span>You Own 100% Code & IP</span>
                 </div>
               </div>

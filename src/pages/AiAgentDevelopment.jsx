@@ -605,13 +605,13 @@ export default function AiAgentDevelopment({ onOpenModal }) {
 
               <div className="title-aura-container">
                 <div className="title-aura" />
-                <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.4vw, 3.8rem)' }}>
-                  AI Agent Development <span className="text-gradient-brand">Services </span>
+                <h1 className="hero-title service-hero-title">
+                  AI Agent Development <span className="text-gradient-brand">Services</span>
                 </h1>
               </div>
 
-              <p className="hero-description" style={{ maxWidth: '640px' }}>
-                We engineer robust Al agents that automate decisions, optimize workflows, and elevate customer experiences. Every agent is built for scale, transparency, and compliance, ensuring organizations can deploy safely and accelerate outcomes across industries.
+              <p className="hero-description">
+                We engineer robust AI agents that automate decisions, optimize workflows, and elevate customer experiences. Every agent is built for scale, transparency, and compliance, ensuring organizations can deploy safely and accelerate outcomes across industries.
               </p>
 
               <div className="hero-cta-group">
@@ -639,7 +639,7 @@ export default function AiAgentDevelopment({ onOpenModal }) {
 
             {/* Right Interactive Cognitive Agent Schematic */}
             <div>
-              <div className="hardware-schematic-card">
+              <div className="hardware-schematic-card agent-schematic-card">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '14px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#00f5a0', boxShadow: '0 0 8px #00f5a0' }} />
