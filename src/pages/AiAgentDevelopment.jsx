@@ -42,7 +42,13 @@ import {
   ScanFace,
   RefreshCw,
   Video,
-  Mic
+  Mic,
+  Layout,
+  Cloud,
+  GitBranch,
+  ChevronDown,
+  ChevronUp,
+  ArrowUpRight
 } from 'lucide-react';
 import {
   SiLangchain,
@@ -52,7 +58,18 @@ import {
   SiDocker,
   SiRedis,
   SiFastapi,
-  SiOllama
+  SiOllama,
+  SiReact,
+  SiNextdotjs,
+  SiAngular,
+  SiVuedotjs,
+  SiFlutter,
+  SiGooglecloud,
+  SiKubernetes,
+  SiGithubactions,
+  SiGitlab,
+  SiJenkins,
+  SiTerraform
 } from 'react-icons/si';
 import { TbBrandOpenai, TbBrandAzure, TbBrain } from 'react-icons/tb';
 import { FaAws } from 'react-icons/fa6';
@@ -60,6 +77,8 @@ import Accordion from '../components/Accordion';
 
 export default function AiAgentDevelopment({ onOpenModal }) {
   const [activeTechTab, setActiveTechTab] = useState('frameworks');
+  const [activeIndustry, setActiveIndustry] = useState('2');
+  const [activeRoadmapStep, setActiveRoadmapStep] = useState(0);
 
   useEffect(() => {
     document.title = "AI Agent Development Services | VisualSoft Global";
@@ -259,6 +278,219 @@ export default function AiAgentDevelopment({ onOpenModal }) {
         { name: 'Promptfoo', subtitle: 'Automated Red Teaming & Evals', icon: Shield, color: '#10b981' },
         { name: 'MLflow', subtitle: 'Lifecycle & Experiment Tracker', icon: BarChart3, color: '#0194e2' }
       ]
+    },
+    {
+      id: 'frontend',
+      category: 'Frontend Development',
+      icon: Layout,
+      tagline: 'Interactive Agent Interfaces & Copilot UIs',
+      description: 'Modern reactive frontend frameworks delivering responsive chat widgets, multimodal dashboards, and cross-platform Copilot embeds.',
+      items: [
+        { name: 'React', subtitle: 'Interactive Agent UI & State', icon: SiReact, color: '#61dafb' },
+        { name: 'Next.js', subtitle: 'Full-Stack SSR & Edge Runtime', icon: SiNextdotjs, color: '#ffffff' },
+        { name: 'Angular', subtitle: 'Enterprise Component Architecture', icon: SiAngular, color: '#dd0031' },
+        { name: 'Vue.js', subtitle: 'Progressive Reactive Framework', icon: SiVuedotjs, color: '#42b883' },
+        { name: 'Flutter', subtitle: 'Cross-Platform Mobile & Web Apps', icon: SiFlutter, color: '#02569b' }
+      ]
+    },
+    {
+      id: 'cloud',
+      category: 'Cloud & Infrastructure',
+      icon: Cloud,
+      tagline: 'Hyperscale Compute, Clusters & Sandboxes',
+      description: 'Enterprise cloud hosting, container isolation, and managed Kubernetes clusters optimized for low-latency agent inference.',
+      items: [
+        { name: 'AWS', subtitle: 'Bedrock, ECS & Lambda Compute', icon: FaAws, color: '#ff9900' },
+        { name: 'Microsoft Azure', subtitle: 'Azure OpenAI & Container Apps', icon: TbBrandAzure, color: '#0078d4' },
+        { name: 'Google Cloud Platform (GCP)', subtitle: 'Vertex AI & Cloud Run Ecosystem', icon: SiGooglecloud, color: '#4285f4' },
+        { name: 'Docker', subtitle: 'Agent Sandboxing & Microservices', icon: SiDocker, color: '#2496ed' },
+        { name: 'Kubernetes', subtitle: 'Automated Orchestration & Scaling', icon: SiKubernetes, color: '#326ce5' }
+      ]
+    },
+    {
+      id: 'devops',
+      category: 'DevOps & CI/CD',
+      icon: GitBranch,
+      tagline: 'Automated Delivery, Testing & GitOps',
+      description: 'Continuous integration, model evaluation gates, and Infrastructure as Code pipelines ensuring rock-solid release cycles.',
+      items: [
+        { name: 'GitHub Actions', subtitle: 'Event-Driven Workflow Automation', icon: SiGithubactions, color: '#2088ff' },
+        { name: 'GitLab CI/CD', subtitle: 'End-to-End DevOps Pipeline', icon: SiGitlab, color: '#fc6d26' },
+        { name: 'Jenkins', subtitle: 'Continuous Integration Automation', icon: SiJenkins, color: '#d24939' },
+        { name: 'Terraform', subtitle: 'Declarative Multi-Cloud IaC', icon: SiTerraform, color: '#844fba' }
+      ]
+    }
+  ];
+
+  // Custom AI Agents for Every Industry (14 Industries from Appinventiv)
+  const industryAgents = [
+    {
+      num: '1',
+      title: 'Customer Service',
+      items: [
+        'Customer Query Resolution Agent',
+        'Automated Ticket Routing Agent',
+        'Customer Support Chatbot',
+        'Sentiment Analysis Agent',
+        'Complaint Management Assistant',
+        'Follow-Up and Escalation Agent'
+      ]
+    },
+    {
+      num: '2',
+      title: 'Retail',
+      items: [
+        'Product Recommendation Engine',
+        'Customer Service Chatbot',
+        'Inventory Refill Agent',
+        'Shopping Behavior Analytics Platform',
+        'Returns and Exchange Assistant',
+        'Loyalty Optimization System'
+      ]
+    },
+    {
+      num: '3',
+      title: 'Manufacturing',
+      items: [
+        'Inventory Management Platform',
+        'Production Scheduling Agent',
+        'Demand Forecasting Engine',
+        'Supplier Risk Assessment Tool',
+        'Quality Control AI System',
+        'Logistics Route Optimization Platform'
+      ]
+    },
+    {
+      num: '4',
+      title: 'Healthcare',
+      items: [
+        'Medical Coding and Billing Assistant',
+        'Personalized Treatment Engine',
+        'Health Support Chatbot',
+        'Patient Monitoring System',
+        'Clinical Decision Support Platform',
+        'Healthcare Administration Assistant'
+      ]
+    },
+    {
+      num: '5',
+      title: 'Cybersecurity',
+      items: [
+        'Threat Detection AI Agent',
+        'Vulnerability Scanning Platform',
+        'Incident Response Assistant',
+        'AI-Powered Cybersecurity System',
+        'Compliance Audit Tool',
+        'Phishing Detection Engine'
+      ]
+    },
+    {
+      num: '6',
+      title: 'Education and eLearning',
+      items: [
+        'Conversational AI Assistant',
+        'Personalized Learning Platform',
+        'Automated Grading System',
+        'Student Engagement Tracker',
+        'Course Recommendation Engine',
+        'Academic Performance Analytics Tool'
+      ]
+    },
+    {
+      num: '7',
+      title: 'Real Estate',
+      items: [
+        'Property Matching Platform',
+        'Price Estimation Engine',
+        'Client Communication Assistant',
+        'Document Verification System',
+        'Booking and Scheduling App',
+        'Market Trend Analysis Tool'
+      ]
+    },
+    {
+      num: '8',
+      title: 'Insurance',
+      items: [
+        'Claims Processing AI Agent',
+        'Insurance Claim Fraud Detection System',
+        'Customer Support Assistant',
+        'Policy Recommendation Engine',
+        'Risk Scoring Platform',
+        'Renewal Management Tool'
+      ]
+    },
+    {
+      num: '9',
+      title: 'Travel',
+      items: [
+        'Reservation Management Platform',
+        'Travel Itinerary Planner App',
+        'Guest Support Chatbot',
+        'Feedback Analysis Engine',
+        'Room Assignment System',
+        'Loyalty Program Manager'
+      ]
+    },
+    {
+      num: '10',
+      title: 'Media and Entertainment',
+      items: [
+        'Content Recommendation Engine',
+        'Audience Sentiment Analysis Tool',
+        'Ad Targeting Platform',
+        'Content Moderation AI System',
+        'Script Analysis Assistant',
+        'Fan Engagement Platform'
+      ]
+    },
+    {
+      num: '11',
+      title: 'Banking',
+      items: [
+        'Loan Processing Platform',
+        'Credit Risk Assessment Engine',
+        'Banking AI Assistant',
+        'KYC Verification System',
+        'Transaction Monitoring AI Agent',
+        'Wealth Management Platform'
+      ]
+    },
+    {
+      num: '12',
+      title: 'FinTech',
+      items: [
+        'Payment Processing Platform',
+        'Fraud Prevention AI Agent',
+        'Investment Advisory Assistant',
+        'Digital Wallet App',
+        'Compliance Monitoring System',
+        'Transaction Reconciliation Tool'
+      ]
+    },
+    {
+      num: '13',
+      title: 'Telecommunications',
+      items: [
+        'Network Monitoring Platform',
+        'Customer Support Assistant',
+        'Billing and Usage System',
+        'Churn Prediction Engine',
+        'Service Provisioning Tool',
+        'Fault Detection AI Agent'
+      ]
+    },
+    {
+      num: '14',
+      title: 'Logistics and Transportation',
+      items: [
+        'Fleet Management Platform',
+        'Shipment Tracking System',
+        'Delivery Scheduling Assistant',
+        'Warehouse Coordination Tool',
+        'Demand Planning Engine',
+        'Route Optimization AI Agent'
+      ]
     }
   ];
 
@@ -266,33 +498,28 @@ export default function AiAgentDevelopment({ onOpenModal }) {
   const processSteps = [
     {
       num: '01',
-      title: 'Defining Agent Objectives & Business Workflows',
-      desc: 'We start with consulting workshops to analyze your manual workflows and system bottlenecks, discovering practical use cases where autonomous agents generate maximum measurable ROI.',
-      deliverable: 'Agent Scope Document & ROI Blueprint'
+      title: 'Defining Agent Objectives and Business Workflows',
+      desc: 'We start our artificial intelligence agent development process with consulting workshops to understand your business workflows and challenges. This helps us discover practical use cases and define where an AI agent can deliver the most value for your goals.'
     },
     {
       num: '02',
-      title: 'Designing Technical Architecture & Tech Stack',
-      desc: 'We design the cognitive architecture, selecting the foundation LLMs, RAG pipelines, vector memory stores, MCP tool connectors, and multi-agent coordination topologies.',
-      deliverable: 'Technical Specification & System Schematic'
+      title: 'Designing the Agent Architecture',
+      desc: 'With the requirements in place, we design the technical foundation of your AI agent. This includes selecting the right LLM, RAG architecture, vector database, memory layer, orchestration framework, and integration strategy to support reliable task execution across enterprise environments.'
     },
     {
       num: '03',
-      title: 'Building & Validating Agent Intelligence',
-      desc: 'We develop the prototype and stress-test reasoning paths, tool calling schemas, long-term memory retrieval, and edge-case exceptions using synthetic red-team evaluation datasets.',
-      deliverable: 'Tested Agent Prototype & Benchmark Report'
+      title: 'Building and Validating Agent Intelligence',
+      desc: 'As a company providing digital AI agent development services, we build a working agent and validate its reasoning, tool calling, memory, and workflow execution. Evaluation datasets, business scenarios, and quality benchmarks help refine its behavior before production deployment.'
     },
     {
       num: '04',
-      title: 'Enterprise Integration & Secure Deployment',
-      desc: 'We integrate the agent with your production CRMs, ERPs, APIs, and cloud infrastructure with role-based access control, cryptographic key management, and clear technical documentation.',
-      deliverable: 'Production Deployment & API Handshake'
+      title: 'Connecting Agents to Enterprise Systems',
+      desc: 'After testing, we move towards full integration of the agent into your systems, like CRMs, data platforms, or internal tools. We ensure the agent fits smoothly into your setup and is ready for live use with clear documentation.'
     },
     {
       num: '05',
-      title: 'Monitoring, Feedback & Two Months Free Maintenance',
-      desc: 'Once live, we monitor real-time inference telemetry, gather operational feedback, and provide two months of complimentary post-launch maintenance to ensure continuous optimization.',
-      deliverable: 'Live Telemetry Dashboard & Maintenance Plan'
+      title: 'Monitoring, Feedback, and Iteration',
+      desc: 'Once the agent is live, we track performance, collect feedback, and deliver two months of free post-launch maintenance, as outlined in our agreement, to continually improve it. We make sure the agent adapts to real-world use and stays effective as your business expands.'
     }
   ];
 
@@ -379,12 +606,12 @@ export default function AiAgentDevelopment({ onOpenModal }) {
               <div className="title-aura-container">
                 <div className="title-aura" />
                 <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.4vw, 3.8rem)' }}>
-                  AI Agent Development <span className="text-gradient-brand">Services for Enterprises</span>
+                  AI Agent Development <span className="text-gradient-brand">Services </span>
                 </h1>
               </div>
 
               <p className="hero-description" style={{ maxWidth: '640px' }}>
-                We don’t treat AI agents as generic chatbots or simple task scripts. We design, build, and deploy autonomous agentic systems that plan, reason, adapt, and execute complex workflows across your enterprise tools.
+                We engineer robust Al agents that automate decisions, optimize workflows, and elevate customer experiences. Every agent is built for scale, transparency, and compliance, ensuring organizations can deploy safely and accelerate outcomes across industries.
               </p>
 
               <div className="hero-cta-group">
@@ -515,7 +742,7 @@ export default function AiAgentDevelopment({ onOpenModal }) {
               Our Comprehensive Suite of <span className="text-gradient-brand">AI Agent Services</span>
             </h2>
             <p className="section-subtitle">
-              From initial strategy workshops to production deployment and continuous telemetry monitoring.
+              We don't treat Al agents as generic chatbots or task bots. As a custom Al agent development company, we design agentic systems that automate complex decisions, manage workflows across departments, and deliver measurable ROl.
             </p>
           </div>
 
@@ -524,9 +751,7 @@ export default function AiAgentDevelopment({ onOpenModal }) {
               <div key={srv.num} className="capability-card-pro">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <span className="capability-num-tag">{srv.num}</span>
-                  <span className="glass-pill" style={{ fontSize: '0.72rem', padding: '2px 8px', color: 'var(--brand-blue)' }}>
-                    {srv.metric}
-                  </span>
+
                 </div>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '10px' }}>
                   {srv.title}
@@ -552,8 +777,9 @@ export default function AiAgentDevelopment({ onOpenModal }) {
               Key Types of AI Agents <span className="text-gradient-brand">Built for Your Business</span>
             </h2>
             <p className="section-subtitle">
-              As a leading AI agent development company, we help you choose and build the type of agent that fits your goals, from simple rule-following bots to intelligent systems that adapt and improve with experience.
-            </p>
+              Al agents come in many forms, each designed to solve a different kind of problem. we help you choose and build the type of agent that fits
+              your goals, from simple rule-following bots to intelligent systems that adapt and improve
+              with experience.</p>
           </div>
 
           <div className="agent-types-grid">
@@ -577,7 +803,111 @@ export default function AiAgentDevelopment({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Section 6: Interactive Technology Stack (Tabs with Official Brand Icons) */}
+      {/* Section: Custom AI Agents for Every Industry (Interactive 14-Industry Accordion) */}
+      <section className="section-spacing section-alt-contrast">
+        <div className="app-container">
+          <div className="industry-section-layout">
+            <div className="industry-sticky-left">
+              <div className="glass-pill section-tag" style={{ marginBottom: '16px' }}>
+                <Boxes size={14} style={{ color: 'var(--brand-blue)' }} />
+                <span>CROSS-INDUSTRY EXPERTISE</span>
+              </div>
+              <h2 className="industry-main-title">
+                Custom AI Agents <br />
+                <span className="text-gradient-brand">for Every Industry</span>
+              </h2>
+              <p className="industry-main-subtitle">
+                Whether you are in retail, healthcare, finance, or logistics, we develop custom AI agents that can solve specific industry challenges with unmatched precision and intelligence.
+              </p>
+            </div>
+
+            <div className="industry-accordion-wrap">
+              {industryAgents.map((ind) => {
+                const isOpen = activeIndustry === ind.num;
+                return (
+                  <div
+                    key={ind.num}
+                    className={`industry-accordion-item ${isOpen ? 'active' : ''}`}
+                  >
+                    <button
+                      type="button"
+                      className="industry-accordion-header"
+                      onClick={() => setActiveIndustry(isOpen ? null : ind.num)}
+                      aria-expanded={isOpen}
+                    >
+                      <div className="industry-header-left">
+                        <span className="industry-num">[{ind.num}]</span>
+                        <h3 className="industry-title">{ind.title}</h3>
+                      </div>
+                      <div style={{ color: isOpen ? 'var(--brand-blue)' : 'rgba(255, 255, 255, 0.45)', display: 'flex', alignItems: 'center', transition: 'all 0.25s ease' }}>
+                        {isOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="industry-accordion-body">
+                        <div className="industry-software-grid">
+                          {ind.items.map((item, idx) => (
+                            <div key={idx} className="industry-software-card">
+                              <CheckCircle2 size={18} style={{ color: '#10b981', flexShrink: 0 }} />
+                              <span className="industry-software-title">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <button
+                          type="button"
+                          className="industry-know-more-btn"
+                          onClick={() => onOpenModal && onOpenModal(`AI Agent Development - ${ind.title}`)}
+                        >
+                          <span>Know More</span>
+                          <ArrowUpRight size={16} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Why Leading Businesses Partner with Us */}
+      <section className="section-spacing">
+        <div className="app-container">
+          <div className="section-header">
+            <div className="glass-pill section-tag">
+              <Shield size={14} style={{ color: 'var(--brand-blue)' }} />
+              <span>ENTERPRISE EXCELLENCE</span>
+            </div>
+            <h2 className="section-title">
+              Why Leading Businesses Partner <span className="text-gradient-brand">with Us for AI Agents</span>
+            </h2>
+            <p className="section-subtitle">
+              We engineer agents that retrieve the right information, call business tools, follow automation policies, and execute reliably in production.
+            </p>
+          </div>
+
+          <div className="grid-cols-auto">
+            {whyUsPillars.map((p, i) => (
+              <div key={i} className="glass-panel" style={{ padding: '28px' }}>
+                <div className="icon-box-blur" style={{ marginBottom: '14px' }}>
+                  <div className="icon-blur-halo halo-brand-blue" />
+                  <CheckCircle2 size={22} style={{ color: 'var(--brand-blue)' }} />
+                </div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>
+                  {p.title}
+                </h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                  {p.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Interactive Technology Stack (Tabs with Official Brand Icons) */}
       <section className="section-spacing section-alt-contrast">
         <div className="app-container">
           <div className="section-header">
@@ -602,7 +932,9 @@ export default function AiAgentDevelopment({ onOpenModal }) {
             >
               <Sparkles size={16} style={{ color: activeTechTab === 'all' ? '#00f5a0' : 'inherit' }} />
               <span>Full Stack</span>
-              <span className="tech-tab-count">29</span>
+              <span className="tech-tab-count">
+                {techCategories.reduce((acc, t) => acc + t.items.length, 0)}
+              </span>
             </button>
 
             {techCategories.map((tech) => {
@@ -725,10 +1057,10 @@ export default function AiAgentDevelopment({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Section 7: Our Agile Roadmap (01 to 05) */}
+      {/* Section 7: Our Agile Roadmap (Center Timeline matching user screenshot) */}
       <section className="section-spacing">
         <div className="app-container">
-          <div className="section-header">
+          <div className="section-header" style={{ maxWidth: '860px', margin: '0 auto 60px' }}>
             <div className="glass-pill section-tag">
               <Settings size={14} style={{ color: 'var(--brand-blue)' }} />
               <span>THE ENGINEERING PROCESS</span>
@@ -737,64 +1069,48 @@ export default function AiAgentDevelopment({ onOpenModal }) {
               Our Agile Roadmap for <span className="text-gradient-brand">Building AI Agents</span>
             </h2>
             <p className="section-subtitle">
-              Building an AI agent is about creating a smart system that plans, acts, learns, and adapts to your operational workflows.
+              Building an AI agent is not just about coding. It is about creating a smart system that can plan, act, learn, and adapt to your business needs. As a dedicated AI agent development agency, here is how we work with you to bring your AI agent to life.
             </p>
           </div>
 
-          <div className="process-steps-grid">
-            {processSteps.map((ps, i) => (
-              <div key={i} className="glass-panel step-card">
-                <span className="step-pill">Phase {ps.num}</span>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>
-                  {ps.title}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                  {ps.desc}
-                </p>
-                <div className="deliverable-tag">
-                  <CheckCircle2 size={14} style={{ color: 'var(--brand-blue)' }} />
-                  <span>Deliverable: {ps.deliverable}</span>
+          <div className="roadmap-timeline-wrapper">
+            {/* Background Track Line */}
+            <div className="roadmap-timeline-track" />
+
+            {/* Active Blue Progress Line */}
+            <div
+              className="roadmap-timeline-progress"
+              style={{
+                height: `${(activeRoadmapStep / (processSteps.length - 1)) * 100}%`
+              }}
+            />
+
+            {processSteps.map((ps, idx) => {
+              const isCurrent = idx === activeRoadmapStep;
+              const isPassed = idx <= activeRoadmapStep;
+              return (
+                <div
+                  key={idx}
+                  className={`roadmap-timeline-step ${isCurrent ? 'active' : ''} ${isPassed ? 'passed' : ''}`}
+                  onMouseEnter={() => setActiveRoadmapStep(idx)}
+                  onClick={() => setActiveRoadmapStep(idx)}
+                >
+                  <div className="roadmap-step-left">
+                    <h3 className="roadmap-step-title">{ps.title}</h3>
+                  </div>
+
+                  <div className="roadmap-step-dot" />
+
+                  <div className="roadmap-step-right">
+                    <p className="roadmap-step-desc">{ps.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Section 8: Why Leading Businesses Partner with Us */}
-      <section className="section-spacing section-alt-contrast">
-        <div className="app-container">
-          <div className="section-header">
-            <div className="glass-pill section-tag">
-              <Shield size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>ENTERPRISE EXCELLENCE</span>
-            </div>
-            <h2 className="section-title">
-              Why Leading Businesses Partner <span className="text-gradient-brand">with Us for AI Agents</span>
-            </h2>
-            <p className="section-subtitle">
-              We engineer agents that retrieve the right information, call business tools, follow automation policies, and execute reliably in production.
-            </p>
-          </div>
-
-          <div className="grid-cols-auto">
-            {whyUsPillars.map((p, i) => (
-              <div key={i} className="glass-panel" style={{ padding: '28px' }}>
-                <div className="icon-box-blur" style={{ marginBottom: '14px' }}>
-                  <div className="icon-blur-halo halo-brand-blue" />
-                  <CheckCircle2 size={22} style={{ color: 'var(--brand-blue)' }} />
-                </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '8px' }}>
-                  {p.title}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                  {p.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
       {/* Section 10: Frequently Asked Questions (Real Expandable Accordion) */}
