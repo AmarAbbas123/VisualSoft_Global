@@ -37,6 +37,84 @@ export default function Home({ onOpenModal }) {
   const [simLogs, setSimLogs] = useState([]);
   const [serviceCategory, setServiceCategory] = useState('all');
 
+  // Arbisoft-Style Hero Typewriter & Slide Carousel
+  const typewriterWords = [
+    'AI',
+    'Open Source',
+    'Design',
+    'Innovation',
+    'Speed'
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(110);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      kicker: 'Engineering Software Solutions Since 2007',
+      line1: 'We Accelerate',
+      line2Prefix: 'With ',
+      isDynamic: true,
+      tag: 'ARCHITECTURE & SCALE'
+    },
+    {
+      kicker: 'AI-Enabled Embedded Systems & IoT Edge Hardware',
+      line1: 'We Engineer',
+      line2Prefix: 'With ',
+      fixedWord: 'Precision',
+      isDynamic: false,
+      tag: 'EDGE & EMBEDDED'
+    },
+    {
+      kicker: 'Autonomous Multi-Agent Enterprise Swarms',
+      line1: 'We Deliver',
+      line2Prefix: 'With ',
+      fixedWord: 'Velocity',
+      isDynamic: false,
+      tag: 'AUTONOMOUS AGENTS'
+    }
+  ];
+
+  useEffect(() => {
+    if (activeSlide !== 0) return;
+
+    const currentWord = typewriterWords[wordIndex];
+    let timer;
+
+    if (!isDeleting && displayText === currentWord) {
+      timer = setTimeout(() => setIsDeleting(true), 2200);
+    } else if (isDeleting && displayText === '') {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % typewriterWords.length);
+      setTypingSpeed(110);
+    } else {
+      timer = setTimeout(() => {
+        setDisplayText((prev) =>
+          isDeleting
+            ? currentWord.substring(0, prev.length - 1)
+            : currentWord.substring(0, prev.length + 1)
+        );
+        setTypingSpeed(isDeleting ? 50 : 110);
+      }, typingSpeed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, wordIndex, typingSpeed, activeSlide]);
+
+  // Auto-advance slides every 6.5s
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6500);
+    return () => clearInterval(slideTimer);
+  }, [heroSlides.length]);
+
+  const scrollToAbout = () => {
+    document.getElementById('about-us')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     document.title = "VisualSoft Global - A Technology Company | Turning Ideas into Products";
     window.scrollTo(0, 0);
@@ -281,236 +359,80 @@ export default function Home({ onOpenModal }) {
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="app-container">
-          <div className="hero-split-grid">
-            {/* Left Column: Heading, Value Prop & CTAs */}
-            <div className="hero-content-left">
-              <div className="hero-kicker-badge-wrap">
-                <div className="glass-pill hero-kicker-pill">
-                  <span className="pulse-dot" />
-                  <span className="hero-kicker-text">START YOUR DIGITAL BUSINESS WITH</span>
-                  <span className="kicker-pill-dot">•</span>
-                  <span className="kicker-pill-accent">NEXT-GEN AI</span>
-                </div>
-              </div>
+      {/* Exact Arbisoft Hero Section */}
+      <section className="of6BXG_hero" id="hero">
+        {/* Background Image & Overlays */}
+        <div className="lAJSFG_bgImage" />
+        <div className="of6BXG_heroOverlay" />
+        <div className="of6BXG_heroGlow of6BXG_heroGlow1">
+          <span className="of6BXG_heroGlowFill" />
+        </div>
+        <div className="of6BXG_heroGlow of6BXG_heroGlow2">
+          <span className="of6BXG_heroGlowFill" />
+        </div>
 
-              <div className="hero-brand-aura-container">
-                <div className="hero-brand-aura" />
-                <div className="hero-brand-headline">
-                  <span className="hero-brand-name">VisualSoft</span>
-                  <span className="hero-brand-dot">.</span>
-                </div>
-              </div>
-
-              <h1 className="hero-statement">
-                A custom{' '}
-                <span className="hero-highlight-curved">
-                  AI software development
-                  <svg
-                    className="hero-underline-svg"
-                    viewBox="0 0 280 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M3 10C70 2.5 210 2.5 277 8.5"
-                      stroke="url(#hero-blue-grad)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
-                    <defs>
-                      <linearGradient id="hero-blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#38bdf8" />
-                        <stop offset="50%" stopColor="#2563eb" />
-                        <stop offset="100%" stopColor="#38bdf8" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>{' '}
-                <br className="hero-br-desktop" />
-                company turning ideas into <br className="hero-br-desktop" />
-                <span className="text-gradient-brand">innovative products</span>.
-              </h1>
-
-              <p className="hero-description-compact">
-                Engineering enterprise-grade custom AI software, autonomous multi-agent systems, and embedded edge architectures built for scale and security.
-              </p>
-
-              <div className="hero-metric-chips-row">
-                <div className="hero-metric-chip">
-                  <Zap size={14} style={{ color: 'var(--brand-blue)' }} />
-                  <span>Sub-5ms Latency</span>
-                </div>
-                <div className="hero-metric-chip">
-                  <Shield size={14} style={{ color: 'var(--neon-emerald)' }} />
-                  <span>Zero-Trust Security</span>
-                </div>
-                <div className="hero-metric-chip">
-                  <Cpu size={14} style={{ color: '#c084fc' }} />
-                  <span>Edge & Cloud Native</span>
-                </div>
-              </div>
-
-              <div className="hero-cta-group">
-                <button onClick={onOpenModal} className="glass-button-primary">
-                  <Sparkles size={18} />
-                  <span>Get Started / Scope Project</span>
-                  <ArrowRight size={16} />
-                </button>
-                <a href="#services" className="glass-button-secondary">
-                  <Terminal size={18} />
-                  <span>Explore Services</span>
-                </a>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="hero-trust-badges">
-                <div className="trust-badge-item">
-                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
-                  <span>Technology Leaders</span>
-                </div>
-                <div className="trust-badge-item">
-                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
-                  <span>100% Code & IP Ownership</span>
-                </div>
-                <div className="trust-badge-item">
-                  <CheckCircle2 size={16} style={{ color: 'var(--neon-emerald)' }} />
-                  <span>24/7 Global Response</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: 3D Frosted Glass Command Matrix */}
-            <div className="hero-visual-right">
-              <div className="hero-ambient-glow" />
-
-              {/* Floating Top Pill */}
-              <div className="glass-pill hero-floating-pill-top">
-                <Activity size={14} style={{ color: 'var(--brand-blue)' }} />
-                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>180k req/sec throughput</span>
-              </div>
-
-              {/* Terminal Card */}
-              <div className="hero-terminal-card">
-                <div className="terminal-top-bar">
-                  <div className="terminal-dots">
-                    <span className="terminal-dot" style={{ background: '#ff5f56' }} />
-                    <span className="terminal-dot" style={{ background: '#ffbd2e' }} />
-                    <span className="terminal-dot" style={{ background: '#27c93f' }} />
-                  </div>
-                  <div className="terminal-title-chip">
-                    <Cpu size={14} style={{ color: 'var(--brand-blue)' }} />
-                    <span>VisualSoft Core Platform • Active</span>
-                  </div>
+        {/* Main Center Content */}
+        <div className="of6BXG_heroMain">
+          <div className="of6BXG_heroCenter">
+            <div className="of6BXG_heroContainer">
+              <div className="of6BXG_heroContent">
+                <div className="of6BXG_kicker">
+                  {heroSlides[activeSlide].kicker}
                 </div>
 
-                {/* Sub Tab Switcher */}
-                <div className="hero-sim-tabs">
-                  <button
-                    type="button"
-                    onClick={() => setActiveSim('software')}
-                    className={`hero-sim-tab-btn ${activeSim === 'software' ? 'active' : ''}`}
-                  >
-                    Custom Software (<span style={{ color: '#38bdf8' }}>99.9%</span>)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveSim('embedded')}
-                    className={`hero-sim-tab-btn ${activeSim === 'embedded' ? 'active' : ''}`}
-                  >
-                    Embedded AI (<span style={{ color: '#00f5a0' }}>4.2ms</span>)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveSim('agents')}
-                    className={`hero-sim-tab-btn ${activeSim === 'agents' ? 'active' : ''}`}
-                  >
-                    AI Agents (<span style={{ color: '#c084fc' }}>Autonomous</span>)
-                  </button>
-                </div>
-
-                {/* Active Waveform Graphic */}
-                <div className="hero-waveform-bar">
-                  <div className="wave-col" style={{ height: '55%' }} />
-                  <div className="wave-col" style={{ height: '80%' }} />
-                  <div className="wave-col" style={{ height: '40%' }} />
-                  <div className="wave-col" style={{ height: '95%' }} />
-                  <div className="wave-col" style={{ height: '65%' }} />
-                  <div className="wave-col" style={{ height: '85%' }} />
-                  <div className="wave-col" style={{ height: '35%' }} />
-                  <div className="wave-col" style={{ height: '70%' }} />
-                  <div className="wave-col" style={{ height: '90%' }} />
-                  <div className="wave-col" style={{ height: '50%' }} />
-                  <div className="wave-col" style={{ height: '75%' }} />
-                  <div className="wave-col" style={{ height: '60%' }} />
-                </div>
-
-                {/* Live Console Output */}
-                <div className="hero-telemetry-screen">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.72rem' }}>
-                    <span>PROTOCOL: {simulators[activeSim].name.toUpperCase()}</span>
-                    <span style={{ color: 'var(--neon-emerald)' }}>● ONLINE</span>
-                  </div>
-                  {simLogs.slice(-3).map((log, idx) => (
-                    <div key={idx} style={{ marginBottom: '4px', color: idx === 2 ? '#60a5fa' : '#94a3b8' }}>
-                      {log}
-                    </div>
-                  ))}
-                  {simRunning && (
-                    <div style={{ color: '#00f5a0', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px' }}>
-                      <Activity size={12} className="animate-spin" />
-                      <span>Optimizing inference stream...</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Terminal Action Footer */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
-                    Latency: <strong style={{ color: '#fff' }}>{simulators[activeSim].latency}</strong>
+                <h1 className="of6BXG_heading">
+                  <span className="of6BXG_heading_line">{heroSlides[activeSlide].line1}</span>
+                  <span className="of6BXG_heading_line">
+                    {heroSlides[activeSlide].line2Prefix || 'With '}
+                    <span className="of6BXG_highlight_word">
+                      {heroSlides[activeSlide].isDynamic ? displayText : heroSlides[activeSlide].fixedWord}
+                    </span>
+                    <span className="Htay_W_cursor" />
                   </span>
-                  <button
-                    onClick={runLiveSimulation}
-                    disabled={simRunning}
-                    className="glass-button-secondary"
-                    style={{ padding: '6px 14px', fontSize: '0.75rem' }}
-                  >
-                    <span>Benchmark Pipeline</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Floating Bottom Pill */}
-              <div className="glass-pill hero-floating-pill-bottom">
-                <Shield size={14} style={{ color: 'var(--neon-emerald)' }} />
-                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>100% Code & IP Ownership</span>
+                </h1>
               </div>
             </div>
           </div>
 
-          {/* Stats Strip */}
-          <div className="metrics-strip">
-            <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-blue">30+</span>
-              <span className="metric-label">Years of Experience</span>
+          {/* Bottom Controls Row: Dots on Left, Scroll in Center */}
+          <div className="of6BXG_bottomRow">
+            {/* Slide Picker Dots (Bottom Left) */}
+            <div className="AcNXfW_dots" role="group" aria-label="Slide picker">
+              {heroSlides.map((slide, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveSlide(idx)}
+                  className="AcNXfW_dot"
+                  data-active={activeSlide === idx}
+                  aria-label={`Go to slide ${idx + 1}`}
+                >
+                  {activeSlide === idx && (
+                    <svg className="AcNXfW_ring" width="26" height="26" viewBox="0 0 22 22">
+                      <circle className="AcNXfW_ringTrack" cx="11" cy="11" r="9" />
+                      <circle className="AcNXfW_ringProgress" cx="11" cy="11" r="9" />
+                    </svg>
+                  )}
+                </button>
+              ))}
             </div>
-            <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-cyan">4</span>
-              <span className="metric-label">Key Hubs: USA, UK, UAE, Pakistan</span>
-            </div>
-            <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-emerald">6</span>
-              <span className="metric-label">Connected Services Under One Team</span>
-            </div>
-            <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-violet">24/7</span>
-              <span className="metric-label">Support and Sales Team Available</span>
-            </div>
+
+            {/* Centered Scroll Indicator */}
+            <button
+              type="button"
+              onClick={scrollToAbout}
+              className="of6BXG_scrollIndicator"
+              aria-label="Scroll to next section"
+            >
+              <span className="of6BXG_scrollText">scroll</span>
+              <div className="of6BXG_scrollLine">
+                <span className="of6BXG_scrollLineBar" />
+              </div>
+            </button>
           </div>
         </div>
+
+        <div className="of6BXG_bottomBorder" />
       </section>
 
       {/* About Us / Company Overview Section (Elevated Executive Design) */}
