@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 
 export default function Home({ onOpenModal }) {
-  const [activeSim, setActiveSim] = useState('telemetry');
+  const [activeSim, setActiveSim] = useState('software');
   const [simRunning, setSimRunning] = useState(false);
   const [simLogs, setSimLogs] = useState([]);
   const [serviceCategory, setServiceCategory] = useState('all');
@@ -42,82 +42,72 @@ export default function Home({ onOpenModal }) {
     window.scrollTo(0, 0);
   }, []);
 
-  // Simulator Data for Flagship Product: Omnia-Intelligent Suite
+  // Simulator Data matching VisualSoft Global's Core Offerings
   const simulators = {
-    telemetry: {
-      name: 'AI-Enabled Embedded Telemetry',
-      badge: 'Edge AI & IoT',
+    software: {
+      name: 'AI-Enabled Custom Software',
+      tabLabel: 'Custom Software',
+      tabMetric: '99.9%',
+      metricColor: '#38bdf8',
+      badge: 'Enterprise Software',
+      status: 'Production Live',
+      latency: '0.8ms',
+      throughput: '180k req/sec',
+      confidence: '99.99%',
+      description: 'Full-stack enterprise applications with integrated LLM reasoning, microservices, and high-concurrency cloud architecture.',
+      colorClass: 'halo-brand-blue',
+      textColor: 'text-glow-blue',
+      icon: Terminal,
+      initialLogs: [
+        '[00:00:01] ARCHITECTURE: Microservices & API gateway initialized.',
+        '[00:00:02] AI INTEGRATION: Custom LLM fine-tuned model connected via MCP.',
+        '[00:00:03] DATA PIPELINE: PostgreSQL & Vector DB sync latency at 0.8ms.',
+        '[00:00:04] SECURITY: Zero-trust token auth and role permissions verified.',
+        '[00:00:05] STATUS: Enterprise software cluster running at 99.99% uptime.'
+      ]
+    },
+    embedded: {
+      name: 'AI-Enabled Embedded Systems',
+      tabLabel: 'Embedded Systems',
+      tabMetric: '4.2ms',
+      metricColor: '#00f5a0',
+      badge: 'IoT & Edge AI',
       status: 'Active Streaming',
       latency: '4.2ms',
       throughput: '128k msgs/sec',
       confidence: '99.8%',
-      description: 'On-device neural inference and sensor telemetry stream from 10,000+ edge nodes.',
-      colorClass: 'halo-brand-blue',
-      textColor: 'text-glow-blue',
+      description: 'On-device neural inference and sensor telemetry stream from connected microcontrollers and edge hardware.',
+      colorClass: 'halo-emerald',
+      textColor: 'text-glow-emerald',
       icon: Cpu,
       initialLogs: [
-        '[00:00:01] INITIATING: Edge sensory network handshake...',
-        '[00:00:02] SYNCED: 10,240 microcontroller nodes online.',
-        '[00:00:03] INFERENCE: Edge TPU model v4 loaded with INT8 quantization.',
-        '[00:00:04] TELEMETRY: Thermal variance at 0.02°C | Power draw: 1.8W.',
-        '[00:00:05] STATUS: Autonomous pipeline healthy. No packet loss.'
+        '[00:00:01] HARDWARE: ARM Cortex-M / ESP32 sensory bus connected.',
+        '[00:00:02] INFERENCE: Edge TPU model v4 loaded with INT8 quantization.',
+        '[00:00:03] TELEMETRY: Thermal variance at 0.02°C | Power draw: 1.8W.',
+        '[00:00:04] CONNECTIVITY: Low-latency BLE & IoT cloud gateway synced.',
+        '[00:00:05] STATUS: Autonomous firmware pipeline healthy. Zero packet loss.'
       ]
     },
     agents: {
       name: 'AI Agent Swarm & Automation',
-      badge: 'Autonomous AI Agents',
+      tabLabel: 'AI Agents',
+      tabMetric: 'Autonomous',
+      metricColor: '#c084fc',
+      badge: 'Agentic Systems',
       status: 'Decision Engine 24/7',
-      latency: '1.8ms',
+      latency: '1.4ms',
       throughput: '45,000 tx/sec',
       confidence: '99.96%',
-      description: 'Enterprise AI agents automating decisions, workflows, and SDR customer outreach.',
+      description: 'Autonomous multi-agent swarms executing business workflows, tool calling, and cross-departmental coordination.',
       colorClass: 'halo-violet',
       textColor: 'text-glow-violet',
       icon: Bot,
       initialLogs: [
-        '[00:00:01] CONNECTED: Enterprise ERP, CRM and database webhooks.',
-        '[00:00:02] ORCHESTRATION: Multi-agent coordination across departments.',
-        '[00:00:03] DECISIONING: Autonomous verification of customer compliance.',
-        '[00:00:04] ACTION: Workflow approved and scheduled without human delay.',
-        '[00:00:05] OUTCOME: 4.8x acceleration in order processing velocity.'
-      ]
-    },
-    surveillance: {
-      name: 'Security & Surveillance (ANPR)',
-      badge: 'Computer Vision',
-      status: '60 FPS Real-time',
-      latency: '8.4ms',
-      throughput: '120 streams',
-      confidence: '99.4%',
-      description: 'Live monitoring, ANPR, and access-control turning cameras into an intelligence network.',
-      colorClass: 'halo-emerald',
-      textColor: 'text-glow-emerald',
-      icon: Eye,
-      initialLogs: [
-        '[00:00:01] RTSP STREAM: 4K camera matrix linked via optical fiber.',
-        '[00:00:02] OBJECT TRACKING: 42 vehicles detected in surveillance sector.',
-        '[00:00:03] ANPR MATCH: License plate verified with transport authority.',
-        '[00:00:04] VELOCITY AUDIT: 62 km/h (Normal zone threshold).',
-        '[00:00:05] LOGGING: Metadata recorded to central intelligence hub.'
-      ]
-    },
-    cloudOps: {
-      name: 'Managed IT & Cloud Infrastructure',
-      badge: '24/7 NOC / SOC',
-      status: '99.99% Uptime',
-      latency: '0.8ms',
-      throughput: '1.2 GB/sec',
-      confidence: '100% SLA',
-      description: 'Round-the-clock monitoring and proactive issue resolution for zero downtime.',
-      colorClass: 'halo-amber',
-      textColor: 'text-glow-amber',
-      icon: Server,
-      initialLogs: [
-        '[00:00:01] AUDIT: 24/7 infrastructure monitoring nodes active.',
-        '[00:00:02] ZERO TRUST: Automated vulnerability scans passing 100%.',
-        '[00:00:03] TRAFFIC: Elastic load balancers handling 180,000 req/sec.',
-        '[00:00:04] HEALTH: Database read replicas in sync across 3 availability zones.',
-        '[00:00:05] SUPPORT: HelpDesk queue empty. System uptime at 99.99%.'
+        '[00:00:01] COGNITIVE STACK: LangGraph multi-agent orchestration online.',
+        '[00:00:02] TOOL CALLING: Model Context Protocol (MCP) handshake complete.',
+        '[00:00:03] REASONING: Decomposing enterprise objective into sub-agent tasks.',
+        '[00:00:04] GOVERNANCE: Policy guardrails and human approval gates cleared.',
+        '[00:00:05] OUTCOME: 500+ automated business workflows executed in parallel.'
       ]
     }
   };
@@ -297,25 +287,72 @@ export default function Home({ onOpenModal }) {
           <div className="hero-split-grid">
             {/* Left Column: Heading, Value Prop & CTAs */}
             <div className="hero-content-left">
-              <div className="hero-pill-badge">
-                <div className="glass-pill">
+              <div className="hero-kicker-badge-wrap">
+                <div className="glass-pill hero-kicker-pill">
                   <span className="pulse-dot" />
-                  <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>NEXT-GEN AI & EMBEDDED ENGINEERING</span>
-                  <span style={{ color: 'rgba(255,255,255,0.25)' }}>|</span>
-                  <span style={{ color: 'var(--text-muted)' }}>USA • UK • UAE • PAKISTAN</span>
+                  <span className="hero-kicker-text">START YOUR DIGITAL BUSINESS WITH</span>
+                  <span className="kicker-pill-dot">•</span>
+                  <span className="kicker-pill-accent">NEXT-GEN AI</span>
                 </div>
               </div>
 
-              <div className="title-aura-container">
-                <div className="title-aura" />
-                <h1 className="hero-title">
-                  Turning Visionary Ideas into <span className="text-gradient-brand">Innovative AI Products</span> & Embedded Systems
-                </h1>
+              <div className="hero-brand-aura-container">
+                <div className="hero-brand-aura" />
+                <div className="hero-brand-headline">
+                  <span className="hero-brand-name">VisualSoft</span>
+                  <span className="hero-brand-dot">.</span>
+                </div>
               </div>
 
-              <p className="hero-description">
-                VisualSoft Global (VS) is a technology company delivering enterprise-grade custom AI software, autonomous multi-agent swarms, IoT embedded hardware, and 24/7 managed IT services to businesses across the USA, UK, UAE, and Pakistan.
+              <h1 className="hero-statement">
+                A custom{' '}
+                <span className="hero-highlight-curved">
+                  AI software development
+                  <svg
+                    className="hero-underline-svg"
+                    viewBox="0 0 280 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M3 10C70 2.5 210 2.5 277 8.5"
+                      stroke="url(#hero-blue-grad)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    <defs>
+                      <linearGradient id="hero-blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#38bdf8" />
+                        <stop offset="50%" stopColor="#2563eb" />
+                        <stop offset="100%" stopColor="#38bdf8" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>{' '}
+                <br className="hero-br-desktop" />
+                company turning ideas into <br className="hero-br-desktop" />
+                <span className="text-gradient-brand">innovative products</span>.
+              </h1>
+
+              <p className="hero-description-compact">
+                Engineering enterprise-grade custom AI software, autonomous multi-agent systems, and embedded edge architectures built for scale and security.
               </p>
+
+              <div className="hero-metric-chips-row">
+                <div className="hero-metric-chip">
+                  <Zap size={14} style={{ color: 'var(--brand-blue)' }} />
+                  <span>Sub-5ms Latency</span>
+                </div>
+                <div className="hero-metric-chip">
+                  <Shield size={14} style={{ color: 'var(--neon-emerald)' }} />
+                  <span>Zero-Trust Security</span>
+                </div>
+                <div className="hero-metric-chip">
+                  <Cpu size={14} style={{ color: '#c084fc' }} />
+                  <span>Edge & Cloud Native</span>
+                </div>
+              </div>
 
               <div className="hero-cta-group">
                 <button onClick={onOpenModal} className="glass-button-primary">
@@ -353,7 +390,7 @@ export default function Home({ onOpenModal }) {
               {/* Floating Top Pill */}
               <div className="glass-pill hero-floating-pill-top">
                 <Activity size={14} style={{ color: 'var(--brand-blue)' }} />
-                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>128k msgs/sec throughput</span>
+                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>180k req/sec throughput</span>
               </div>
 
               {/* Terminal Card */}
@@ -366,29 +403,32 @@ export default function Home({ onOpenModal }) {
                   </div>
                   <div className="terminal-title-chip">
                     <Cpu size={14} style={{ color: 'var(--brand-blue)' }} />
-                    <span>VisualSoft Neural Engine • Live</span>
+                    <span>VisualSoft Core Platform • Active</span>
                   </div>
                 </div>
 
                 {/* Sub Tab Switcher */}
                 <div className="hero-sim-tabs">
                   <button
-                    onClick={() => setActiveSim('telemetry')}
-                    className={`hero-sim-tab-btn ${activeSim === 'telemetry' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => setActiveSim('software')}
+                    className={`hero-sim-tab-btn ${activeSim === 'software' ? 'active' : ''}`}
                   >
-                    Edge AI (<span style={{ color: '#38bdf8' }}>4.2ms</span>)
+                    Custom Software (<span style={{ color: '#38bdf8' }}>99.9%</span>)
                   </button>
                   <button
+                    type="button"
+                    onClick={() => setActiveSim('embedded')}
+                    className={`hero-sim-tab-btn ${activeSim === 'embedded' ? 'active' : ''}`}
+                  >
+                    Embedded AI (<span style={{ color: '#00f5a0' }}>4.2ms</span>)
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => setActiveSim('agents')}
                     className={`hero-sim-tab-btn ${activeSim === 'agents' ? 'active' : ''}`}
                   >
-                    AI Swarm (<span style={{ color: '#c084fc' }}>99.9%</span>)
-                  </button>
-                  <button
-                    onClick={() => setActiveSim('surveillance')}
-                    className={`hero-sim-tab-btn ${activeSim === 'surveillance' ? 'active' : ''}`}
-                  >
-                    Vision (<span style={{ color: '#00f5a0' }}>60 FPS</span>)
+                    AI Agents (<span style={{ color: '#c084fc' }}>Autonomous</span>)
                   </button>
                 </div>
 
@@ -446,7 +486,7 @@ export default function Home({ onOpenModal }) {
               {/* Floating Bottom Pill */}
               <div className="glass-pill hero-floating-pill-bottom">
                 <Shield size={14} style={{ color: 'var(--neon-emerald)' }} />
-                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>Zero Trust & SOC-2 Verified</span>
+                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>100% Code & IP Ownership</span>
               </div>
             </div>
           </div>
@@ -454,7 +494,7 @@ export default function Home({ onOpenModal }) {
           {/* Stats Strip */}
           <div className="metrics-strip">
             <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-blue">10+</span>
+              <span className="metric-number text-glow-blue">30+</span>
               <span className="metric-label">Years of Experience</span>
             </div>
             <div className="glass-panel metric-card">
@@ -473,39 +513,92 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* About Us / Company Overview Section */}
-      <section className="section-spacing" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* About Us / Company Overview Section (Elevated Executive Design) */}
+      <section className="about-enterprise-section" id="about-us">
         <div className="app-container">
-          <div className="glass-panel" style={{ padding: '48px', position: 'relative' }}>
-            <div className="icon-blur-halo halo-brand-blue" style={{ width: '220px', height: '220px', top: '10px', right: '10px' }} />
-            <div className="glass-pill" style={{ marginBottom: '16px' }}>
-              <Users size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>ABOUT US</span>
-            </div>
-            <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2.2rem' }}>
-              Technology Leaders Turning Visionary Ideas into <span className="text-gradient-brand">Exceptional Growth</span>
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.8, maxWidth: '960px', marginBottom: '24px' }}>
-              Our portfolio enriched solutions across various industries and enabled our customers to achieve exceptional business growth. We are unique in a sense that our management are technology leaders and this gives us an exceptional level of expertise in our fields.
-            </p>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '28px' }}>
-              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '24px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--brand-blue)', marginBottom: '8px' }}>
-                  Our Vision
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  Our aim is to be acknowledged as an icon of reliable and effective information technology partner offering cutting edge solutions.
-                </p>
+          <div className="about-layout-split">
+            {/* Left Column: Visual Vision & Mission Feature Cards */}
+            <div className="about-cards-column">
+              {/* Vision Card */}
+              <div className="about-card-featured">
+                <div 
+                  className="about-card-bg" 
+                  style={{ backgroundImage: "url('/about-vision.jpg')" }} 
+                />
+                <div className="about-card-gradient" />
+                <div className="about-card-inner">
+                  <div className="about-icon-emblem emblem-vision">
+                    <Compass size={28} />
+                  </div>
+                  <div className="about-card-text">
+                    <h3 className="about-card-title">Our Vision</h3>
+                    <p className="about-card-description">
+                      Our aim is to be acknowledged as an icon of reliable and effective information technology partner offering cutting edge solutions.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '24px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--neon-cyan)', marginBottom: '8px' }}>
-                  Our Mission
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  Assist customers during each stage of digital transformation to achieve agility and operational efficiency.
-                </p>
+              {/* Mission Card */}
+              <div className="about-card-featured">
+                <div 
+                  className="about-card-bg" 
+                  style={{ backgroundImage: "url('/about-mission.jpg')" }} 
+                />
+                <div className="about-card-gradient" />
+                <div className="about-card-inner">
+                  <div className="about-icon-emblem emblem-mission">
+                    <TrendingUp size={28} />
+                  </div>
+                  <div className="about-card-text">
+                    <h3 className="about-card-title">Our Mission</h3>
+                    <p className="about-card-description">
+                      Assist customers during each stage of digital transformation to achieve agility and operational efficiency.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Company Story, Global Presence, Experience & CTA */}
+            <div className="about-story-column">
+              <h2 className="about-main-title">About Us</h2>
+
+              <p className="about-story-paragraph">
+                <strong>VisualSoft Global (VS)</strong> offers top-notch ICT services to clients in the <strong>USA</strong>, <strong>UK</strong>, <strong>UAE</strong>, and <strong>Pakistan</strong>, focusing on turning ideas into innovative products. With a strong team of professionals, we are committed to deliver high quality services to our customers.
+              </p>
+
+              <p className="about-story-paragraph">
+                Our portfolio enriched solutions across various industries and enabled our customers to achieve exceptional business growth. We are unique in a sense that our management are technology leaders and this gives us an exceptional level of expertise in our fields.
+              </p>
+
+              <p className="about-story-paragraph">
+                VS Vision is to be acknowledged as an icon of reliable and effective information technology partner offering cutting edge solutions. Our Mission is to assist customers during each stage of digital transformation to achieve agility and operational efficiency.
+              </p>
+
+              {/* Strategic Global Hubs */}
+              <div className="about-regions-row">
+                <span className="region-chip">🇺🇸 USA</span>
+                <span className="region-chip">🇬🇧 UK</span>
+                <span className="region-chip">🇦🇪 UAE</span>
+                <span className="region-chip">🇵🇰 Pakistan</span>
+              </div>
+
+              {/* Experience Milestone + Contact Action */}
+              <div className="about-footer-row">
+                <div className="about-exp-block">
+                  <div className="about-exp-number">+30 years</div>
+                  <div className="about-exp-label">of Experience</div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onOpenModal}
+                  className="about-cta-btn"
+                >
+                  <span>CONTACT US</span>
+                  <ArrowRight size={16} />
+                </button>
               </div>
             </div>
           </div>
