@@ -294,39 +294,161 @@ export default function Home({ onOpenModal }) {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="app-container">
-          <div className="hero-pill-badge">
-            <div className="glass-pill">
-              <span className="pulse-dot" />
-              <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>START YOUR DIGITAL BUSINESS WITH VISUALSOFT</span>
-              <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-              <span style={{ color: 'var(--text-muted)' }}>USA • UK • UAE • PAKISTAN</span>
+          <div className="hero-split-grid">
+            {/* Left Column: Heading, Value Prop & CTAs */}
+            <div className="hero-content-left">
+              <div className="hero-pill-badge">
+                <div className="glass-pill">
+                  <span className="pulse-dot" />
+                  <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>NEXT-GEN AI & EMBEDDED ENGINEERING</span>
+                  <span style={{ color: 'rgba(255,255,255,0.25)' }}>|</span>
+                  <span style={{ color: 'var(--text-muted)' }}>USA • UK • UAE • PAKISTAN</span>
+                </div>
+              </div>
+
+              <div className="title-aura-container">
+                <div className="title-aura" />
+                <h1 className="hero-title">
+                  Turning Visionary Ideas into <span className="text-gradient-brand">Innovative AI Products</span> & Embedded Systems
+                </h1>
+              </div>
+
+              <p className="hero-description">
+                VisualSoft Global (VS) is a technology company delivering enterprise-grade custom AI software, autonomous multi-agent swarms, IoT embedded hardware, and 24/7 managed IT services to businesses across the USA, UK, UAE, and Pakistan.
+              </p>
+
+              <div className="hero-cta-group">
+                <button onClick={onOpenModal} className="glass-button-primary">
+                  <Sparkles size={18} />
+                  <span>Get Started / Scope Project</span>
+                  <ArrowRight size={16} />
+                </button>
+                <a href="#services" className="glass-button-secondary">
+                  <Terminal size={18} />
+                  <span>Explore Services</span>
+                </a>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="hero-trust-badges">
+                <div className="trust-badge-item">
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                  <span>Technology Leaders</span>
+                </div>
+                <div className="trust-badge-item">
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                  <span>100% Code & IP Ownership</span>
+                </div>
+                <div className="trust-badge-item">
+                  <CheckCircle2 size={16} style={{ color: 'var(--neon-emerald)' }} />
+                  <span>24/7 Global Response</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="title-aura-container">
-            <div className="title-aura" />
-            <h1 className="hero-title" style={{ fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)' }}>
-              A custom <span className="text-gradient-brand">AI software development</span> company turning ideas into innovative products.
-            </h1>
-          </div>
+            {/* Right Column: 3D Frosted Glass Command Matrix */}
+            <div className="hero-visual-right">
+              <div className="hero-ambient-glow" />
 
-          <p className="hero-description" style={{ maxWidth: '860px' }}>
-            VisualSoft Global (VS) offers top-notch ICT services to clients in the USA, UK, UAE and Pakistan, focusing on turning ideas into innovative products. With a strong team of professionals, we are committed to delivering high-quality services to our customers.
-          </p>
+              {/* Floating Top Pill */}
+              <div className="glass-pill hero-floating-pill-top">
+                <Activity size={14} style={{ color: 'var(--brand-blue)' }} />
+                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>128k msgs/sec throughput</span>
+              </div>
 
-          <div className="hero-cta-group">
-            <button onClick={onOpenModal} className="glass-button-primary">
-              <Sparkles size={18} />
-              <span>Get Started</span>
-            </button>
-            <Link to="/about-us" className="glass-button-secondary">
-              <span>About VisualSoft</span>
-              <ChevronRight size={18} />
-            </Link>
-            <Link to="/products" className="glass-button-secondary">
-              <span>Omnia-Intelligent Suite</span>
-              <ChevronRight size={18} />
-            </Link>
+              {/* Terminal Card */}
+              <div className="hero-terminal-card">
+                <div className="terminal-top-bar">
+                  <div className="terminal-dots">
+                    <span className="terminal-dot" style={{ background: '#ff5f56' }} />
+                    <span className="terminal-dot" style={{ background: '#ffbd2e' }} />
+                    <span className="terminal-dot" style={{ background: '#27c93f' }} />
+                  </div>
+                  <div className="terminal-title-chip">
+                    <Cpu size={14} style={{ color: 'var(--brand-blue)' }} />
+                    <span>VisualSoft Neural Engine • Live</span>
+                  </div>
+                </div>
+
+                {/* Sub Tab Switcher */}
+                <div className="hero-sim-tabs">
+                  <button
+                    onClick={() => setActiveSim('telemetry')}
+                    className={`hero-sim-tab-btn ${activeSim === 'telemetry' ? 'active' : ''}`}
+                  >
+                    Edge AI (<span style={{ color: '#38bdf8' }}>4.2ms</span>)
+                  </button>
+                  <button
+                    onClick={() => setActiveSim('agents')}
+                    className={`hero-sim-tab-btn ${activeSim === 'agents' ? 'active' : ''}`}
+                  >
+                    AI Swarm (<span style={{ color: '#c084fc' }}>99.9%</span>)
+                  </button>
+                  <button
+                    onClick={() => setActiveSim('surveillance')}
+                    className={`hero-sim-tab-btn ${activeSim === 'surveillance' ? 'active' : ''}`}
+                  >
+                    Vision (<span style={{ color: '#00f5a0' }}>60 FPS</span>)
+                  </button>
+                </div>
+
+                {/* Active Waveform Graphic */}
+                <div className="hero-waveform-bar">
+                  <div className="wave-col" style={{ height: '55%' }} />
+                  <div className="wave-col" style={{ height: '80%' }} />
+                  <div className="wave-col" style={{ height: '40%' }} />
+                  <div className="wave-col" style={{ height: '95%' }} />
+                  <div className="wave-col" style={{ height: '65%' }} />
+                  <div className="wave-col" style={{ height: '85%' }} />
+                  <div className="wave-col" style={{ height: '35%' }} />
+                  <div className="wave-col" style={{ height: '70%' }} />
+                  <div className="wave-col" style={{ height: '90%' }} />
+                  <div className="wave-col" style={{ height: '50%' }} />
+                  <div className="wave-col" style={{ height: '75%' }} />
+                  <div className="wave-col" style={{ height: '60%' }} />
+                </div>
+
+                {/* Live Console Output */}
+                <div className="hero-telemetry-screen">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.72rem' }}>
+                    <span>PROTOCOL: {simulators[activeSim].name.toUpperCase()}</span>
+                    <span style={{ color: 'var(--neon-emerald)' }}>● ONLINE</span>
+                  </div>
+                  {simLogs.slice(-3).map((log, idx) => (
+                    <div key={idx} style={{ marginBottom: '4px', color: idx === 2 ? '#60a5fa' : '#94a3b8' }}>
+                      {log}
+                    </div>
+                  ))}
+                  {simRunning && (
+                    <div style={{ color: '#00f5a0', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px' }}>
+                      <Activity size={12} className="animate-spin" />
+                      <span>Optimizing inference stream...</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Terminal Action Footer */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
+                    Latency: <strong style={{ color: '#fff' }}>{simulators[activeSim].latency}</strong>
+                  </span>
+                  <button
+                    onClick={runLiveSimulation}
+                    disabled={simRunning}
+                    className="glass-button-secondary"
+                    style={{ padding: '6px 14px', fontSize: '0.75rem' }}
+                  >
+                    <span>Benchmark Pipeline</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Floating Bottom Pill */}
+              <div className="glass-pill hero-floating-pill-bottom">
+                <Shield size={14} style={{ color: 'var(--neon-emerald)' }} />
+                <span style={{ color: '#fff', fontSize: '0.78rem', fontWeight: 600 }}>Zero Trust & SOC-2 Verified</span>
+              </div>
+            </div>
           </div>
 
           {/* Stats Strip */}
@@ -390,149 +512,6 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Flagship Product Showcase: Omnia-Intelligent Suite */}
-      <section className="section-spacing" id="products">
-        <div className="app-container">
-          <div className="section-header">
-            <div className="glass-pill section-tag">
-              <Cpu size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>PRODUCTS</span>
-            </div>
-            <h2 className="section-title">
-              Omnia-Intelligent <span className="text-gradient-brand">Suite</span>
-            </h2>
-            <p className="section-subtitle">
-              VisualSoft’s unified intelligent operating platform. Experience our AI models, edge telemetry, and autonomous decisioning running live.
-            </p>
-          </div>
-
-          <div className="glass-panel simulator-layout">
-            {/* Left Nav */}
-            <div className="simulator-nav">
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-dim)' }}>
-                Omnia Live Protocol Matrix
-              </span>
-
-              {Object.keys(simulators).map((key) => {
-                const sim = simulators[key];
-                const IconComponent = sim.icon;
-                const isActive = activeSim === key;
-                return (
-                  <button
-                    key={key}
-                    onClick={() => setActiveSim(key)}
-                    className={`simulator-agent-item ${isActive ? 'active' : ''}`}
-                  >
-                    <div className="icon-box-blur" style={{ width: '42px', height: '42px' }}>
-                      <div className={`icon-blur-halo ${sim.colorClass}`} />
-                      <IconComponent size={20} className={isActive ? 'text-white' : 'text-slate-400'} />
-                    </div>
-                    <div>
-                      <span className="agent-title-text">{sim.name}</span>
-                      <span className="agent-desc-text">{sim.badge}</span>
-                    </div>
-                  </button>
-                );
-              })}
-
-              <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                <Link to="/products" className="learn-more-link" style={{ fontSize: '0.85rem' }}>
-                  <span>View Product Overview</span>
-                  <ChevronRight size={14} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Telemetry */}
-            <div className="telemetry-display">
-              <div>
-                <div className="telemetry-header">
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fff' }}>
-                        {simulators[activeSim].name}
-                      </h3>
-                      <span className="glass-pill" style={{ fontSize: '0.75rem', padding: '2px 10px' }}>
-                        <span className="pulse-dot" />
-                        {simulators[activeSim].status}
-                      </span>
-                    </div>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '6px' }}>
-                      {simulators[activeSim].description}
-                    </p>
-                  </div>
-
-                  <div className="terminal-dots">
-                    <span className="terminal-dot" style={{ background: '#ff5f56' }} />
-                    <span className="terminal-dot" style={{ background: '#ffbd2e' }} />
-                    <span className="terminal-dot" style={{ background: '#27c93f' }} />
-                  </div>
-                </div>
-
-                <div className="telemetry-stats-row">
-                  <div className="telemetry-stat-card">
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase', display: 'block' }}>Latency</span>
-                    <span className={`metric-number ${simulators[activeSim].textColor}`} style={{ fontSize: '1.5rem', marginTop: '4px' }}>
-                      {simulators[activeSim].latency}
-                    </span>
-                  </div>
-                  <div className="telemetry-stat-card">
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase', display: 'block' }}>Throughput</span>
-                    <span className="metric-number text-white" style={{ fontSize: '1.5rem', marginTop: '4px' }}>
-                      {simulators[activeSim].throughput}
-                    </span>
-                  </div>
-                  <div className="telemetry-stat-card">
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase', display: 'block' }}>Confidence / SLA</span>
-                    <span className="metric-number text-glow-emerald" style={{ fontSize: '1.5rem', marginTop: '4px' }}>
-                      {simulators[activeSim].confidence}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="console-output-box">
-                  {simLogs.map((log, index) => (
-                    <div key={index} style={{ marginBottom: '6px', color: index === simLogs.length - 1 ? '#60a5fa' : '#94a3b8' }}>
-                      {log}
-                    </div>
-                  ))}
-                  {simRunning && (
-                    <div style={{ color: '#00f5a0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Activity size={14} className="animate-spin" />
-                      <span>Benchmarking Omnia neural pipeline...</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '24px', flexWrap: 'wrap', gap: '12px' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
-                  Connected via VisualSoft Secure Mesh
-                </span>
-                <div style={{ display: 'flex', gap: '12px' }}>
-                  <button
-                    onClick={runLiveSimulation}
-                    disabled={simRunning}
-                    className="glass-button-secondary"
-                    style={{ padding: '10px 20px', fontSize: '0.88rem' }}
-                  >
-                    <Activity size={16} />
-                    <span>Run Benchmark</span>
-                  </button>
-                  <button
-                    onClick={onOpenModal}
-                    className="glass-button-primary"
-                    style={{ padding: '10px 20px', fontSize: '0.88rem' }}
-                  >
-                    <span>Request Live Demo</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Services Section from visualsoft-inc.com */}
       <section className="section-spacing" id="services">

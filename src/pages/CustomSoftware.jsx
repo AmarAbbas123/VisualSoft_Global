@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Code,
@@ -15,11 +15,53 @@ import {
   Repeat,
   Terminal,
   Activity,
-  Bot
+  Bot,
+  Globe2,
+  Box,
+  Check,
+  ChevronRight,
+  Code2,
+  FileCode,
+  Share2,
+  Cloud,
+  Boxes,
+  GitBranch,
+  Brain,
+  Eye,
+  Globe,
+  Zap
 } from 'lucide-react';
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiAngular,
+  SiVuedotjs,
+  SiGraphql,
+  SiDotnet,
+  SiNodedotjs,
+  SiPython,
+  SiWordpress,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiDocker,
+  SiGit,
+  SiFirebase,
+  SiTensorflow,
+  SiOpencv
+} from 'react-icons/si';
+import { FaAws } from 'react-icons/fa6';
+import { TbBrandAzure } from 'react-icons/tb';
+import { GrOracle } from 'react-icons/gr';
+import { DiMsqlServer } from 'react-icons/di';
 import Accordion from '../components/Accordion';
 
 export default function CustomSoftware({ onOpenModal }) {
+  const [activeTab, setActiveTab] = useState('fullstack');
+  const [activeTechTab, setActiveTechTab] = useState('frontend');
+
   useEffect(() => {
     document.title = "AI-Enabled Custom Software Development | VisualSoft Global";
     window.scrollTo(0, 0);
@@ -69,12 +111,87 @@ export default function CustomSoftware({ onOpenModal }) {
   ];
 
   const technologies = [
-    { category: 'Frontend', items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Angular', 'Vue', 'GraphQL', 'Rest API'] },
-    { category: 'Backend', items: ['.NET', 'Node.js', 'Python'] },
-    { category: 'CMS', items: ['WordPress'] },
-    { category: 'Database', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'MsSQL'] },
-    { category: 'Cloud & DevOps', items: ['Docker', 'CI/CD', 'Git', 'AWS', 'Azure', 'Firebase', 'Oracle Cloud'] },
-    { category: 'AI / ML', items: ['Tensorflow', 'OpenCV', 'Deep Learning', 'YOLO'] }
+    {
+      id: 'frontend',
+      category: 'Frontend',
+      icon: SiReact,
+      tagline: 'Modern Single Page Applications & UI',
+      description: 'High-performance interfaces, reactive client-side logic, responsive layouts, and micro-frontend architectures.',
+      items: [
+        { name: 'JavaScript', subtitle: 'ES6+ Dynamic Scripting', icon: SiJavascript, color: '#f7df1e' },
+        { name: 'TypeScript', subtitle: 'Strongly Typed Safety', icon: SiTypescript, color: '#3178c6' },
+        { name: 'React', subtitle: 'Component Architecture', icon: SiReact, color: '#61dafb' },
+        { name: 'Next.js', subtitle: 'SSR & Server Components', icon: SiNextdotjs, color: '#ffffff' },
+        { name: 'Angular', subtitle: 'Enterprise Framework', icon: SiAngular, color: '#dd0031' },
+        { name: 'Vue', subtitle: 'Progressive Framework', icon: SiVuedotjs, color: '#42b883' },
+        { name: 'GraphQL', subtitle: 'Declarative Data Queries', icon: SiGraphql, color: '#e535ab' },
+        { name: 'REST API', subtitle: 'Contract-First Endpoints', icon: Terminal, color: '#38bdf8' }
+      ]
+    },
+    {
+      id: 'backend',
+      category: 'Backend',
+      icon: SiNodedotjs,
+      tagline: 'Scalable Microservices & Business Logic',
+      description: 'Robust, fault-tolerant server systems, event-driven pipelines, asynchronous workers, and high-concurrency APIs.',
+      items: [
+        { name: '.NET', subtitle: 'High-Performance C# Core', icon: SiDotnet, color: '#512bd4' },
+        { name: 'Node.js', subtitle: 'Event-Driven Async Runtime', icon: SiNodedotjs, color: '#5fa04e' },
+        { name: 'Python', subtitle: 'FastAPI & Django Ecosystem', icon: SiPython, color: '#3776ab' }
+      ]
+    },
+    {
+      id: 'cms',
+      category: 'CMS',
+      icon: SiWordpress,
+      tagline: 'Enterprise Content Systems',
+      description: 'Decoupled content hubs, role-based workflows, custom plugins, and secured administrative portals.',
+      items: [
+        { name: 'WordPress', subtitle: 'Custom Themes & Headless API', icon: SiWordpress, color: '#21759b' }
+      ]
+    },
+    {
+      id: 'database',
+      category: 'Database',
+      icon: SiPostgresql,
+      tagline: 'Relational & Document Data Persistence',
+      description: 'ACID-compliant storage, real-time distributed queries, data warehousing, and optimized schema indexing.',
+      items: [
+        { name: 'MongoDB', subtitle: 'Flexible Document Store', icon: SiMongodb, color: '#47a248' },
+        { name: 'PostgreSQL', subtitle: 'Advanced Relational Engine', icon: SiPostgresql, color: '#4169e1' },
+        { name: 'MySQL', subtitle: 'Proven Relational Database', icon: SiMysql, color: '#00758f' },
+        { name: 'MsSQL', subtitle: 'Microsoft Enterprise DB', icon: DiMsqlServer, color: '#cc292b' }
+      ]
+    },
+    {
+      id: 'devops',
+      category: 'Cloud & DevOps',
+      icon: SiDocker,
+      tagline: 'Containerized Infrastructure & Automation',
+      description: 'Continuous integration pipelines, automated zero-downtime releases, multi-cloud reliability, and observability.',
+      items: [
+        { name: 'Docker', subtitle: 'Containerized Isolation', icon: SiDocker, color: '#2496ed' },
+        { name: 'CI/CD', subtitle: 'Automated Deploy Pipelines', icon: GitBranch, color: '#10b981' },
+        { name: 'Git', subtitle: 'Distributed Version Control', icon: SiGit, color: '#f05032' },
+        { name: 'AWS', subtitle: 'Cloud Infrastructure & Lambdas', icon: FaAws, color: '#ff9900' },
+        { name: 'Azure', subtitle: 'Microsoft Cloud Ecosystem', icon: TbBrandAzure, color: '#0078d4' },
+        { name: 'Firebase', subtitle: 'Real-Time Edge Services', icon: SiFirebase, color: '#ffca28' },
+        { name: 'Oracle Cloud', subtitle: 'Enterprise High-Compute', icon: GrOracle, color: '#f80000' }
+      ]
+    },
+    {
+      id: 'aiml',
+      category: 'AI / ML',
+      icon: SiTensorflow,
+      tagline: 'Machine Learning, LLMs & Computer Vision',
+      description: 'Production neural network inference, custom transformer models, real-time object detection, and vector embeddings.',
+      items: [
+        { name: 'Tensorflow', subtitle: 'Deep Learning Ecosystem', icon: SiTensorflow, color: '#ff6f00' },
+        { name: 'OpenCV', subtitle: 'Real-Time Vision & Image Filters', icon: SiOpencv, color: '#5c3ee8' },
+        { name: 'Deep Learning', subtitle: 'Multi-Layer Neural Networks', icon: Brain, color: '#00f5a0' },
+        { name: 'YOLO', subtitle: 'Ultra-Fast Object Detection', icon: Eye, color: '#00d4ff' }
+      ]
+    }
   ];
 
   const industries = [
@@ -87,11 +204,11 @@ export default function CustomSoftware({ onOpenModal }) {
   ];
 
   const steps = [
-    { num: 'Step 1', title: 'Discover', desc: 'We map your workflows, data and goals.' },
-    { num: 'Step 2', title: 'Design & Prototype', desc: 'You see a working prototype before full development.' },
-    { num: 'Step 3', title: 'Build & Integrate', desc: 'We develop the software and connect it to your systems.' },
-    { num: 'Step 4', title: 'Test & Deploy', desc: 'Quality checks, security review and a planned launch.' },
-    { num: 'Step 5', title: 'Support & Improve', desc: 'Monitoring, updates and model retraining after go-live.' }
+    { num: 'Step 01', title: 'Discover', desc: 'We map your workflows, data and goals.' },
+    { num: 'Step 02', title: 'Design & Prototype', desc: 'You see a working prototype before full development.' },
+    { num: 'Step 03', title: 'Build & Integrate', desc: 'We develop the software and connect it to your systems.' },
+    { num: 'Step 04', title: 'Test & Deploy', desc: 'Quality checks, security review and a planned launch.' },
+    { num: 'Step 05', title: 'Support & Improve', desc: 'Monitoring, updates and model retraining after go-live.' }
   ];
 
   const faqs = [
@@ -131,33 +248,130 @@ export default function CustomSoftware({ onOpenModal }) {
 
   return (
     <div className="custom-software-page">
-      {/* Hero Section */}
-      <section className="page-hero">
+      {/* Hero Section (Revamped Two-Column Split) */}
+      <section className="service-hero-section">
         <div className="app-container">
-          <span className="page-hero-label">AI & Software Development</span>
-          <div className="title-aura-container">
-            <div className="title-aura" />
-            <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.8vw, 4rem)' }}>
-              AI-Enabled Custom <span className="text-gradient-brand">Software Development</span>
-            </h1>
-          </div>
+          <div className="service-hero-split">
+            {/* Left Content */}
+            <div>
+              <div className="hero-pill-badge">
+                <div className="glass-pill">
+                  <span className="pulse-dot" />
+                  <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>AI & SOFTWARE DEVELOPMENT</span>
+                </div>
+              </div>
 
-          <p className="hero-description" style={{ maxWidth: '820px' }}>
-            We design, build and support custom software with AI built into the business logic, from internal platforms and customer apps to automation, analytics and intelligent assistants. One engineering team takes you from the first workshop to post-launch support.
-          </p>
+              <div className="title-aura-container">
+                <div className="title-aura" />
+                <h1 className="hero-title" style={{ fontSize: 'clamp(2.3rem, 4.4vw, 3.8rem)' }}>
+                  AI-Enabled Custom <span className="text-gradient-brand">Software Development</span>
+                </h1>
+              </div>
 
-          <div className="hero-cta-group">
-            <Link to="/contactus" className="glass-button-primary">
-              <span>Scope Your AI Software Project</span>
-              <ArrowRight size={18} />
-            </Link>
-            <Link to="/case-studies" className="glass-button-secondary">
-              <span>See Our Work</span>
-            </Link>
+              <p className="hero-description" style={{ maxWidth: '640px' }}>
+                We design, build and support custom software with AI built into the business logic, from internal platforms and customer apps to automation, analytics and intelligent assistants. One engineering team takes you from the first workshop to post-launch support.
+              </p>
+
+              <div className="hero-cta-group">
+                <Link to="/contactus" className="glass-button-primary">
+                  <span>Scope Your AI Software Project</span>
+                  <ArrowRight size={18} />
+                </Link>
+                <Link to="/case-studies" className="glass-button-secondary">
+                  <span>See Our Work</span>
+                  <ChevronRight size={16} />
+                </Link>
+              </div>
+
+              <div className="hero-trust-badges">
+                <div className="trust-badge-item">
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                  <span>One Team From Discovery to Support</span>
+                </div>
+                <div className="trust-badge-item">
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                  <span>You Own 100% Code & IP</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Interactive Architecture Visualizer */}
+            <div>
+              <div className="software-arch-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '14px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#00f5a0', boxShadow: '0 0 8px #00f5a0' }} />
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#93c5fd', fontWeight: 600 }}>
+                      Custom AI Architecture Stack
+                    </span>
+                  </div>
+                  <span className="glass-pill" style={{ fontSize: '0.72rem', padding: '2px 8px', color: 'var(--brand-blue)' }}>
+                    Production Ready
+                  </span>
+                </div>
+
+                <div className="arch-flow-diagram">
+                  <div className="arch-flow-node">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Globe2 size={16} style={{ color: 'var(--brand-blue)' }} />
+                      <div>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Client Frontend & Apps</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Next.js • React • TypeScript • Web/Mobile</span>
+                      </div>
+                    </div>
+                    <span style={{ color: 'var(--brand-blue)', fontSize: '0.72rem', fontWeight: 700 }}>HIGH UX</span>
+                  </div>
+
+                  <div className="arch-connector-line" />
+
+                  <div className="arch-flow-node" style={{ borderColor: 'rgba(35, 79, 246, 0.4)', background: 'rgba(35, 79, 246, 0.08)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Workflow size={16} style={{ color: 'var(--brand-blue)' }} />
+                      <div>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Enterprise Business Logic & APIs</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>.NET • Node.js • Python • GraphQL • Microservices</span>
+                      </div>
+                    </div>
+                    <span style={{ color: '#60a5fa', fontSize: '0.72rem', fontWeight: 700 }}>SECURE</span>
+                  </div>
+
+                  <div className="arch-connector-line" />
+
+                  <div className="arch-flow-node" style={{ borderColor: 'rgba(0, 212, 255, 0.4)', background: 'rgba(0, 212, 255, 0.08)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Bot size={16} style={{ color: 'var(--neon-cyan)' }} />
+                      <div>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Embedded AI Engine & LLM Layer</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Tensorflow • Deep Learning • YOLO • Custom Models</span>
+                      </div>
+                    </div>
+                    <span style={{ color: 'var(--neon-cyan)', fontSize: '0.72rem', fontWeight: 700 }}>NEURAL</span>
+                  </div>
+
+                  <div className="arch-connector-line" />
+
+                  <div className="arch-flow-node">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Server size={16} style={{ color: 'var(--neon-emerald)' }} />
+                      <div>
+                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Cloud Database & DevOps Infrastructure</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>PostgreSQL • Docker • CI/CD • AWS / Azure</span>
+                      </div>
+                    </div>
+                    <span style={{ color: 'var(--neon-emerald)', fontSize: '0.72rem', fontWeight: 700 }}>99.99%</span>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
+                  <span>Single integrated engineering team</span>
+                  <span style={{ color: 'var(--brand-blue)', fontWeight: 600 }}>Zero Vendor Sprawl</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Stats Strip from PDF */}
-          <div className="metrics-strip" style={{ marginTop: '50px', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="metrics-strip" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginTop: '20px' }}>
             <div className="glass-panel metric-card">
               <span className="metric-number text-glow-blue">4</span>
               <span className="metric-label">Countries we serve: USA, UK, UAE, Pakistan</span>
@@ -167,58 +381,58 @@ export default function CustomSoftware({ onOpenModal }) {
               <span className="metric-label">Connected services under one team</span>
             </div>
             <div className="glass-panel metric-card">
-              <span className="metric-number text-glow-cyan" style={{ fontSize: '1.8rem' }}>End to End</span>
+              <span className="metric-number text-glow-cyan" style={{ fontSize: '1.9rem' }}>End to End</span>
               <span className="metric-label">Discovery, build, launch and support</span>
             </div>
           </div>
-          <p style={{ marginTop: '16px', color: 'var(--text-dim)', fontSize: '0.9rem', fontStyle: 'italic' }}>
-            Good software shows up in your results, not in a feature list.
+          <p style={{ marginTop: '16px', color: 'var(--text-dim)', fontSize: '0.92rem', fontStyle: 'italic', textAlign: 'center' }}>
+            "Good software shows up in your results, not in a feature list."
           </p>
         </div>
       </section>
 
-      {/* Section 3: How we build */}
-      <section className="section-spacing" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* Section 3: How we build (Alternating Luminous Contrast Section) */}
+      <section className="section-spacing section-alt-contrast">
         <div className="app-container">
           <div className="glass-panel" style={{ padding: '48px', position: 'relative' }}>
-            <div className="icon-blur-halo halo-brand-blue" style={{ width: '200px', height: '200px', top: '10px', right: '10px' }} />
+            <div className="icon-blur-halo halo-brand-blue" style={{ width: '220px', height: '220px', top: '10px', right: '10px' }} />
             <div className="glass-pill" style={{ marginBottom: '16px' }}>
               <Workflow size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>Unified Delivery</span>
+              <span>HOW WE BUILD</span>
             </div>
             <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2.2rem' }}>
               One Team from First Workshop to <span className="text-gradient-brand">Post-Launch Support</span>
             </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '900px', marginBottom: '20px' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '920px', marginBottom: '20px' }}>
               Our AI-enabled custom software covers new applications, AI features added to systems you already run, automation, analytics and intelligent assistants. Instead of splitting the work across several vendors, one team handles architecture, development, integration and support.
             </p>
             <p style={{ color: 'var(--text-main)', fontSize: '1.05rem', lineHeight: 1.8, fontWeight: 500 }}>
-              Custom means the software is built around your workflows and rules, not a template you have to adapt to. <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>You own 100% of the code and documentation produced for your project.</span>
+              Custom means the software is built around your workflows and rules, not a template you have to adapt to. <span style={{ color: 'var(--brand-blue)', fontWeight: 700 }}>You own the code and documentation produced for your project.</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 4: Capabilities (Numbered 4x2 Grid from PDF) */}
+      {/* Section 4: Capabilities (Numbered 4x2 Grid from PDF Build Notes) */}
       <section className="section-spacing">
         <div className="app-container">
           <div className="section-header">
             <div className="glass-pill section-tag">
               <Layers size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>DELIVERY SCOPE</span>
+              <span>WHAT OUR TEAM DELIVERS</span>
             </div>
             <h2 className="section-title">
-              What Our <span className="text-gradient-brand">Team Delivers</span>
+              Core Capabilities in a <span className="text-gradient-brand">Numbered 4x2 Matrix</span>
             </h2>
             <p className="section-subtitle">
-              High-value capabilities built specifically around your operations.
+              Every card built around your workflows with one clear sentence.
             </p>
           </div>
 
           <div className="numbered-grid-4x2">
             {capabilities.map((cap) => (
-              <div key={cap.num} className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column' }}>
-                <span className="capability-number">{cap.num}</span>
+              <div key={cap.num} className="capability-card-pro">
+                <span className="capability-num-tag">{cap.num}</span>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', marginBottom: '10px' }}>
                   {cap.title}
                 </h3>
@@ -231,8 +445,8 @@ export default function CustomSoftware({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Section 5: Technologies */}
-      <section className="section-spacing" style={{ background: 'rgba(3, 7, 23, 0.6)' }}>
+      {/* Section 5: Technologies (Alternating Luminous Contrast Section) */}
+      <section className="section-spacing section-alt-contrast">
         <div className="app-container">
           <div className="section-header">
             <div className="glass-pill section-tag">
@@ -247,23 +461,135 @@ export default function CustomSoftware({ onOpenModal }) {
             </p>
           </div>
 
-          <div className="grid-cols-auto">
-            {technologies.map((tech, i) => (
-              <div key={i} className="glass-panel tech-cat-card">
-                <div className="tech-cat-title">
-                  <span className="pulse-dot" style={{ width: '6px', height: '6px' }} />
+          {/* Interactive Technology Tabs Navigation */}
+          <div className="tech-tabs-nav">
+            <button
+              type="button"
+              className={`tech-tab-btn ${activeTechTab === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveTechTab('all')}
+            >
+              <Sparkles size={16} style={{ color: activeTechTab === 'all' ? '#00f5a0' : 'inherit' }} />
+              <span>Full Stack</span>
+              <span className="tech-tab-count">27</span>
+            </button>
+
+            {technologies.map((tech) => {
+              const TabIcon = tech.icon;
+              const isActive = activeTechTab === tech.id;
+              return (
+                <button
+                  key={tech.id}
+                  type="button"
+                  className={`tech-tab-btn ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveTechTab(tech.id)}
+                >
+                  <TabIcon size={16} style={{ color: isActive ? 'var(--brand-blue)' : 'inherit' }} />
                   <span>{tech.category}</span>
-                </div>
-                <div className="tech-pill-list">
-                  {tech.items.map((item, idx) => (
-                    <span key={idx} className="tech-pill">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  <span className="tech-tab-count">{tech.items.length}</span>
+                </button>
+              );
+            })}
           </div>
+
+          {/* Tab Content Display */}
+          {activeTechTab === 'all' ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {technologies.map((tech) => {
+                const CatIcon = tech.icon;
+                return (
+                  <div key={tech.id} className="tech-tab-panel">
+                    <div className="tech-tab-panel-header">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                        <div className="tech-card-icon" style={{ width: '48px', height: '48px', background: 'rgba(35, 79, 246, 0.12)', borderColor: 'rgba(35, 79, 246, 0.3)', color: 'var(--brand-blue)' }}>
+                          <CatIcon size={22} />
+                        </div>
+                        <div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0 }}>
+                              {tech.category}
+                            </h3>
+                            <span className="glass-pill" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
+                              {tech.items.length} Core Technologies
+                            </span>
+                          </div>
+                          <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginTop: '4px', maxWidth: '650px', lineHeight: 1.5 }}>
+                            {tech.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="tech-cards-grid">
+                      {tech.items.map((it, idx) => {
+                        const IconComp = it.icon;
+                        return (
+                          <div key={idx} className="tech-item-card">
+                            <div className="tech-card-icon" style={{ color: it.color }}>
+                              <IconComp size={20} />
+                            </div>
+                            <div className="tech-card-info">
+                              <span className="tech-card-name">{it.name}</span>
+                              <span className="tech-card-sub">{it.subtitle}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            (() => {
+              const currentTech = technologies.find((t) => t.id === activeTechTab);
+              if (!currentTech) return null;
+              const CatIcon = currentTech.icon;
+              return (
+                <div className="tech-tab-panel" key={currentTech.id}>
+                  <div className="tech-tab-panel-header">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <div className="tech-card-icon" style={{ width: '52px', height: '52px', background: 'rgba(35, 79, 246, 0.15)', borderColor: 'rgba(35, 79, 246, 0.35)', color: 'var(--brand-blue)' }}>
+                        <CatIcon size={26} />
+                      </div>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', margin: 0 }}>
+                            {currentTech.category}
+                          </h3>
+                          <span className="glass-pill" style={{ fontSize: '0.75rem', padding: '3px 10px', color: 'var(--brand-blue)' }}>
+                            {currentTech.tagline}
+                          </span>
+                        </div>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginTop: '6px', maxWidth: '720px', lineHeight: 1.6 }}>
+                          {currentTech.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="glass-pill" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#93c5fd' }}>
+                      {currentTech.items.length} Production Standards
+                    </div>
+                  </div>
+
+                  <div className="tech-cards-grid">
+                    {currentTech.items.map((it, idx) => {
+                      const IconComp = it.icon;
+                      return (
+                        <div key={idx} className="tech-item-card">
+                          <div className="tech-card-icon" style={{ color: it.color }}>
+                            <IconComp size={20} />
+                          </div>
+                          <div className="tech-card-info">
+                            <span className="tech-card-name">{it.name}</span>
+                            <span className="tech-card-sub">{it.subtitle}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()
+          )}
         </div>
       </section>
 
@@ -276,7 +602,7 @@ export default function CustomSoftware({ onOpenModal }) {
               <span>WHERE THIS WORK LANDS</span>
             </div>
             <h2 className="section-title">
-              Tailored for Critical <span className="text-gradient-brand">Industries</span>
+              Tailored for High-Demand <span className="text-gradient-brand">Industries</span>
             </h2>
           </div>
 
@@ -295,8 +621,8 @@ export default function CustomSoftware({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Section 7: How we work (5 steps) */}
-      <section className="section-spacing" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* Section 7: How we work (5 steps) (Alternating Luminous Contrast Section) */}
+      <section className="section-spacing section-alt-contrast">
         <div className="app-container">
           <div className="section-header">
             <div className="glass-pill section-tag">
@@ -330,10 +656,10 @@ export default function CustomSoftware({ onOpenModal }) {
           <div className="section-header">
             <div className="glass-pill section-tag">
               <Users size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>COLLABORATION FRAMEWORK</span>
+              <span>TWO WAYS TO WORK WITH US</span>
             </div>
             <h2 className="section-title">
-              Two Ways to <span className="text-gradient-brand">Work With Us</span>
+              Engagement <span className="text-gradient-brand">Models</span>
             </h2>
           </div>
 
@@ -347,10 +673,10 @@ export default function CustomSoftware({ onOpenModal }) {
                 Full Build
               </h3>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '24px' }}>
-                Our team handles complete requirements, architecture, software development, cloud deployment, and long-term support.
+                Our team handles requirements, architecture, development, deployment and support.
               </p>
               <Link to="/contactus" className="glass-button-primary" style={{ width: '100%' }}>
-                <span>Initiate Full Build</span>
+                <span>Let's Talk Full Build</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
@@ -364,7 +690,7 @@ export default function CustomSoftware({ onOpenModal }) {
                 Embedded Team
               </h3>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '24px' }}>
-                Our senior software and AI engineers join your in-house team and sprints when you need extra engineering velocity and specialized capabilities.
+                Our engineers join your team and sprints when you need extra engineering capacity.
               </p>
               <Link to="/contactus" className="glass-button-secondary" style={{ width: '100%' }}>
                 <span>Augment Your Team</span>
@@ -375,15 +701,15 @@ export default function CustomSoftware({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Section 9: FAQ (Accordion) */}
-      <section className="section-spacing">
+      {/* Section 9: FAQ Accordion */}
+      <section className="section-spacing section-alt-contrast">
         <div className="app-container" style={{ maxWidth: '860px' }}>
           <div className="section-header">
             <h2 className="section-title">
               Frequently Asked <span className="text-gradient-brand">Questions</span>
             </h2>
             <p className="section-subtitle">
-              Clear answers regarding ownership, scope, security, and maintenance.
+              Clear answers regarding code ownership, delivery speed, and AI integration.
             </p>
           </div>
 
@@ -409,6 +735,7 @@ export default function CustomSoftware({ onOpenModal }) {
               </Link>
               <Link to="/ai-enabled-embedded-system-design" className="glass-button-secondary">
                 <span>Building a Smart Device?</span>
+                <ChevronRight size={16} />
               </Link>
             </div>
           </div>
