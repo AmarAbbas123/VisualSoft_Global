@@ -330,49 +330,49 @@ export default function Home({ onOpenModal }) {
       title: 'Fintech',
       desc: 'Secure, scalable software for payments, digital banking, and financial platforms that need to move fast without compromising compliance.',
       icon: Shield,
-      halo: 'halo-brand-blue'
+      accentColor: '#0a76db'
     },
     {
       title: 'Managed IT Services',
       desc: '24/7 monitoring, helpdesk support, and infrastructure management so your team can focus on the business, not the servers.',
       icon: Server,
-      halo: 'halo-cyan'
+      accentColor: '#0284c7'
     },
     {
       title: 'Trade & eCommerce',
       desc: 'Custom storefronts, inventory systems, and integrations that keep online retail operations running smoothly at any scale.',
       icon: Briefcase,
-      halo: 'halo-violet'
+      accentColor: '#7c3aed'
     },
     {
       title: 'Transportations System',
       desc: 'AI-powered tracking, routing, and monitoring solutions built for fleets, logistics, and smart mobility infrastructure.',
       icon: Truck,
-      halo: 'halo-cyan'
+      accentColor: '#0284c7'
     },
     {
       title: 'Security and Surveillance',
       desc: 'Live monitoring, ANPR, and access-control software that turns cameras and sensors into a connected intelligence platform.',
       icon: Eye,
-      halo: 'halo-emerald'
+      accentColor: '#059669'
     },
     {
       title: 'Manufacturing & Supply Chain',
       desc: 'Embedded systems and data tools that bring real-time visibility to production lines and supply chain operations.',
       icon: Boxes,
-      halo: 'halo-amber'
+      accentColor: '#d97706'
     },
     {
       title: 'Industrial Automation',
       desc: 'Custom embedded and IoT solutions that automate repetitive processes and reduce manual error on the factory floor.',
       icon: HardHat,
-      halo: 'halo-brand-blue'
+      accentColor: '#2563eb'
     },
     {
       title: 'TeleCommunication',
       desc: 'Software and infrastructure support built for the scale and uptime telecom operators require.',
       icon: Radio,
-      halo: 'halo-violet'
+      accentColor: '#6366f1'
     }
   ];
 
@@ -499,92 +499,113 @@ export default function Home({ onOpenModal }) {
 
       </section>
 
-      {/* About Us / Company Overview Section (Modern Bento Architecture) */}
+      {/* About Us / Company Overview Section (Executive Corporate Design) */}
       <section className="about-enterprise-section" id="about-us">
         <div className="app-container">
           <div className="about-header-wrap">
-            <h2 className="about-modern-headline" style={{ marginTop: 0 }}>
-              Turning Bold Ideas into <span className="text-gradient-brand">Market-Leading Products</span>
+            <span className="about-section-badge">WHO WE ARE</span>
+            <h2 className="about-modern-headline">
+              Turning Bold Ideas into <span className="text-highlight-blue">Market-Leading Products</span>
             </h2>
-            <div className="about-modern-sub-wrap">
-              <p className="about-modern-sub">
-                VisualSoft Global (VS) offers top-notch ICT services to clients in the <strong>USA, UK, UAE, and Pakistan</strong>, focusing on turning ideas into innovative products. With a strong team of professionals, we are committed to delivering high-quality services to our customers.
+            <div className="about-intro-columns">
+              <p className="about-intro-lead">
+                VisualSoft Global (VS) offers top-notch ICT services to clients across the <strong>USA, UK, UAE, and Pakistan</strong>, focusing on turning visionary ideas into innovative, market-ready products with hands-on executive guidance.
               </p>
-              <p className="about-modern-sub" style={{ marginTop: '12px' }}>
-                Our portfolio features enriched solutions across various industries, enabling our customers to achieve exceptional business growth. We are unique in that our executive management are technology leaders, providing technical mastery and hands-on guidance at every stage.
+              <p className="about-intro-secondary">
+                Our portfolio features enriched digital solutions across various industries, enabling customers to achieve exceptional business growth. Our executive management are veteran technology leaders, providing technical mastery at every phase.
               </p>
             </div>
           </div>
 
-          <div className="about-bento-grid">
-            <div className="about-bento-card card-leadership">
-              <div className="bento-badge">
-                <Sparkles size={14} style={{ color: '#38bdf8' }} />
-                <span>EXCELLENCE & MASTERY</span>
-              </div>
-              <div className="bento-metric-wrap">
-                <span className="bento-big-stat">+30 Years</span>
-                <span className="bento-stat-label">of Proven Engineering Excellence</span>
-              </div>
-              <p className="bento-card-body">
-                Our portfolio enriched solutions across diverse industries, enabling customers to achieve exceptional business growth. Our executive management are hands-on technology innovators—providing technical mastery at every phase.
-              </p>
-              <div className="bento-features-list">
-                <div className="bento-feature-chip">
-                  <CheckCircle2 size={14} style={{ color: '#38bdf8' }} />
-                  <span>Hands-on Tech Executives</span>
+          <div className="company-pillars-grid">
+            {/* Card 1: 30+ Years Proven Excellence */}
+            <div className="pillar-corporate-card card-accent-blue">
+              <div className="pillar-top-accent" />
+              <div className="pillar-card-content">
+                <div className="pillar-header-row">
+                  <span className="pillar-kicker-tag">HERITAGE & MASTERY</span>
                 </div>
-                <div className="bento-feature-chip">
-                  <CheckCircle2 size={14} style={{ color: '#00f5a0' }} />
-                  <span>100% Code & IP Ownership</span>
+                <div className="pillar-stat-hero">
+                  <span className="stat-number-main">30<span className="stat-plus">+</span></span>
+                  <span className="stat-label-main">Years of Proven Engineering Excellence</span>
+                </div>
+                <p className="pillar-desc">
+                  Providing mission-critical technology solutions and hands-on executive mastery across four continents, ensuring every enterprise system is built for lasting scale and performance.
+                </p>
+                <div className="pillar-highlights-row">
+                  <div className="highlight-stat-item">
+                    <span className="highlight-val">100%</span>
+                    <span className="highlight-lbl">Code & IP Ownership</span>
+                  </div>
+                  <div className="highlight-stat-sep" />
+                  <div className="highlight-stat-item">
+                    <span className="highlight-val">4</span>
+                    <span className="highlight-lbl">Global Regions</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="about-bento-card card-vision">
-              <div className="bento-card-top">
-                <div className="bento-icon-box vision-icon">
-                  <Compass size={26} />
+            {/* Card 2: Our Vision */}
+            <div className="pillar-corporate-card card-accent-cyan">
+              <div className="pillar-top-accent" />
+              <div className="pillar-card-content">
+                <div className="pillar-header-row">
+                  <div className="pillar-icon-symbol icon-cyan">
+                    <Compass size={22} />
+                  </div>
+                  <span className="pillar-kicker-tag">OUR VISION</span>
                 </div>
-                <span className="bento-tag vision-tag">OUR VISION</span>
-              </div>
-              <h3 className="bento-card-title">Transformative Technology Partner</h3>
-              <p className="bento-card-body">
-                Our aim is to be globally acknowledged as an icon of reliable and effective information technology partner—architecting cutting-edge AI software and embedded solutions that redefine digital performance.
-              </p>
-              <div className="bento-card-footer vision-footer">
-                <span>Enterprise Scale • AI Leadership • Trust</span>
+                <h3 className="pillar-title">Transformative Technology Partner</h3>
+                <p className="pillar-desc">
+                  Our aim is to be globally acknowledged as an icon of reliable and effective information technology partner—architecting cutting-edge AI software and embedded solutions that redefine digital performance.
+                </p>
+                <div className="pillar-tags-row">
+                  <span className="pillar-tag-chip">Enterprise Scale</span>
+                  <span className="pillar-tag-chip">AI Leadership</span>
+                  <span className="pillar-tag-chip">Uncompromising Trust</span>
+                </div>
               </div>
             </div>
 
-            <div className="about-bento-card card-mission">
-              <div className="bento-card-top">
-                <div className="bento-icon-box mission-icon">
-                  <TrendingUp size={26} />
+            {/* Card 3: Our Mission */}
+            <div className="pillar-corporate-card card-accent-green">
+              <div className="pillar-top-accent" />
+              <div className="pillar-card-content">
+                <div className="pillar-header-row">
+                  <div className="pillar-icon-symbol icon-green">
+                    <TrendingUp size={22} />
+                  </div>
+                  <span className="pillar-kicker-tag">OUR MISSION</span>
                 </div>
-                <span className="bento-tag mission-tag">OUR MISSION</span>
-              </div>
-              <h3 className="bento-card-title">Accelerating Digital Evolution</h3>
-              <p className="bento-card-body">
-                Assist customers during each stage of digital transformation to achieve agility, operational efficiency, and rock-solid security—turning visionary concepts into resilient, market-defining products.
-              </p>
-              <div className="bento-card-footer mission-footer">
-                <span>Agility • Velocity • Measurable ROI</span>
+                <h3 className="pillar-title">Accelerating Digital Evolution</h3>
+                <p className="pillar-desc">
+                  Assist customers during each stage of digital transformation to achieve agility, operational efficiency, and rock-solid security—turning visionary concepts into resilient, market-defining products.
+                </p>
+                <div className="pillar-tags-row">
+                  <span className="pillar-tag-chip">Agile Velocity</span>
+                  <span className="pillar-tag-chip">Security & Scale</span>
+                  <span className="pillar-tag-chip">Measurable ROI</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="about-hubs-bar">
-            <div className="about-hubs-left">
-              <span className="hubs-label">Strategic Engineering Hubs:</span>
-              <div className="hubs-pill-group">
-                <span className="hub-pill">🇺🇸 United States</span>
-                <span className="hub-pill">🇬🇧 United Kingdom</span>
-                <span className="hub-pill">🇦🇪 UAE</span>
-                <span className="hub-pill">🇵🇰 Pakistan</span>
+          <div className="corporate-hubs-strip">
+            <div className="hubs-strip-left">
+              <span className="hubs-strip-title">Global Engineering Presence:</span>
+              <div className="hubs-locations-list">
+                <span className="hub-loc-item">🇺🇸 United States</span>
+                <span className="hub-loc-item">🇬🇧 United Kingdom</span>
+                <span className="hub-loc-item">🇦🇪 UAE</span>
+                <span className="hub-loc-item">🇵🇰 Pakistan</span>
               </div>
             </div>
-            <button type="button" onClick={onOpenModal} className="about-modern-cta-btn">
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="corporate-contact-btn"
+            >
               <span>Contact Leadership</span>
               <ArrowRight size={16} />
             </button>
@@ -683,28 +704,43 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Industries We Serve from visualsoft-inc.com */}
-      <section className="section-spacing" id="industries">
+      {/* Industries & Solutions Section (Executive White Corporate Design) */}
+      <section className="industries-corporate-section" id="industries">
         <div className="app-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              Bringing Productivity & Efficiency with Accuracy by Our <span className="text-gradient-brand">Digital Transformation Skills and Products</span>
+          <div className="industries-header-wrap">
+            <span className="industries-badge">INDUSTRIES & SECTORS</span>
+            <h2 className="industries-title">
+              Bringing Productivity & Efficiency with Accuracy by Our <span className="text-highlight-blue">Digital Transformation Skills and Products</span>
             </h2>
+            <p className="industries-subtitle">
+              Purpose-built digital architectures, embedded IoT engineering, and secure cloud platforms tailored to industry-specific operational demands.
+            </p>
           </div>
 
-          <div className="grid-cols-auto">
+          <div className="industries-grid-4x2">
             {industries.map((ind, i) => {
               const IndIcon = ind.icon;
               return (
-                <div key={i} className="glass-panel industry-card">
-                  <div className="industry-icon-wrapper">
-                    <div className="icon-box-blur">
-                      <div className={`icon-blur-halo ${ind.halo}`} />
-                      <IndIcon size={24} className="text-white" />
+                <div key={i} className="industry-corporate-card">
+                  <div className="industry-card-topbar" style={{ backgroundColor: ind.accentColor }} />
+                  <div className="industry-card-inner">
+                    <div
+                      className="industry-icon-pill"
+                      style={{
+                        backgroundColor: `${ind.accentColor}12`,
+                        borderColor: `${ind.accentColor}28`,
+                        color: ind.accentColor
+                      }}
+                    >
+                      <IndIcon size={22} strokeWidth={2.2} />
+                    </div>
+                    <h3 className="industry-card-title">{ind.title}</h3>
+                    <p className="industry-card-desc">{ind.desc}</p>
+                    <div className="industry-card-hover-link">
+                      <span>Explore Sector</span>
+                      <ArrowRight size={14} className="hover-arrow" />
                     </div>
                   </div>
-                  <h3 className="industry-title">{ind.title}</h3>
-                  <p className="industry-desc">{ind.desc}</p>
                 </div>
               );
             })}
@@ -712,17 +748,18 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Performance Banner from visualsoft-inc.com */}
-      <section className="section-spacing" style={{ background: '#02182c' }}>
+      {/* 5. Performance Banner (DARK SECTION) */}
+      <section className="performance-corporate-section">
         <div className="app-container">
-          <div className="glass-panel" style={{ padding: '60px 40px', textAlign: 'center', position: 'relative' }}>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3.6vw, 2.6rem)', fontWeight: 800, fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '16px', lineHeight: 1.3 }}>
+          <div className="performance-quote-card">
+            <span className="performance-badge">EXECUTIVE PHILOSOPHY</span>
+            <h2 className="performance-quote-title">
               "Our performance is your success. Our passion is innovation. Our expertise is unmatched. We get you more..."
             </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '720px', margin: '0 auto 32px auto' }}>
+            <p className="performance-quote-subtitle">
               Partner with technology leaders to design, build, and support enterprise systems that drive verifiable business growth.
             </p>
-            <button onClick={onOpenModal} className="glass-button-primary">
+            <button onClick={onOpenModal} className="performance-cta-btn">
               <Sparkles size={18} />
               <span>Contact Us Today</span>
             </button>
@@ -730,38 +767,43 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Features from visualsoft-inc.com */}
-      <section className="section-spacing">
+      {/* 6. Features & Methodology (LIGHT SECTION) */}
+      <section className="features-corporate-section" id="methodology">
         <div className="app-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              Enhancing Creativity, <span className="text-gradient-brand">Step by Step</span>
+          <div className="features-header-wrap">
+            <span className="features-badge">ENGINEERING EXCELLENCE</span>
+            <h2 className="features-title">
+              Enhancing Creativity, <span className="text-highlight-blue">Step by Step</span>
             </h2>
+            <p className="features-subtitle">
+              Our proven execution framework ensures high reliability, predictability, and continuous delivery from proof-of-concept to global deployment.
+            </p>
           </div>
 
-          <div className="grid-cols-auto">
+          <div className="features-corporate-grid">
             {features.map((feat, i) => (
-              <div key={i} className="glass-panel" style={{ padding: '28px' }}>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', marginBottom: '10px' }}>
-                  {feat.title}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                  {feat.desc}
-                </p>
+              <div key={i} className="feature-corporate-card">
+                <div className="feature-step-indicator">
+                  <span className="feature-step-number">0{i + 1}</span>
+                  <div className="feature-step-line" />
+                </div>
+                <h3 className="feature-card-title">{feat.title}</h3>
+                <p className="feature-card-desc">{feat.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Presence from visualsoft-inc.com */}
-      <section className="section-spacing" id="presence">
+      {/* 7. Our Presence Section (DARK SECTION) */}
+      <section className="presence-corporate-section" id="presence">
         <div className="app-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              Serving Clients <span className="text-gradient-brand">Worldwide</span>
+          <div className="presence-header-wrap">
+            <span className="presence-badge">GLOBAL NETWORK</span>
+            <h2 className="presence-title">
+              Serving Clients <span className="text-highlight-cyan">Worldwide</span>
             </h2>
-            <p className="section-subtitle">
+            <p className="presence-subtitle">
               VisualSoft Global offers top-notch ICT services across our regional centers in the UK, USA, Middle East, Southeastern Asia, Australia, and Pakistan.
             </p>
           </div>
@@ -775,10 +817,10 @@ export default function Home({ onOpenModal }) {
                 <span className="region-flag">{reg.flag}</span>
                 <div>
                   <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', whiteSpace: 'nowrap' }}>{reg.country}</h4>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block', marginTop: '2px' }}>{reg.city}</span>
+                  <span style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.65)', display: 'block', marginTop: '2px' }}>{reg.city}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '8px' }}>
                     <span className="pulse-dot" style={{ width: '6px', height: '6px' }} />
-                    <span style={{ fontSize: '0.75rem', color: 'var(--brand-blue)', fontWeight: 600 }}>{reg.status}</span>
+                    <span style={{ fontSize: '0.75rem', color: '#00f5a0', fontWeight: 600 }}>{reg.status}</span>
                   </div>
                 </div>
               </div>
@@ -787,21 +829,22 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Career Section from visualsoft-inc.com */}
-      <section className="section-spacing" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* 8. Career Section (LIGHT SECTION) */}
+      <section className="career-corporate-section">
         <div className="app-container">
-          <div className="glass-panel" style={{ padding: '48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-            <div>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', marginBottom: '8px' }}>
+          <div className="career-corporate-card">
+            <div className="career-card-left">
+              <span className="career-badge">JOIN OUR GLOBAL TEAM</span>
+              <h2 className="career-card-title">
                 Come join our team and find your potential.
               </h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-                This is an exciting time to join VisualSoft Global!
+              <p className="career-card-desc">
+                Work alongside passionate engineers, AI researchers, and digital consultants delivering high-impact solutions globally. This is an exciting time to join VisualSoft Global!
               </p>
             </div>
-            <Link to="/career" className="glass-button-primary">
+            <Link to="/career" className="career-action-btn">
               <span>Find Out More</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
