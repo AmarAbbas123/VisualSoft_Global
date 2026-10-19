@@ -569,8 +569,10 @@ export default function Home({ onOpenModal }) {
             <p className="section-subtitle">
               We create AI-enabled custom software solutions, embedded systems, AI agents, and managed IT services that streamline operations and boost productivity.
             </p>
+          </div>
 
-            {/* Filter Tabs Navigation */}
+          {/* Filter Tabs Navigation (Always 1 Row) */}
+          <div className="services-filter-wrapper">
             <div className="services-filter-nav">
               <button
                 type="button"
@@ -578,7 +580,6 @@ export default function Home({ onOpenModal }) {
                 className={`services-filter-btn ${serviceCategory === 'all' ? 'active' : ''}`}
               >
                 <span>View ALL SERVICES</span>
-                <span className="filter-count">6</span>
               </button>
               <button
                 type="button"
