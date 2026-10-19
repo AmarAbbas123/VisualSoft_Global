@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Cpu, Sparkles, Menu, X, ChevronDown } from 'lucide-react';
+import { Sparkles, Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Navbar({ onOpenModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,16 +22,7 @@ export default function Navbar({ onOpenModal }) {
     <header className="navbar-fixed">
       <div className="navbar-inner">
         <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
-          <div className="brand-badge">
-            <span className="logo-glow-dot" style={{ background: 'var(--brand-blue)' }} />
-            <Cpu size={22} className="text-white" />
-          </div>
-          <div>
-            <div className="brand-name">
-              VISUAL<span className="highlight" style={{ color: 'var(--brand-blue)', textShadow: '0 0 14px rgba(35, 79, 246, 0.7)' }}>SOFT</span>
-            </div>
-            <span className="brand-sub">GLOBAL TECHNOLOGY</span>
-          </div>
+          <img src="/logo.webp" alt="VisualSoft" className="brand-logo-img" />
         </Link>
 
         {/* Desktop Nav with Exact Menu from visualsoft-inc.com */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Cpu, Mail, Globe2 } from 'lucide-react';
+import { Mail, Globe2 } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,16 +9,7 @@ export default function Footer() {
         <div className="footer-top">
           <div>
             <Link to="/" className="brand-logo" style={{ marginBottom: '16px' }}>
-              <div className="brand-badge">
-                <span className="logo-glow-dot" style={{ background: 'var(--brand-blue)' }} />
-                <Cpu size={22} className="text-white" />
-              </div>
-              <div>
-                <div className="brand-name">
-                  VISUAL<span className="highlight" style={{ color: 'var(--brand-blue)' }}>SOFT</span>
-                </div>
-                <span className="brand-sub">GLOBAL TECHNOLOGY</span>
-              </div>
+              <img src="/logo.webp" alt="VisualSoft" className="brand-logo-img footer-logo-img" />
             </Link>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', maxWidth: '340px', lineHeight: 1.6 }}>
               VisualSoft Global builds custom AI software, AI agents, embedded systems & managed IT solutions for businesses across the USA, UK, UAE, and Pakistan.

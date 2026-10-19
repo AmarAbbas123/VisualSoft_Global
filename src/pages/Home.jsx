@@ -373,8 +373,18 @@ export default function Home({ onOpenModal }) {
     <div className="home-page">
       {/* Exact Arbisoft Hero Section */}
       <section className="of6BXG_hero" id="hero">
-        {/* Background Image & Overlays */}
+        {/* Background Video, Image & Overlays */}
         <div className="lAJSFG_bgImage" />
+        <video
+          className="of6BXG_heroVideo"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/arbisoft-bg.jpg"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="of6BXG_heroOverlay" />
         <div className="of6BXG_heroGlow of6BXG_heroGlow1">
           <span className="of6BXG_heroGlowFill" />
