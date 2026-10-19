@@ -50,32 +50,62 @@ export default function Home({ onOpenModal }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(110);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [kickerIndex, setKickerIndex] = useState(0);
 
   const heroSlides = [
     {
-      kicker: 'Engineering Software Solutions for 30+ Years',
+      kickers: [
+        'Engineering Software Solutions for 30+ Years',
+        'Pioneering Autonomous AI Agents & Intelligent Pipelines',
+        'Accelerating Enterprise Velocity with Frontier AI'
+      ],
       line1: 'We Accelerate',
       line2Prefix: 'With ',
       isDynamic: true,
+      highlightColor: '#38bdf8',
+      bgImage: '/hero-slide-3.png',
       tag: 'ARCHITECTURE & SCALE'
     },
     {
-      kicker: 'AI-Enabled Embedded Systems & IoT Edge Hardware',
-      line1: 'We Engineer',
-      line2Prefix: 'With ',
-      fixedWord: 'Precision',
+      kickers: [
+        'Zero Vendor Lock-In & Total Data Sovereignty',
+        'Powering 100M+ Users with Open Source Platforms',
+        'Enterprise Flexibility, Economy & Cloud Freedom'
+      ],
+      line1: 'We Leverage',
+      line2Prefix: '',
+      fixedWord: 'Open Source',
+      highlightColor: '#4ade80',
       isDynamic: false,
-      tag: 'EDGE & EMBEDDED'
+      bgImage: '/hero-slide-2.jpg',
+      tag: 'SOVEREIGNTY & SPEED'
     },
     {
-      kicker: 'Autonomous Multi-Agent Enterprise Swarms',
-      line1: 'We Deliver',
+      kickers: [
+        'Human-Centric Digital Experiences That Delight',
+        'Modern Product Strategy, UI/UX & Design Systems',
+        'Crafting Intuitive Interfaces for Global Leaders'
+      ],
+      line1: 'We Lead',
       line2Prefix: 'With ',
-      fixedWord: 'Velocity',
+      fixedWord: 'Design',
+      highlightColor: '#60a5fa',
       isDynamic: false,
-      tag: 'AUTONOMOUS AGENTS'
+      bgImage: '/hero-slide-1.jpg',
+      tag: 'USER EXPERIENCE'
     }
   ];
+
+  // Dynamic kicker rotation within active slide
+  useEffect(() => {
+    setKickerIndex(0);
+    const currentKickers = heroSlides[activeSlide]?.kickers || [];
+    if (currentKickers.length <= 1) return;
+    const kickerTimer = setInterval(() => {
+      setKickerIndex((prev) => (prev + 1) % currentKickers.length);
+    }, 2800);
+    return () => clearInterval(kickerTimer);
+  }, [activeSlide]);
 
   useEffect(() => {
     if (activeSlide !== 0) return;
@@ -371,26 +401,24 @@ export default function Home({ onOpenModal }) {
 
   return (
     <div className="home-page">
-      {/* Exact Arbisoft Hero Section */}
+      {/* Exact Arbisoft Hero Section with Dynamic Background Image Carousel */}
       <section className="of6BXG_hero" id="hero">
-        {/* Background Video, Image & Overlays */}
-        <div className="lAJSFG_bgImage" />
-        <video
-          className="of6BXG_heroVideo"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/arbisoft-bg.jpg"
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-        <div className="of6BXG_heroOverlay" />
-        <div className="of6BXG_heroGlow of6BXG_heroGlow1">
-          <span className="of6BXG_heroGlowFill" />
-        </div>
-        <div className="of6BXG_heroGlow of6BXG_heroGlow2">
-          <span className="of6BXG_heroGlowFill" />
+        {/* Dynamic Background Image Carousel */}
+        <div className="hero-bg-carousel-container">
+          {heroSlides.map((slide, idx) => (
+            <div
+              key={idx}
+              className={`hero-bg-carousel-slide ${activeSlide === idx ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${slide.bgImage})` }}
+            />
+          ))}
+          <div className="of6BXG_heroOverlay" />
+          <div className="of6BXG_heroGlow of6BXG_heroGlow1">
+            <span className="of6BXG_heroGlowFill" />
+          </div>
+          <div className="of6BXG_heroGlow of6BXG_heroGlow2">
+            <span className="of6BXG_heroGlowFill" />
+          </div>
         </div>
 
         {/* Main Center Content */}
@@ -398,18 +426,32 @@ export default function Home({ onOpenModal }) {
           <div className="of6BXG_heroCenter">
             <div className="of6BXG_heroContainer">
               <div className="of6BXG_heroContent">
-                <div className="of6BXG_kicker">
-                  {heroSlides[activeSlide].kicker}
+                <div
+                  className="of6BXG_kicker"
+                  style={{
+                    borderLeftColor: heroSlides[activeSlide].highlightColor,
+                    boxShadow: `0 4px 20px rgba(0, 0, 0, 0.4), -4px 0 16px ${heroSlides[activeSlide].highlightColor}33`
+                  }}
+                >
+                  <span
+                    key={`${activeSlide}-${kickerIndex}`}
+                    className="of6BXG_kicker_text"
+                  >
+                    {heroSlides[activeSlide].kickers[kickerIndex % heroSlides[activeSlide].kickers.length]}
+                  </span>
                 </div>
 
                 <h1 className="of6BXG_heading">
                   <span className="of6BXG_heading_line">{heroSlides[activeSlide].line1}</span>
                   <span className="of6BXG_heading_line">
-                    {heroSlides[activeSlide].line2Prefix || 'With '}
-                    <span className="of6BXG_highlight_word">
+                    {heroSlides[activeSlide].line2Prefix || ''}
+                    <span
+                      className="of6BXG_highlight_word"
+                      style={{ color: heroSlides[activeSlide].highlightColor }}
+                    >
                       {heroSlides[activeSlide].isDynamic ? displayText : heroSlides[activeSlide].fixedWord}
                     </span>
-                    <span className="Htay_W_cursor" />
+                    {heroSlides[activeSlide].isDynamic && <span className="Htay_W_cursor" />}
                   </span>
                 </h1>
               </div>
@@ -454,7 +496,7 @@ export default function Home({ onOpenModal }) {
           </div>
         </div>
 
-        <div className="of6BXG_bottomBorder" />
+
       </section>
 
       {/* About Us / Company Overview Section (Modern Bento Architecture) */}
@@ -671,10 +713,9 @@ export default function Home({ onOpenModal }) {
       </section>
 
       {/* Performance Banner from visualsoft-inc.com */}
-      <section className="section-spacing" style={{ background: 'rgba(3, 7, 23, 0.7)' }}>
+      <section className="section-spacing" style={{ background: '#02182c' }}>
         <div className="app-container">
           <div className="glass-panel" style={{ padding: '60px 40px', textAlign: 'center', position: 'relative' }}>
-            <div className="icon-blur-halo halo-brand-blue" style={{ width: '320px', height: '320px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
             <h2 style={{ fontSize: 'clamp(1.8rem, 3.6vw, 2.6rem)', fontWeight: 800, fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '16px', lineHeight: 1.3 }}>
               "Our performance is your success. Our passion is innovation. Our expertise is unmatched. We get you more..."
             </h2>

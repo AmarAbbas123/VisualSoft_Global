@@ -32,39 +32,12 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false);
-
-  // Mouse spotlight glow
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
     <BrowserRouter>
       <ScrollToTop />
       <div className="site-wrapper">
-        {/* Ambient Dark Blue Background Grid */}
-        <div className="cosmic-background" />
-
-        {/* Floating Glowing Aurora Orbs in #234FF6 & Navy */}
-        <div className="orb orb-brand-blue" />
-        <div className="orb orb-deep-navy" />
-        <div className="orb orb-cyan-accent" />
-
-        {/* Interactive Mouse Spotlight with electric blue tinge */}
-        <div
-          className="mouse-spotlight"
-          style={{
-            left: `${mousePos.x}px`,
-            top: `${mousePos.y}px`,
-            background: 'radial-gradient(circle, rgba(35, 79, 246, 0.12) 0%, rgba(16, 33, 89, 0.06) 40%, transparent 70%)'
-          }}
-        />
 
         {/* Fixed Frosted White Glass Navbar with exact site menu */}
         <Navbar onOpenModal={() => setIsConsultModalOpen(true)} />

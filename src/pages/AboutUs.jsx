@@ -209,7 +209,7 @@ export default function AboutUs({ onOpenModal }) {
           <div className="about-section-header">
             <span className="about-overline">WHO WE ARE</span>
             <h2 className="section-title">
-              Mission<span className="text-gradient-brand">and Vision</span>
+              Mission <span className="text-gradient-brand">and Vision</span>
             </h2>
           </div>
 
