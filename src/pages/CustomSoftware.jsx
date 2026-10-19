@@ -38,7 +38,7 @@ import {
   SiNextdotjs,
   SiAngular,
   SiVuedotjs,
-  SiGraphql,
+  SiFlutter,
   SiDotnet,
   SiNodedotjs,
   SiPython,
@@ -124,8 +124,7 @@ export default function CustomSoftware({ onOpenModal }) {
         { name: 'Next.js', subtitle: 'SSR & Server Components', icon: SiNextdotjs, color: '#ffffff' },
         { name: 'Angular', subtitle: 'Enterprise Framework', icon: SiAngular, color: '#dd0031' },
         { name: 'Vue', subtitle: 'Progressive Framework', icon: SiVuedotjs, color: '#42b883' },
-        { name: 'GraphQL', subtitle: 'Declarative Data Queries', icon: SiGraphql, color: '#e535ab' },
-        { name: 'REST API', subtitle: 'Contract-First Endpoints', icon: Terminal, color: '#38bdf8' }
+        { name: 'Flutter', subtitle: 'Cross-Platform Mobile & Web UI', icon: SiFlutter, color: '#02569b' }
       ]
     },
     {
@@ -137,7 +136,7 @@ export default function CustomSoftware({ onOpenModal }) {
       items: [
         { name: '.NET', subtitle: 'High-Performance C# Core', icon: SiDotnet, color: '#512bd4' },
         { name: 'Node.js', subtitle: 'Event-Driven Async Runtime', icon: SiNodedotjs, color: '#5fa04e' },
-        { name: 'Python', subtitle: 'FastAPI & Django Ecosystem', icon: SiPython, color: '#3776ab' }
+        { name: 'Python', subtitle: 'FastAPI & Async Services', icon: SiPython, color: '#3776ab' }
       ]
     },
     {
@@ -316,7 +315,7 @@ export default function CustomSoftware({ onOpenModal }) {
                       <Globe2 size={16} style={{ color: 'var(--brand-blue)' }} />
                       <div>
                         <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Client Frontend & Apps</span>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Next.js • React • TypeScript • Web/Mobile</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>Next.js • React • Flutter • TypeScript • Web/Mobile</span>
                       </div>
                     </div>
                     <span style={{ color: 'var(--brand-blue)', fontSize: '0.72rem', fontWeight: 700 }}>HIGH UX</span>
@@ -329,7 +328,7 @@ export default function CustomSoftware({ onOpenModal }) {
                       <Workflow size={16} style={{ color: 'var(--brand-blue)' }} />
                       <div>
                         <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff', display: 'block' }}>Enterprise Business Logic & APIs</span>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>.NET • Node.js • Python • GraphQL • Microservices</span>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>.NET • Node.js • Python • FastAPI • Microservices</span>
                       </div>
                     </div>
                     <span style={{ color: '#60a5fa', fontSize: '0.72rem', fontWeight: 700 }}>SECURE</span>
@@ -422,10 +421,10 @@ export default function CustomSoftware({ onOpenModal }) {
               <span>WHAT OUR TEAM DELIVERS</span>
             </div>
             <h2 className="section-title">
-              Core Capabilities in a <span className="text-gradient-brand">Numbered 4x2 Matrix</span>
+              Core Capabilities Engineered for <span className="text-gradient-brand">Enterprise Scale</span>
             </h2>
             <p className="section-subtitle">
-              Every card built around your workflows with one clear sentence.
+              Custom software architectures and intelligent automation engineered around your unique business workflows, built for enterprise reliability and scale.
             </p>
           </div>
 
@@ -470,7 +469,7 @@ export default function CustomSoftware({ onOpenModal }) {
             >
               <Sparkles size={16} style={{ color: activeTechTab === 'all' ? '#00f5a0' : 'inherit' }} />
               <span>Full Stack</span>
-              <span className="tech-tab-count">27</span>
+              <span className="tech-tab-count">{technologies.reduce((sum, t) => sum + t.items.length, 0)}</span>
             </button>
 
             {technologies.map((tech) => {
