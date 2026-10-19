@@ -461,11 +461,7 @@ export default function Home({ onOpenModal }) {
       <section className="about-enterprise-section" id="about-us">
         <div className="app-container">
           <div className="about-header-wrap">
-            <div className="glass-pill section-tag mb-3">
-              <span className="pulse-dot" />
-              <span>ABOUT VISUALSOFT GLOBAL</span>
-            </div>
-            <h2 className="about-modern-headline">
+            <h2 className="about-modern-headline" style={{ marginTop: 0 }}>
               Turning Bold Ideas into <span className="text-gradient-brand">Market-Leading Products</span>
             </h2>
             <div className="about-modern-sub-wrap">
@@ -558,11 +554,7 @@ export default function Home({ onOpenModal }) {
       {/* Services Section (High-Tech Enterprise Redesign) */}
       <section className="services-enterprise-section" id="services">
         <div className="app-container">
-          <div className="section-header text-center">
-            <div className="glass-pill section-tag">
-              <Layers size={14} style={{ color: '#38bdf8' }} />
-              <span>OUR SERVICES & CORE COMPETENCIES</span>
-            </div>
+          <div className="section-header">
             <h2 className="section-title">
               Innovative Technology Solutions for <span className="text-gradient-brand">Business Growth</span>
             </h2>
@@ -653,10 +645,6 @@ export default function Home({ onOpenModal }) {
       <section className="section-spacing" id="industries">
         <div className="app-container">
           <div className="section-header">
-            <div className="glass-pill section-tag">
-              <Building2 size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>INDUSTRIES WE SERVE</span>
-            </div>
             <h2 className="section-title">
               Bringing Productivity & Efficiency with Accuracy by Our <span className="text-gradient-brand">Digital Transformation Skills and Products</span>
             </h2>
@@ -705,10 +693,6 @@ export default function Home({ onOpenModal }) {
       <section className="section-spacing">
         <div className="app-container">
           <div className="section-header">
-            <div className="glass-pill section-tag">
-              <Workflow size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>FEATURES</span>
-            </div>
             <h2 className="section-title">
               Enhancing Creativity, <span className="text-gradient-brand">Step by Step</span>
             </h2>
@@ -733,10 +717,6 @@ export default function Home({ onOpenModal }) {
       <section className="section-spacing" id="presence">
         <div className="app-container">
           <div className="section-header">
-            <div className="glass-pill section-tag">
-              <Globe2 size={14} style={{ color: 'var(--brand-blue)' }} />
-              <span>OUR PRESENCE</span>
-            </div>
             <h2 className="section-title">
               Serving Clients <span className="text-gradient-brand">Worldwide</span>
             </h2>
@@ -744,17 +724,20 @@ export default function Home({ onOpenModal }) {
               VisualSoft Global offers top-notch ICT services across our regional centers in the UK, USA, Middle East, Southeastern Asia, Australia, and Pakistan.
             </p>
           </div>
+        </div>
 
-          <div className="regions-grid">
-            {regions.map((reg, idx) => (
-              <div key={idx} className="glass-panel region-card">
+        {/* Moving Left-to-Right Continuous Infinite Marquee */}
+        <div className="regions-marquee-container">
+          <div className="regions-marquee-track">
+            {[...regions, ...regions, ...regions, ...regions].map((reg, idx) => (
+              <div key={idx} className="region-card">
                 <span className="region-flag">{reg.flag}</span>
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff' }}>{reg.country}</h4>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block' }}>{reg.city}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px' }}>
+                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', whiteSpace: 'nowrap' }}>{reg.country}</h4>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block', marginTop: '2px' }}>{reg.city}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '8px' }}>
                     <span className="pulse-dot" style={{ width: '6px', height: '6px' }} />
-                    <span style={{ fontSize: '0.75rem', color: 'var(--brand-blue)' }}>{reg.status}</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--brand-blue)', fontWeight: 600 }}>{reg.status}</span>
                   </div>
                 </div>
               </div>
@@ -768,11 +751,7 @@ export default function Home({ onOpenModal }) {
         <div className="app-container">
           <div className="glass-panel" style={{ padding: '48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
             <div>
-              <span className="glass-pill" style={{ marginBottom: '12px' }}>
-                <Briefcase size={14} style={{ color: 'var(--brand-blue)' }} />
-                <span>OUR CAREER</span>
-              </span>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', marginTop: '8px', marginBottom: '8px' }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', marginBottom: '8px' }}>
                 Come join our team and find your potential.
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
