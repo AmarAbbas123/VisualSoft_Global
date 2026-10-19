@@ -8,7 +8,6 @@ import {
   Activity,
   Layers,
   CheckCircle2,
-  AlertTriangle,
   Radio,
   HardDrive,
   Terminal,
@@ -68,21 +67,6 @@ export default function EmbeddedSystems({ onOpenModal }) {
     document.title = "AI Embedded Systems & IoT Design Services | VisualSoft Global";
     window.scrollTo(0, 0);
   }, []);
-
-  const pitfalls = [
-    {
-      title: 'Hardware and software built in isolation',
-      desc: 'When circuit design and code are developed separately, integration problems surface late and push back launch dates.'
-    },
-    {
-      title: 'Code that ignores the hardware',
-      desc: "Memory leaks, timing delays and power drain usually trace back to firmware that wasn't designed around the chip it runs on."
-    },
-    {
-      title: 'Rushed validation',
-      desc: 'Skipping bench and field testing is how defects reach customers, where fixes cost far more.'
-    }
-  ];
 
   const services = [
     { num: '01', title: 'Custom Firmware Development', text: 'Write bare-metal and RTOS-based firmware for MCUs, SoCs, and microprocessors tailored to your hardware architecture.' },
@@ -384,38 +368,6 @@ export default function EmbeddedSystems({ onOpenModal }) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Where embedded projects go wrong (High-Impact Danger Cards) */}
-      <section className="section-spacing section-alt-contrast">
-        <div className="app-container">
-          <div className="section-header">
-            <div className="glass-pill section-tag" style={{ borderColor: 'rgba(255, 170, 0, 0.4)' }}>
-              <AlertTriangle size={14} style={{ color: 'var(--neon-amber)' }} />
-              <span>WHERE EMBEDDED PROJECTS GO WRONG</span>
-            </div>
-            <h2 className="section-title">
-              Three Problems We <span className="text-gradient-brand">Design Around</span>
-            </h2>
-          </div>
-
-          <div className="grid-cols-auto">
-            {pitfalls.map((p, i) => (
-              <div key={i} className="problem-card-danger">
-                <div className="icon-box-blur" style={{ marginBottom: '18px' }}>
-                  <div className="icon-blur-halo halo-amber" />
-                  <AlertTriangle size={24} style={{ color: 'var(--neon-amber)' }} />
-                </div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>
-                  {p.title}
-                </h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: '0.95rem' }}>
-                  {p.desc}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
