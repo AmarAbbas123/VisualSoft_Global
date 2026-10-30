@@ -499,155 +499,169 @@ export default function Home({ onOpenModal }) {
 
       </section>
 
-      {/* About Us / Company Overview Section (Executive Corporate Design) */}
-      <section className="about-enterprise-section" id="about-us">
+      {/* 1. STATS IMPACT BAND (LIGHT #ffffff) */}
+      <section className="as-stats-band">
         <div className="app-container">
-          <div className="about-header-wrap">
-            <span className="about-section-badge">WHO WE ARE</span>
-            <h2 className="about-modern-headline">
-              Turning Bold Ideas into <span className="text-highlight-blue">Market-Leading Products</span>
-            </h2>
-            <div className="about-intro-columns">
-              <p className="about-intro-lead">
-                VisualSoft Global (VS) offers top-notch ICT services to clients across the <strong>USA, UK, UAE, and Pakistan</strong>, focusing on turning visionary ideas into innovative, market-ready products with hands-on executive guidance.
-              </p>
-              <p className="about-intro-secondary">
-                Our portfolio features enriched digital solutions across various industries, enabling customers to achieve exceptional business growth. Our executive management are veteran technology leaders, providing technical mastery at every phase.
-              </p>
-            </div>
-          </div>
-
-          <div className="company-pillars-grid">
-            {/* Card 1: 30+ Years Proven Excellence */}
-            <div className="pillar-corporate-card card-accent-blue">
-              <div className="pillar-top-accent" />
-              <div className="pillar-card-content">
-                <div className="pillar-header-row">
-                  <span className="pillar-kicker-tag">HERITAGE & MASTERY</span>
-                </div>
-                <div className="pillar-stat-hero">
-                  <span className="stat-number-main">30<span className="stat-plus">+</span></span>
-                  <span className="stat-label-main">Years of Proven Engineering Excellence</span>
-                </div>
-                <p className="pillar-desc">
-                  Providing mission-critical technology solutions and hands-on executive mastery across four continents, ensuring every enterprise system is built for lasting scale and performance.
-                </p>
-                <div className="pillar-highlights-row">
-                  <div className="highlight-stat-item">
-                    <span className="highlight-val">100%</span>
-                    <span className="highlight-lbl">Code & IP Ownership</span>
-                  </div>
-                  <div className="highlight-stat-sep" />
-                  <div className="highlight-stat-item">
-                    <span className="highlight-val">4</span>
-                    <span className="highlight-lbl">Global Regions</span>
-                  </div>
-                </div>
+          <div className="as-stats-grid">
+            <div className="as-stat-box">
+              <span className="as-stat-number">
+                30<span className="as-stat-plus">+</span>
+              </span>
+              <div className="as-stat-label-wrap">
+                <span className="as-stat-title">Years In Business</span>
+                <span className="as-stat-sub">Engineering Heritage</span>
               </div>
             </div>
 
-            {/* Card 2: Our Vision */}
-            <div className="pillar-corporate-card card-accent-cyan">
-              <div className="pillar-top-accent" />
-              <div className="pillar-card-content">
-                <div className="pillar-header-row">
-                  <div className="pillar-icon-symbol icon-cyan">
-                    <Compass size={22} />
-                  </div>
-                  <span className="pillar-kicker-tag">OUR VISION</span>
-                </div>
-                <h3 className="pillar-title">Transformative Technology Partner</h3>
-                <p className="pillar-desc">
-                  Our aim is to be globally acknowledged as an icon of reliable and effective information technology partner—architecting cutting-edge AI software and embedded solutions that redefine digital performance.
-                </p>
-                <div className="pillar-tags-row">
-                  <span className="pillar-tag-chip">Enterprise Scale</span>
-                  <span className="pillar-tag-chip">AI Leadership</span>
-                  <span className="pillar-tag-chip">Uncompromising Trust</span>
-                </div>
+            <div className="as-stat-box">
+              <span className="as-stat-number">
+                500<span className="as-stat-plus">+</span>
+              </span>
+              <div className="as-stat-label-wrap">
+                <span className="as-stat-title">Solutions Delivered</span>
+                <span className="as-stat-sub">Enterprise & AI Platforms</span>
               </div>
             </div>
 
-            {/* Card 3: Our Mission */}
-            <div className="pillar-corporate-card card-accent-green">
-              <div className="pillar-top-accent" />
-              <div className="pillar-card-content">
-                <div className="pillar-header-row">
-                  <div className="pillar-icon-symbol icon-green">
-                    <TrendingUp size={22} />
-                  </div>
-                  <span className="pillar-kicker-tag">OUR MISSION</span>
-                </div>
-                <h3 className="pillar-title">Accelerating Digital Evolution</h3>
-                <p className="pillar-desc">
-                  Assist customers during each stage of digital transformation to achieve agility, operational efficiency, and rock-solid security—turning visionary concepts into resilient, market-defining products.
-                </p>
-                <div className="pillar-tags-row">
-                  <span className="pillar-tag-chip">Agile Velocity</span>
-                  <span className="pillar-tag-chip">Security & Scale</span>
-                  <span className="pillar-tag-chip">Measurable ROI</span>
-                </div>
+            <div className="as-stat-box">
+              <span className="as-stat-number">
+                98<span className="as-stat-plus">%</span>
+              </span>
+              <div className="as-stat-label-wrap">
+                <span className="as-stat-title">Client Satisfaction</span>
+                <span className="as-stat-sub">Long-Term Retention</span>
               </div>
             </div>
-          </div>
 
-          <div className="corporate-hubs-strip">
-            <div className="hubs-strip-left">
-              <span className="hubs-strip-title">Global Engineering Presence:</span>
-              <div className="hubs-locations-list">
-                <span className="hub-loc-item">🇺🇸 United States</span>
-                <span className="hub-loc-item">🇬🇧 United Kingdom</span>
-                <span className="hub-loc-item">🇦🇪 UAE</span>
-                <span className="hub-loc-item">🇵🇰 Pakistan</span>
+            <div className="as-stat-box">
+              <span className="as-stat-number">
+                4<span className="as-stat-plus">Hubs</span>
+              </span>
+              <div className="as-stat-label-wrap">
+                <span className="as-stat-title">Global Operating Hubs</span>
+                <span className="as-stat-sub">US, UK, UAE & Pakistan</span>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={onOpenModal}
-              className="corporate-contact-btn"
-            >
-              <span>Contact Leadership</span>
-              <ArrowRight size={16} />
-            </button>
           </div>
         </div>
       </section>
 
-
-      {/* Services Section (High-Tech Enterprise Redesign) */}
-      <section className="services-enterprise-section" id="services">
+      {/* 2. OVERVIEW & STRATEGIC PILLARS (SOFT ICE LIGHT #f4f7fb) */}
+      <section className="as-overview-section" id="about-us">
         <div className="app-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              Innovative Technology Solutions for <span className="text-gradient-brand">Business Growth</span>
+          <div className="as-overview-grid">
+            {/* Left Column: Who We Are & Capabilities */}
+            <div>
+              <span className="as-badge">WHO WE ARE</span>
+              <h2 className="as-section-title">
+                Turning Bold Ideas into <span className="text-highlight-blue">Market-Leading Products</span>
+              </h2>
+              <p className="as-lead-text">
+                VisualSoft Global (VS) offers top-notch ICT services to clients across the <strong>USA, UK, UAE, and Pakistan</strong>, focusing on turning visionary ideas into innovative, market-ready products with hands-on executive guidance.
+              </p>
+
+              <div className="as-capabilities-list">
+                <div className="as-cap-item">
+                  <CheckCircle2 size={20} className="as-check-icon" />
+                  <div className="as-cap-text">
+                    <strong>Enterprise-Grade Engineering</strong>
+                    <span>Architecting custom software, autonomous multi-agent systems, and embedded IoT hardware built for global scale.</span>
+                  </div>
+                </div>
+
+                <div className="as-cap-item">
+                  <CheckCircle2 size={20} className="as-check-icon" />
+                  <div className="as-cap-text">
+                    <strong>100% Code & IP Ownership</strong>
+                    <span>Complete architectural transparency, rigorous code reviews, zero vendor lock-in, and enterprise compliance.</span>
+                  </div>
+                </div>
+
+                <div className="as-cap-item">
+                  <CheckCircle2 size={20} className="as-check-icon" />
+                  <div className="as-cap-text">
+                    <strong>Predictable Agile Velocity</strong>
+                    <span>Continuous integration, automated testing pipelines, and battle-tested delivery frameworks from day one.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="as-actions-row">
+                <button type="button" onClick={onOpenModal} className="as-btn-primary">
+                  <span>Schedule Consultation</span>
+                  <ArrowRight size={16} />
+                </button>
+                <Link to="/about-us" className="as-btn-secondary">
+                  <span>Explore Our Heritage</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Strategic Pillar Cards */}
+            <div className="as-pillar-stack">
+              <div className="as-pillar-card">
+                <span className="as-pillar-tag">HERITAGE & MASTERY</span>
+                <h3 className="as-pillar-title">30+ Years of Proven Excellence</h3>
+                <p className="as-pillar-desc">
+                  Providing mission-critical technology solutions and hands-on executive mastery across four continents, ensuring every enterprise system is built for lasting scale.
+                </p>
+              </div>
+
+              <div className="as-pillar-card" style={{ borderLeftColor: '#00f5a0' }}>
+                <span className="as-pillar-tag" style={{ color: '#00b875' }}>OUR VISION</span>
+                <h3 className="as-pillar-title">Transformative Technology Partner</h3>
+                <p className="as-pillar-desc">
+                  Acknowledged globally as an icon of dependable, forward-thinking technology leadership—architecting cutting-edge AI software and embedded systems.
+                </p>
+              </div>
+
+              <div className="as-pillar-card" style={{ borderLeftColor: '#7c3aed' }}>
+                <span className="as-pillar-tag" style={{ color: '#7c3aed' }}>OUR MISSION</span>
+                <h3 className="as-pillar-title">Accelerating Digital Evolution</h3>
+                <p className="as-pillar-desc">
+                  Assist customers during each stage of digital transformation to achieve agility, operational efficiency, and rock-solid security with verifiable ROI.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CORE SERVICES (DARK ROYAL NAVY #05193b) */}
+      <section className="as-services-section" id="services">
+        <div className="app-container">
+          <div className="as-services-header">
+            <span className="as-badge-dark">FULL-LIFECYCLE ENGINEERING</span>
+            <h2 className="as-title-white">
+              Innovative Technology Solutions for <span className="text-highlight-cyan">Business Growth</span>
             </h2>
-            <p className="section-subtitle">
-              We create AI-enabled custom software solutions, embedded systems, AI agents, and managed IT services that streamline operations and boost productivity.
+            <p className="as-subtitle-white">
+              We create AI-enabled custom software solutions, embedded systems, autonomous agents, and managed IT services that streamline operations and boost productivity.
             </p>
           </div>
 
-          {/* Filter Tabs Navigation (Always 1 Row) */}
-          <div className="services-filter-wrapper">
-            <div className="services-filter-nav">
+          {/* Category Filter Tabs */}
+          <div className="as-tabs-wrap">
+            <div className="as-tabs-nav">
               <button
                 type="button"
                 onClick={() => setServiceCategory('all')}
-                className={`services-filter-btn ${serviceCategory === 'all' ? 'active' : ''}`}
+                className={`as-tab-btn ${serviceCategory === 'all' ? 'active' : ''}`}
               >
-                <span>View ALL SERVICES</span>
+                <span>View All Services</span>
               </button>
               <button
                 type="button"
                 onClick={() => setServiceCategory('ai')}
-                className={`services-filter-btn ${serviceCategory === 'ai' ? 'active' : ''}`}
+                className={`as-tab-btn ${serviceCategory === 'ai' ? 'active' : ''}`}
               >
                 <Terminal size={14} />
-                <span>AI & Software Development</span>
+                <span>AI & Custom Software</span>
               </button>
               <button
                 type="button"
                 onClick={() => setServiceCategory('hardware')}
-                className={`services-filter-btn ${serviceCategory === 'hardware' ? 'active' : ''}`}
+                className={`as-tab-btn ${serviceCategory === 'hardware' ? 'active' : ''}`}
               >
                 <Cpu size={14} />
                 <span>Embedded Systems & IoT</span>
@@ -655,7 +669,7 @@ export default function Home({ onOpenModal }) {
               <button
                 type="button"
                 onClick={() => setServiceCategory('cloud')}
-                className={`services-filter-btn ${serviceCategory === 'cloud' ? 'active' : ''}`}
+                className={`as-tab-btn ${serviceCategory === 'cloud' ? 'active' : ''}`}
               >
                 <Server size={14} />
                 <span>Managed IT & Data</span>
@@ -663,40 +677,34 @@ export default function Home({ onOpenModal }) {
             </div>
           </div>
 
-          <div className="services-modern-grid">
+          {/* Service Cards 3x2 Grid */}
+          <div className="as-services-grid">
             {filteredServices.map((srv) => {
               const IconComp = srv.icon;
               return (
-                <div key={srv.id} className="service-card-modern">
-                  <div className="service-card-header">
-                    <div className="service-badge-pill">
-                      <span>{srv.badge}</span>
-                    </div>
-                    <div className="service-icon-wrapper">
-                      <div className={`service-icon-halo ${srv.halo}`} />
-                      <IconComp size={24} style={{ color: srv.accentColor }} />
+                <div key={srv.id} className="as-service-card">
+                  <div className="as-card-top">
+                    <span className="as-card-index">{srv.badge}</span>
+                    <div className="as-card-icon-pill">
+                      <IconComp size={22} />
                     </div>
                   </div>
 
-                  <div className="service-card-content">
-                    <h3 className="service-card-title">{srv.title}</h3>
-                    <p className="service-card-desc">{srv.desc}</p>
+                  <h3 className="as-card-title">{srv.title}</h3>
+                  <p className="as-card-desc">{srv.desc}</p>
 
-                    <div className="service-tags-wrap">
-                      {srv.tags.map((tag, i) => (
-                        <span key={i} className="service-tag-chip">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="as-tags-row">
+                    {srv.tags.map((tag, i) => (
+                      <span key={i} className="as-tag-pill">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
 
-                  <div className="service-card-footer">
-                    <Link to={srv.link} className="service-explore-link">
-                      <span>Learn More</span>
-                      <ChevronRight size={16} className="explore-arrow" />
-                    </Link>
-                  </div>
+                  <Link to={srv.link} className="as-card-link">
+                    <span>Learn More</span>
+                    <ChevronRight size={16} />
+                  </Link>
                 </div>
               );
             })}
@@ -704,42 +712,36 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* Industries & Solutions Section (Executive White Corporate Design) */}
-      <section className="industries-corporate-section" id="industries">
+      {/* 4. INDUSTRIES WE TRANSFORM (CRISP WHITE #ffffff) */}
+      <section className="as-industries-section" id="industries">
         <div className="app-container">
-          <div className="industries-header-wrap">
-            <span className="industries-badge">INDUSTRIES & SECTORS</span>
-            <h2 className="industries-title">
-              Bringing Productivity & Efficiency with Accuracy by Our <span className="text-highlight-blue">Digital Transformation Skills and Products</span>
+          <div className="as-industries-header">
+            <span className="as-badge">INDUSTRIES & SECTORS</span>
+            <h2 className="as-section-title">
+              Delivering Precision & Productivity Across <span className="text-highlight-blue">Specialized Sectors</span>
             </h2>
-            <p className="industries-subtitle">
+            <p className="as-lead-text" style={{ margin: 0 }}>
               Purpose-built digital architectures, embedded IoT engineering, and secure cloud platforms tailored to industry-specific operational demands.
             </p>
           </div>
 
-          <div className="industries-grid-4x2">
+          <div className="as-industries-grid">
             {industries.map((ind, i) => {
               const IndIcon = ind.icon;
               return (
-                <div key={i} className="industry-corporate-card">
-                  <div className="industry-card-topbar" style={{ backgroundColor: ind.accentColor }} />
-                  <div className="industry-card-inner">
-                    <div
-                      className="industry-icon-pill"
-                      style={{
-                        backgroundColor: `${ind.accentColor}12`,
-                        borderColor: `${ind.accentColor}28`,
-                        color: ind.accentColor
-                      }}
-                    >
-                      <IndIcon size={22} strokeWidth={2.2} />
-                    </div>
-                    <h3 className="industry-card-title">{ind.title}</h3>
-                    <p className="industry-card-desc">{ind.desc}</p>
-                    <div className="industry-card-hover-link">
-                      <span>Explore Sector</span>
-                      <ArrowRight size={14} className="hover-arrow" />
-                    </div>
+                <div
+                  key={i}
+                  className="as-industry-card"
+                  style={{ borderTop: `4px solid ${ind.accentColor}` }}
+                >
+                  <div className="as-industry-icon" style={{ color: ind.accentColor }}>
+                    <IndIcon size={22} strokeWidth={2} />
+                  </div>
+                  <h3 className="as-industry-title">{ind.title}</h3>
+                  <p className="as-industry-desc">{ind.desc}</p>
+                  <div className="as-industry-link" style={{ color: ind.accentColor }}>
+                    <span>Explore Sector</span>
+                    <ArrowRight size={14} />
                   </div>
                 </div>
               );
@@ -748,18 +750,18 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* 5. Performance Banner (DARK SECTION) */}
-      <section className="performance-corporate-section">
+      {/* 5. EXECUTIVE PHILOSOPHY QUOTE (DEEP NAVY #02182c) */}
+      <section className="as-quote-section">
         <div className="app-container">
-          <div className="performance-quote-card">
-            <span className="performance-badge">EXECUTIVE PHILOSOPHY</span>
-            <h2 className="performance-quote-title">
+          <div className="as-quote-wrapper">
+            <span className="as-quote-badge">EXECUTIVE PHILOSOPHY</span>
+            <h2 className="as-quote-text">
               "Our performance is your success. Our passion is innovation. Our expertise is unmatched. We get you more..."
             </h2>
-            <p className="performance-quote-subtitle">
+            <p className="as-quote-sub">
               Partner with technology leaders to design, build, and support enterprise systems that drive verifiable business growth.
             </p>
-            <button onClick={onOpenModal} className="performance-cta-btn">
+            <button onClick={onOpenModal} className="as-quote-btn">
               <Sparkles size={18} />
               <span>Contact Us Today</span>
             </button>
@@ -767,43 +769,40 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* 6. Features & Methodology (LIGHT SECTION) */}
-      <section className="features-corporate-section" id="methodology">
+      {/* 6. ENGINEERING FRAMEWORK & METHODOLOGY (SOFT ICE LIGHT #f2f7ff) */}
+      <section className="as-framework-section" id="methodology">
         <div className="app-container">
-          <div className="features-header-wrap">
-            <span className="features-badge">ENGINEERING EXCELLENCE</span>
-            <h2 className="features-title">
+          <div className="as-framework-header">
+            <span className="as-badge">HOW WE DELIVER</span>
+            <h2 className="as-section-title">
               Enhancing Creativity, <span className="text-highlight-blue">Step by Step</span>
             </h2>
-            <p className="features-subtitle">
+            <p className="as-lead-text" style={{ margin: 0 }}>
               Our proven execution framework ensures high reliability, predictability, and continuous delivery from proof-of-concept to global deployment.
             </p>
           </div>
 
-          <div className="features-corporate-grid">
+          <div className="as-framework-grid">
             {features.map((feat, i) => (
-              <div key={i} className="feature-corporate-card">
-                <div className="feature-step-indicator">
-                  <span className="feature-step-number">0{i + 1}</span>
-                  <div className="feature-step-line" />
-                </div>
-                <h3 className="feature-card-title">{feat.title}</h3>
-                <p className="feature-card-desc">{feat.desc}</p>
+              <div key={i} className="as-framework-card">
+                <span className="as-step-badge">0{i + 1} // STEP</span>
+                <h3 className="as-framework-title">{feat.title}</h3>
+                <p className="as-framework-desc">{feat.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Our Presence Section (DARK SECTION) */}
-      <section className="presence-corporate-section" id="presence">
+      {/* 7. GLOBAL OPERATIONS (DARK NAVY #03132e) */}
+      <section className="as-presence-section" id="presence">
         <div className="app-container">
-          <div className="presence-header-wrap">
-            <span className="presence-badge">GLOBAL NETWORK</span>
-            <h2 className="presence-title">
+          <div className="as-presence-header">
+            <span className="as-badge-dark">GLOBAL OPERATIONS</span>
+            <h2 className="as-title-white">
               Serving Clients <span className="text-highlight-cyan">Worldwide</span>
             </h2>
-            <p className="presence-subtitle">
+            <p className="as-subtitle-white">
               VisualSoft Global offers top-notch ICT services across our regional centers in the UK, USA, Middle East, Southeastern Asia, Australia, and Pakistan.
             </p>
           </div>
@@ -829,20 +828,20 @@ export default function Home({ onOpenModal }) {
         </div>
       </section>
 
-      {/* 8. Career Section (LIGHT SECTION) */}
-      <section className="career-corporate-section">
+      {/* 8. CAREERS CTA BANNER (VIBRANT BLUE #0a76db - ARBISOFT SIGNATURE) */}
+      <section className="as-career-banner-section">
         <div className="app-container">
-          <div className="career-corporate-card">
-            <div className="career-card-left">
-              <span className="career-badge">JOIN OUR GLOBAL TEAM</span>
-              <h2 className="career-card-title">
+          <div className="as-career-banner-inner">
+            <div>
+              <span className="as-career-badge">JOIN THE TALENT NETWORK</span>
+              <h2 className="as-career-title">
                 Come join our team and find your potential.
               </h2>
-              <p className="career-card-desc">
+              <p className="as-career-subtitle">
                 Work alongside passionate engineers, AI researchers, and digital consultants delivering high-impact solutions globally. This is an exciting time to join VisualSoft Global!
               </p>
             </div>
-            <Link to="/career" className="career-action-btn">
+            <Link to="/career" className="as-career-btn">
               <span>Find Out More</span>
               <ArrowRight size={18} />
             </Link>

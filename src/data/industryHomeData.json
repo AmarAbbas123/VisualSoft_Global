@@ -1,0 +1,482 @@
+{
+  "technology": {
+    "name": "Technology",
+    "ctaLabel": "Explore Technology",
+    "boardTitle": "AI use is widespread, but trust in AI-generated code remains limited.",
+    "source": {
+      "label": "DORA 2025 ↗",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report"
+    },
+    "eyebrow": "AI adoption",
+    "headline": "AI use is widespread, but trust in AI-generated code remains limited.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Use AI at work",
+        "display": "90%",
+        "value": 90,
+        "unit": "percent",
+        "context": "of surveyed technology professionals"
+      },
+      {
+        "label": "AI increased productivity",
+        "display": "80%",
+        "value": 80,
+        "unit": "percent",
+        "context": "of respondents believe it did"
+      },
+      {
+        "label": "Little or no trust in AI code",
+        "display": "30%",
+        "value": 30,
+        "unit": "percent",
+        "context": "of respondents"
+      }
+    ],
+    "chart": {
+      "type": "lanes",
+      "metrics": [
+        {
+          "label": "Use AI at work",
+          "display": "90%",
+          "value": 90,
+          "unit": "percent",
+          "context": "of surveyed technology professionals"
+        },
+        {
+          "label": "AI increased productivity",
+          "display": "80%",
+          "value": 80,
+          "unit": "percent",
+          "context": "of respondents believe it did"
+        },
+        {
+          "label": "Little or no trust in AI code",
+          "display": "30%",
+          "value": 30,
+          "unit": "percent",
+          "context": "of respondents"
+        }
+      ]
+    },
+    "chartHeading": "Adoption, productivity and trust",
+    "chartUnit": "Percent of respondents"
+  },
+  "retail": {
+    "name": "Retail & E-commerce",
+    "ctaLabel": "Explore Retail & E-commerce",
+    "boardTitle": "70% of online shopping carts are abandoned before purchase.",
+    "source": {
+      "label": "Baymard Institute · Cart Abandonment Research ↗",
+      "url": "https://baymard.com/lists/cart-abandonment-rate"
+    },
+    "eyebrow": "Cart abandonment",
+    "headline": "70% of online shopping carts are abandoned before purchase.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Carts abandoned before purchase",
+        "display": "70%",
+        "value": 70,
+        "unit": "percent",
+        "context": "average across 50 studies"
+      },
+      {
+        "label": "Checkout too long or complex",
+        "display": "17%",
+        "value": 17,
+        "unit": "percent",
+        "context": "of US shoppers abandoned an order for this reason"
+      },
+      {
+        "label": "Website errors or crashes",
+        "display": "17%",
+        "value": 17,
+        "unit": "percent",
+        "context": "of US shoppers abandoned an order for this reason"
+      }
+    ],
+    "chart": {
+      "type": "flow",
+      "metrics": [
+        {
+          "label": "Abandoned",
+          "display": "70%",
+          "value": 70,
+          "unit": "percent"
+        },
+        {
+          "label": "Completed",
+          "display": "30%",
+          "value": 30,
+          "unit": "percent"
+        }
+      ]
+    },
+    "chartHeading": "Cart outcome",
+    "chartUnit": "Average share per 100 carts"
+  },
+  "restaurants": {
+    "name": "Restaurants",
+    "ctaLabel": "Explore Restaurants",
+    "boardTitle": "27% of restaurant operators are dissatisfied with their current integrations and APIs.",
+    "source": {
+      "label": "2025 Restaurant Technology Outlook ↗",
+      "url": "https://5868902.fs1.hubspotusercontent-na1.net/hubfs/5868902/Resource%20Center/2025-restaurant-technology-outlook.pdf"
+    },
+    "eyebrow": "System integration",
+    "headline": "27% of restaurant operators are dissatisfied with their current integrations and APIs.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Dissatisfied with integrations",
+        "display": "27%",
+        "value": 27,
+        "unit": "percent",
+        "context": "of surveyed restaurant operators"
+      },
+      {
+        "label": "Integration or data-silo challenges",
+        "display": "21%",
+        "value": 21,
+        "unit": "percent",
+        "context": "of operators report this struggle"
+      },
+      {
+        "label": "Planning API investment",
+        "display": "20%",
+        "value": 20,
+        "unit": "percent",
+        "context": "of operators plan to invest"
+      }
+    ],
+    "chart": {
+      "type": "lollipop",
+      "metrics": [
+        {
+          "label": "Dissatisfied with integrations",
+          "display": "27%",
+          "value": 27,
+          "unit": "percent",
+          "context": "of surveyed restaurant operators"
+        },
+        {
+          "label": "Integration or data-silo challenges",
+          "display": "21%",
+          "value": 21,
+          "unit": "percent",
+          "context": "of operators report this struggle"
+        },
+        {
+          "label": "Planning API investment",
+          "display": "20%",
+          "value": 20,
+          "unit": "percent",
+          "context": "of operators plan to invest"
+        }
+      ]
+    },
+    "chartHeading": "Integration indicators",
+    "chartUnit": "Percent of operators"
+  },
+  "real-estate": {
+    "name": "Real Estate",
+    "ctaLabel": "Explore Real Estate",
+    "boardTitle": "Digital convenience is valued, but the move-in stage still creates friction.",
+    "source": {
+      "label": "AppFolio · 2025 Renter Preferences Report ↗",
+      "url": "https://www.appfolio.com/newsroom/2025-renter-preferences-report"
+    },
+    "eyebrow": "Resident experience",
+    "headline": "Digital convenience is valued, but the move-in stage still creates friction.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Value online rent payment",
+        "display": "86%",
+        "value": 86,
+        "unit": "percent",
+        "context": "of US renters evaluating a new rental"
+      },
+      {
+        "label": "Experienced move-in challenges",
+        "display": "75%",
+        "value": 75,
+        "unit": "percent",
+        "context": "of surveyed US renters"
+      },
+      {
+        "label": "Found digital move-in tools beneficial",
+        "display": "80%",
+        "value": 80,
+        "unit": "percent",
+        "context": "of renters who used the tools"
+      }
+    ],
+    "chart": {
+      "type": "journey",
+      "metrics": [
+        {
+          "label": "Value online rent payment",
+          "display": "86%",
+          "value": 86,
+          "unit": "percent",
+          "context": "of US renters evaluating a new rental"
+        },
+        {
+          "label": "Experienced move-in challenges",
+          "display": "75%",
+          "value": 75,
+          "unit": "percent",
+          "context": "of surveyed US renters"
+        },
+        {
+          "label": "Found digital move-in tools beneficial",
+          "display": "80%",
+          "value": 80,
+          "unit": "percent",
+          "context": "of renters who used the tools"
+        }
+      ]
+    },
+    "chartHeading": "Renter experience indicators",
+    "chartUnit": "Percent of relevant respondents"
+  },
+  "healthcare": {
+    "name": "Healthcare",
+    "ctaLabel": "Explore Healthcare",
+    "boardTitle": "Prior authorization consumes 13 hours of physician and staff time each week.",
+    "source": {
+      "label": "American Medical Association · 2025 Prior Authorization Survey ↗",
+      "url": "https://www.ama-assn.org/press-center/ama-press-releases/ama-survey-prior-authorization-reform-pledge-falls-short-physicians"
+    },
+    "eyebrow": "Prior authorization",
+    "headline": "Prior authorization consumes 13 hours of physician and staff time each week.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Time consumed each week",
+        "display": "13h",
+        "value": 13,
+        "unit": "hours",
+        "context": "of physician and staff time on average"
+      },
+      {
+        "label": "Prior authorizations completed",
+        "display": "40",
+        "value": 40,
+        "unit": "count",
+        "context": "per physician each week on average"
+      },
+      {
+        "label": "Employ dedicated staff",
+        "display": "40%",
+        "value": 40,
+        "unit": "percent",
+        "context": "of physicians employ staff exclusively for these tasks"
+      }
+    ],
+    "chart": {
+      "type": "hours",
+      "metrics": [
+        {
+          "label": "Prior authorization",
+          "display": "13h",
+          "value": 13,
+          "unit": "hours"
+        },
+        {
+          "label": "Remaining in reference week",
+          "display": "27h",
+          "value": 27,
+          "unit": "hours"
+        }
+      ],
+      "referenceNote": "Illustrative 40-hour reference, not a reported working week or daily distribution."
+    },
+    "chartHeading": "Weekly workload distribution",
+    "chartUnit": "13 hours across a 40-hour week"
+  },
+  "education": {
+    "name": "Education",
+    "ctaLabel": "Explore Education",
+    "boardTitle": "Flexible learning remains important, but connectivity and device access still interrupt participation.",
+    "source": {
+      "label": "Jisc · 2024–25 Digital Experience Insights ↗",
+      "url": "https://digitalinsights.jisc.ac.uk/reports-and-briefings/our-reports/2024-25-uk-higher-education-students-digital-experience-insights-survey-findings/"
+    },
+    "eyebrow": "Digital access",
+    "headline": "Flexible learning remains important, but connectivity and device access still interrupt participation.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Prefer blended or online learning",
+        "display": "48%",
+        "value": 48,
+        "unit": "percent",
+        "context": "of surveyed UK higher-education students"
+      },
+      {
+        "label": "Experienced Wi-Fi issues",
+        "display": "60%",
+        "value": 60,
+        "unit": "percent",
+        "context": "of students, on or off campus"
+      },
+      {
+        "label": "Lacked a suitable device",
+        "display": "37%",
+        "value": 37,
+        "unit": "percent",
+        "context": "of students at some point during their studies"
+      }
+    ],
+    "chart": {
+      "type": "lanes",
+      "metrics": [
+        {
+          "label": "Prefer blended or online learning",
+          "display": "48%",
+          "value": 48,
+          "unit": "percent",
+          "context": "of surveyed UK higher-education students"
+        },
+        {
+          "label": "Experienced Wi-Fi issues",
+          "display": "60%",
+          "value": 60,
+          "unit": "percent",
+          "context": "of students, on or off campus"
+        },
+        {
+          "label": "Lacked a suitable device",
+          "display": "37%",
+          "value": 37,
+          "unit": "percent",
+          "context": "of students at some point during their studies"
+        }
+      ]
+    },
+    "chartHeading": "Preference and access barriers",
+    "chartUnit": "Percent of students"
+  },
+  "hospitality": {
+    "name": "Hospitality",
+    "ctaLabel": "Explore Hospitality",
+    "boardTitle": "Direct hotel bookings carry a higher average value than OTA bookings.",
+    "source": {
+      "label": "SiteMinder · Hotel Booking Trends ↗",
+      "url": "https://www.siteminder.com/hotel-booking-trends/"
+    },
+    "eyebrow": "Booking value",
+    "headline": "Direct hotel bookings carry a higher average value than OTA bookings.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Hotel-website booking value",
+        "display": "$516",
+        "value": 516,
+        "unit": "usd",
+        "context": "average booking value in 2025"
+      },
+      {
+        "label": "OTA booking value",
+        "display": "$312",
+        "value": 312,
+        "unit": "usd",
+        "context": "average booking value in 2025"
+      },
+      {
+        "label": "Direct bookings ranked top three",
+        "display": "90%",
+        "value": 90,
+        "unit": "percent",
+        "context": "of the markets analyzed"
+      }
+    ],
+    "chart": {
+      "type": "columns",
+      "metrics": [
+        {
+          "label": "Hotel-website booking value",
+          "display": "$516",
+          "value": 516,
+          "unit": "usd",
+          "context": "average booking value in 2025"
+        },
+        {
+          "label": "OTA booking value",
+          "display": "$312",
+          "value": 312,
+          "unit": "usd",
+          "context": "average booking value in 2025"
+        }
+      ]
+    },
+    "chartHeading": "Average booking value",
+    "chartUnit": "US dollars"
+  },
+  "travel": {
+    "name": "Travel & Tourism",
+    "ctaLabel": "Explore Travel & Tourism",
+    "boardTitle": "Passengers want booking, payment, identity and airport processes brought into one smartphone journey.",
+    "source": {
+      "label": "IATA · 2025 Global Passenger Survey ↗",
+      "url": "https://www.iata.org/en/pressroom/2025-releases/2025-11-05-02/"
+    },
+    "eyebrow": "Mobile travel",
+    "headline": "Passengers want booking, payment, identity and airport processes brought into one smartphone journey.",
+    "summary": "Explore what is shaping your industry.",
+    "metrics": [
+      {
+        "label": "Want a unified smartphone journey",
+        "display": "78%",
+        "value": 78,
+        "unit": "percent",
+        "context": "of passengers surveyed by IATA"
+      },
+      {
+        "label": "Want direct airline interaction",
+        "display": "54%",
+        "value": 54,
+        "unit": "percent",
+        "context": "of surveyed travelers"
+      },
+      {
+        "label": "Use digital wallets",
+        "display": "28%",
+        "value": 28,
+        "unit": "percent",
+        "context": "of surveyed passengers in 2025"
+      }
+    ],
+    "chart": {
+      "type": "mobile",
+      "metrics": [
+        {
+          "label": "Want a unified smartphone journey",
+          "display": "78%",
+          "value": 78,
+          "unit": "percent",
+          "context": "of passengers surveyed by IATA"
+        },
+        {
+          "label": "Want direct airline interaction",
+          "display": "54%",
+          "value": 54,
+          "unit": "percent",
+          "context": "of surveyed travelers"
+        },
+        {
+          "label": "Use digital wallets",
+          "display": "28%",
+          "value": 28,
+          "unit": "percent",
+          "context": "of surveyed passengers in 2025"
+        }
+      ]
+    },
+    "chartHeading": "Unified smartphone journey",
+    "chartUnit": "Connected services"
+  }
+}
