@@ -1,33 +1,27 @@
-/* Enhancements and smooth animations for MT BYTES style Home */
+/* ====================================================
+   MT BYTES AUTHENTIC ANIMATIONS & STYLE ENHANCEMENTS
+   ==================================================== */
 
+/* 1. Hero Rotating Line Animation */
 @keyframes rotateWordIn {
   0% {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(22px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes rotateWordOut {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-18px);
   }
 }
 
 .HeroSection_phrase__animate {
   display: inline-block;
-  animation: rotateWordIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: rotateWordIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  color: #233DFF !important;
+  font-weight: 700;
 }
 
-/* Partner marquee smooth animation */
+/* 2. Technology Partners Infinite Marquee */
 @keyframes partnerMarquee {
   0% {
     transform: translateX(0);
@@ -40,23 +34,23 @@
 .partner-marquee-track {
   display: flex;
   width: max-content;
-  animation: partnerMarquee 38s linear infinite;
+  animation: partnerMarquee 36s linear infinite;
 }
 
 .partner-marquee-track:hover {
   animation-play-state: paused;
 }
 
-/* Lateral Gallery Interactive Tabs & Card Switching */
+/* 3. Lateral Gallery Tab Bar & Transition */
 .LateralGallery_index__interactive {
   display: flex !important;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 36px;
 }
 
 .LateralGallery_tab_btn {
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 9999px;
   border: 1px solid #d5e0ee;
   background: #ffffff;
@@ -64,111 +58,156 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .LateralGallery_tab_btn:hover {
   border-color: #233dff;
   color: #233dff;
   background: #f0f4ff;
+  transform: translateY(-1px);
 }
 
 .LateralGallery_tab_btn.active {
   background: #233dff;
   border-color: #233dff;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(35, 61, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(35, 61, 255, 0.28);
+  transform: translateY(-1px);
 }
 
-/* Industry Dashboard Interactive Elements */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lateral-card-animated {
+  animation: cardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 4. Industry Dashboard Tabs & Charts */
 .mtb__tab_active {
   background: #15243b !important;
   color: #8ebaff !important;
   border-color: #233dff !important;
+  box-shadow: inset 0 0 12px rgba(35, 61, 255, 0.2);
 }
 
 .mtb__tab {
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
 }
 
 .mtb__tab:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Interactive Blueprint Circuit Animation */
-@keyframes circuitPulse {
+@keyframes industryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.industry-board-animated {
+  animation: industryFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shareBandGrow {
+  from {
+    width: 0% !important;
+  }
+}
+
+.ed-chart__share-band span {
+  animation: shareBandGrow 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: width 0.5s ease;
+}
+
+/* 5. Engagement Models Cards & Vector SVGs */
+.EngagementReference_model__1cifj {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.EngagementReference_model__1cifj:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(17, 27, 40, 0.08);
+}
+
+/* Authentic Engagement Vector SVG Animations */
+@keyframes em-project-cycle {
   0% {
-    stroke-dashoffset: 200;
-    opacity: 0.3;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -48;
+  }
+}
+
+[data-art-motion="running"] .em-project-cycle {
+  animation: em-project-cycle 4.8s linear infinite;
+}
+
+@keyframes em-pulse-ring {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.6;
   }
   50% {
+    transform: scale(1.04);
     opacity: 1;
   }
   100% {
-    stroke-dashoffset: 0;
-    opacity: 0.3;
+    transform: scale(0.96);
+    opacity: 0.6;
   }
 }
 
-.circuit-path-animated {
-  stroke-dasharray: 10, 15;
-  animation: circuitPulse 5s linear infinite;
+[data-art-motion="running"] .em-pulse-orbit {
+  transform-origin: center;
+  animation: em-pulse-ring 4s ease-in-out infinite;
 }
 
-/* Hero Orbital Node Hover Glow */
-.hero-node-item {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+/* 6. Ecosystem 3D Program Cards Hover Elevation */
+.CompanyStory_program__q96z6 {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.hero-node-item:hover, .hero-node-item.active {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 16px rgba(35, 61, 255, 0.75));
+.CompanyStory_program__q96z6:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(35, 61, 255, 0.22);
+  border-color: rgba(82, 183, 255, 0.45);
 }
 
-/* Engagement SVG Style 1 */
-@media (prefers-reduced-motion: no-preference){
-[data-art-motion="running"] .em-project-cycle{animation:em-project-cycle 4.8s linear infinite}
-@keyframes em-project-cycle{0%{opacity:0}3%,88%{opacity:1}97%,100%{opacity:0}}
-[data-art-motion="running"] .em-project-paper-form{will-change:transform,opacity;transform-origin:146px 210px;animation:em-project-paper-form 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-paper-form{0%,0%{opacity:0;transform:translateY(24px) scale(.82)}13%,100%{opacity:1;transform:translateY(0) scale(1)}}[data-art-motion="running"] .em-project-brief-row-0{will-change:transform,opacity;transform-origin:66px 150px;animation:em-project-brief-row-0 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-brief-row-0{0%,12%{opacity:0;transform:translateX(-20px)}22%,100%{opacity:1;transform:translateX(0)}}[data-art-motion="running"] .em-project-brief-row-1{will-change:transform,opacity;transform-origin:66px 150px;animation:em-project-brief-row-1 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-brief-row-1{0%,18%{opacity:0;transform:translateX(-20px)}28%,100%{opacity:1;transform:translateX(0)}}[data-art-motion="running"] .em-project-brief-row-2{will-change:transform,opacity;transform-origin:66px 150px;animation:em-project-brief-row-2 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-brief-row-2{0%,24%{opacity:0;transform:translateX(-20px)}34%,100%{opacity:1;transform:translateX(0)}}[data-art-motion="running"] .em-project-brief-row-3{will-change:transform,opacity;transform-origin:66px 150px;animation:em-project-brief-row-3 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-brief-row-3{0%,30%{opacity:0;transform:translateX(-20px)}40%,100%{opacity:1;transform:translateX(0)}}[data-art-motion="running"] .em-project-connector-form{will-change:transform,opacity;transform-origin:261px 211px;animation:em-project-connector-form 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-connector-form{0%,38%{opacity:0;transform:scaleX(0)}47%,100%{opacity:1;transform:scaleX(1)}}[data-art-motion="running"] .em-project-delivery-form{will-change:transform,opacity;transform-origin:395px 211px;animation:em-project-delivery-form 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-delivery-form{0%,48%{opacity:0;transform:scale(0)}59%,100%{opacity:1;transform:scale(1)}}[data-art-motion="running"] .em-project-check-form{will-change:transform,opacity;transform-origin:395px 211px;animation:em-project-check-form 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-check-form{0%,57%{opacity:0;transform:scaleX(0)}65%,100%{opacity:1;transform:scaleX(1)}}[data-art-motion="running"] .em-project-delivery-label{will-change:transform,opacity;transform-origin:395px 275px;animation:em-project-delivery-label 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-project-delivery-label{0%,61%{opacity:0;transform:translateY(12px)}70%,100%{opacity:1;transform:translateY(0)}}
-[data-art-motion="running"] .em-project-delivery-signal{animation:em-project-signal 4.8s ease-in-out infinite}
-@keyframes em-project-signal{0%,43%{opacity:0;transform:translateX(0)}45%{opacity:1;transform:translateX(0)}56%{opacity:1;transform:translateX(96px)}58%,100%{opacity:0;transform:translateX(106px)}}
-[data-art-motion="running"] .em-project-delivery-rays{will-change:transform,opacity;transform-origin:395px 211px;animation:em-project-rays 4.8s ease-out infinite}
-@keyframes em-project-rays{0%,61%{opacity:0;transform:scale(.65)}70%{opacity:1;transform:scale(1.18)}78%,100%{opacity:1;transform:scale(1)}}
+/* 7. Featured Insights Hover Effects */
+.NewInsightsShowcase_cardLink___s19j {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
-/* Engagement SVG Style 2 */
-@media (prefers-reduced-motion: no-preference){
-[data-art-motion="running"] .em-team-cycle{animation:em-team-cycle 4.8s linear infinite}
-@keyframes em-team-cycle{0%{opacity:0}3%,88%{opacity:1}97%,100%{opacity:0}}
 
-[data-art-motion="running"] .em-team-left-team{will-change:transform,opacity;transform-origin:156px 207px;animation:em-team-join-left 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-[data-art-motion="running"] .em-team-right-team{will-change:transform,opacity;transform-origin:324px 207px;animation:em-team-join-right 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-team-join-left{0%,3%{opacity:0;transform:translateX(-55px) scale(.35)}17%{opacity:1;transform:translateX(-42px) scale(.68)}43%,100%{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes em-team-join-right{0%,8%{opacity:0;transform:translateX(55px) scale(.35)}22%{opacity:1;transform:translateX(42px) scale(.68)}43%,100%{opacity:1;transform:translateX(0) scale(1)}}
-[data-art-motion="running"] .em-team-shared-field{will-change:transform,opacity;transform-origin:240px 207px;animation:em-team-shared-field 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-team-shared-field{0%,32%{opacity:0;transform:scaleX(0)}47%,100%{opacity:1;transform:scaleX(1)}}[data-art-motion="running"] .em-team-shared-team{will-change:transform,opacity;transform-origin:242px 204px;animation:em-team-shared-team 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-team-shared-team{0%,47%{opacity:0;transform:translateY(22px) scale(.3)}61%,100%{opacity:1;transform:translateY(0) scale(1)}}}
-/* Engagement SVG Style 3 */
-@media (prefers-reduced-motion: no-preference){
-[data-art-motion="running"] .em-department-cycle{animation:em-department-cycle 4.8s linear infinite}
-@keyframes em-department-cycle{0%{opacity:0}3%,88%{opacity:1}97%,100%{opacity:0}}
-[data-art-motion="running"] .em-department-partner-core{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-partner-core 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-partner-core{0%,0%{opacity:0;transform:scale(0)}12%,100%{opacity:1;transform:scale(1)}}[data-art-motion="running"] .em-department-partner-copy{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-partner-copy 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-partner-copy{0%,8%{opacity:0;transform:translateY(12px) scale(.8)}18%,100%{opacity:1;transform:translateY(0) scale(1)}}[data-art-motion="running"] .em-department-discipline-0{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-0 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-0{0%,14%{opacity:0;transform:rotate(-24deg) scale(.15)}29%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-discipline-1{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-1 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-1{0%,20%{opacity:0;transform:rotate(-24deg) scale(.15)}35%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-discipline-2{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-2 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-2{0%,26%{opacity:0;transform:rotate(-24deg) scale(.15)}41%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-discipline-3{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-3 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-3{0%,32%{opacity:0;transform:rotate(-24deg) scale(.15)}47%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-discipline-4{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-4 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-4{0%,38%{opacity:0;transform:rotate(-24deg) scale(.15)}53%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-discipline-5{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-discipline-5 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-discipline-5{0%,44%{opacity:0;transform:rotate(-24deg) scale(.15)}59%,100%{opacity:1;transform:rotate(0deg) scale(1)}}[data-art-motion="running"] .em-department-outer-orbit{will-change:transform,opacity;transform-origin:240px 200px;animation:em-department-outer-orbit 4.8s cubic-bezier(.22,.7,.25,1) infinite}
-@keyframes em-department-outer-orbit{0%,59%{opacity:0;transform:rotate(-18deg) scale(.8)}72%,100%{opacity:1;transform:rotate(0deg) scale(1)}}}
+.NewInsightsShowcase_cardLink___s19j:hover {
+  transform: translateY(-5px);
+}
+
+.NewInsightsShowcase_image__XSJOK {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.NewInsightsShowcase_cardLink___s19j:hover .NewInsightsShowcase_image__XSJOK {
+  transform: scale(1.06);
+}
+
+/* 8. Final CTA Section Button Glow */
+.FinalCTASection_button__wVYE9:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(35, 61, 255, 0.32);
+}

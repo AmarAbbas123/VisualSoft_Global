@@ -31,6 +31,7 @@ import {
   DigitalDepartmentSVG
 } from '../components/EngagementSVGs';
 import industryData from '../data/industryHomeData.json';
+import HomeHeroAnimation from '../components/HomeHeroAnimation';
 import '../home-custom.css';
 
 export default function Home({ onOpenModal }) {
@@ -45,60 +46,7 @@ export default function Home({ onOpenModal }) {
     return () => clearInterval(timer);
   }, [phrases.length]);
 
-  // 2. Hero Interactive Orbital Capabilities
-  const heroNodes = [
-    {
-      id: 'design',
-      label: 'Design',
-      shortLabel: 'DESIGN',
-      icon: Paintbrush,
-      color: '#38bdf8',
-      desc: 'Premium, WCAG-compliant design systems & interfaces.'
-    },
-    {
-      id: 'develop',
-      label: 'Develop',
-      shortLabel: 'DEVELOP',
-      icon: Code,
-      color: '#60a5fa',
-      desc: 'Custom distributed systems & mission-critical architectures.'
-    },
-    {
-      id: 'deploy',
-      label: 'Deploy',
-      shortLabel: 'DEPLOY',
-      icon: Cloud,
-      color: '#818cf8',
-      desc: 'Secure cloud environments, CI/CD, and robust deployments.'
-    },
-    {
-      id: 'secure',
-      label: 'Secure',
-      shortLabel: 'SECURE',
-      icon: Shield,
-      color: '#34d399',
-      desc: 'Rigid zero-trust perimeters, threat intelligence & auditing.'
-    },
-    {
-      id: 'grow',
-      label: 'Grow',
-      shortLabel: 'GROW',
-      icon: TrendingUp,
-      color: '#f472b6',
-      desc: 'Data-driven growth hacking, analytics, and scaling.'
-    },
-    {
-      id: 'automate',
-      label: 'Automate',
-      shortLabel: 'AUTOMATE',
-      icon: Sparkles,
-      color: '#fbbf24',
-      desc: 'Intelligent, self-correcting autonomous workflows.'
-    }
-  ];
-  const [activeHeroNode, setActiveHeroNode] = useState(heroNodes[1]);
-
-  // 3. Partner Logos for infinite marquee
+  // 2. Partner Logos for infinite marquee
   const partnerLogos = [
     { name: 'Google Cloud', src: '/images/logos/partner-navy/google_cloud.svg' },
     { name: 'Microsoft Azure', src: '/images/logos/partner-navy/microsoft_azure.svg' },
@@ -288,232 +236,7 @@ export default function Home({ onOpenModal }) {
 
           {/* Right Column: High-Tech Interactive Architecture Blueprint */}
           <div className="HeroSection_artwork__yAs63" style={{ opacity: 1 }}>
-            <div className="HomeHeroAnimation_container__jdCXx">
-              <div
-                className="HomeHeroAnimation_viewport__En_aK"
-                style={{
-                  position: 'relative',
-                  aspectRatio: '800/620',
-                  background: 'linear-gradient(145deg, #07101e 0%, #0c182c 100%)',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(82, 183, 255, 0.2)',
-                  boxShadow: '0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                  overflow: 'hidden',
-                  padding: '24px'
-                }}
-              >
-                {/* Background Tech Grid */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage:
-                      'radial-gradient(circle at 50% 50%, rgba(35, 61, 255, 0.12) 0%, transparent 60%), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
-                    backgroundSize: '100% 100%, 24px 24px, 24px 24px',
-                    pointerEvents: 'none'
-                  }}
-                />
-
-                {/* Top Status Header */}
-                <div
-                  style={{
-                    position: 'relative',
-                    zIndex: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                    paddingBottom: '12px',
-                    marginBottom: '16px'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span
-                      style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
-                        backgroundColor: '#34d399',
-                        boxShadow: '0 0 10px #34d399'
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        letterSpacing: '0.08em',
-                        color: '#94a3b8',
-                        textTransform: 'uppercase'
-                      }}
-                    >
-                      System Architecture · Live
-                    </span>
-                  </div>
-                  <span
-                    style={{
-                      fontSize: '11px',
-                      color: '#52b7ff',
-                      fontFamily: 'monospace',
-                      background: 'rgba(82, 183, 255, 0.1)',
-                      padding: '2px 8px',
-                      borderRadius: '4px'
-                    }}
-                  >
-                    Node: {activeHeroNode.shortLabel}
-                  </span>
-                </div>
-
-                {/* Central Isometric Blueprint SVG */}
-                <div style={{ position: 'relative', zIndex: 1, height: '280px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg
-                    viewBox="0 0 600 320"
-                    style={{ width: '100%', height: '100%', overflow: 'visible' }}
-                  >
-                    {/* Glowing Circuit Connection Lines */}
-                    <path
-                      d="M 120 160 L 300 90 L 480 160 L 300 230 Z"
-                      fill="none"
-                      stroke="#233DFF"
-                      strokeWidth="1.5"
-                      strokeOpacity="0.4"
-                    />
-                    <path
-                      d="M 300 90 L 300 230"
-                      fill="none"
-                      stroke="#52B7FF"
-                      strokeWidth="1.2"
-                      strokeOpacity="0.3"
-                      className="circuit-path-animated"
-                    />
-                    <path
-                      d="M 120 160 L 480 160"
-                      fill="none"
-                      stroke="#52B7FF"
-                      strokeWidth="1.2"
-                      strokeOpacity="0.3"
-                      className="circuit-path-animated"
-                    />
-
-                    {/* Central Core Isometric Node */}
-                    <g transform="translate(300, 160)">
-                      <circle r="42" fill="#0f1f38" stroke="#38bdf8" strokeWidth="2" />
-                      <circle
-                        r="32"
-                        fill="rgba(35, 61, 255, 0.25)"
-                        stroke="#52b7ff"
-                        strokeWidth="1"
-                        strokeDasharray="4 4"
-                      />
-                      <foreignObject x="-20" y="-20" width="40" height="40">
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#52b7ff' }}>
-                          <activeHeroNode.icon size={22} />
-                        </div>
-                      </foreignObject>
-                    </g>
-
-                    {/* Surrounding Peripheral Nodes */}
-                    <g transform="translate(120, 160)">
-                      <rect x="-26" y="-26" width="52" height="52" rx="10" fill="#0c182c" stroke="#475569" strokeWidth="1.5" />
-                      <foreignObject x="-16" y="-16" width="32" height="32">
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
-                          <Code size={18} />
-                        </div>
-                      </foreignObject>
-                      <text x="0" y="40" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="600">ENGINE</text>
-                    </g>
-
-                    <g transform="translate(480, 160)">
-                      <rect x="-26" y="-26" width="52" height="52" rx="10" fill="#0c182c" stroke="#475569" strokeWidth="1.5" />
-                      <foreignObject x="-16" y="-16" width="32" height="32">
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
-                          <Cloud size={18} />
-                        </div>
-                      </foreignObject>
-                      <text x="0" y="40" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="600">CLOUD</text>
-                    </g>
-
-                    <g transform="translate(300, 75)">
-                      <rect x="-24" y="-18" width="48" height="36" rx="8" fill="#0c182c" stroke="#475569" strokeWidth="1.5" />
-                      <foreignObject x="-12" y="-12" width="24" height="24">
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
-                          <Shield size={16} />
-                        </div>
-                      </foreignObject>
-                      <text x="0" y="-24" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="600">SECURITY</text>
-                    </g>
-
-                    <g transform="translate(300, 245)">
-                      <rect x="-24" y="-18" width="48" height="36" rx="8" fill="#0c182c" stroke="#475569" strokeWidth="1.5" />
-                      <foreignObject x="-12" y="-12" width="24" height="24">
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
-                          <Sparkles size={16} />
-                        </div>
-                      </foreignObject>
-                      <text x="0" y="32" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="600">AI AGENTS</text>
-                    </g>
-                  </svg>
-                </div>
-
-                {/* Bottom Interactive Capabilities Selector Pills */}
-                <div
-                  style={{
-                    position: 'relative',
-                    zIndex: 2,
-                    marginTop: '8px',
-                    background: 'rgba(9, 18, 33, 0.85)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '10px',
-                    padding: '12px'
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      marginBottom: '8px'
-                    }}
-                  >
-                    <span style={{ fontSize: '12px', fontWeight: 600, color: '#f1f5f9' }}>
-                      {activeHeroNode.label}
-                    </span>
-                    <span style={{ fontSize: '11px', color: '#94a3b8' }}>
-                      {activeHeroNode.desc}
-                    </span>
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
-                    {heroNodes.map((n) => {
-                      const IconComp = n.icon;
-                      const isSel = activeHeroNode.id === n.id;
-                      return (
-                        <button
-                          key={n.id}
-                          type="button"
-                          onClick={() => setActiveHeroNode(n)}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: '6px 4px',
-                            borderRadius: '6px',
-                            background: isSel ? '#233DFF' : 'rgba(255, 255, 255, 0.04)',
-                            border: isSel ? '1px solid #52b7ff' : '1px solid rgba(255, 255, 255, 0.06)',
-                            color: isSel ? '#ffffff' : '#94a3b8',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s ease'
-                          }}
-                        >
-                          <IconComp size={14} style={{ marginBottom: '2px', color: isSel ? '#ffffff' : n.color }} />
-                          <span style={{ fontSize: '9px', fontWeight: 600 }}>{n.shortLabel}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <HomeHeroAnimation />
           </div>
         </div>
       </section>
@@ -650,7 +373,7 @@ export default function Home({ onOpenModal }) {
             return (
               <article
                 key={cap.id}
-                className="LateralGallery_card__G7OWo"
+                className="LateralGallery_card__G7OWo lateral-card-animated"
                 style={{
                   borderRadius: '16px',
                   border: '1px solid rgba(0, 0, 0, 0.08)',
@@ -750,7 +473,7 @@ export default function Home({ onOpenModal }) {
 
           <div className="mtb" data-mode="home" data-industry={activeIndustryKey}>
             <div className="mtb__shell">
-              <div className="mtb__board">
+              <div key={activeIndustryKey} className="mtb__board industry-board-animated">
                 {/* 8 Industry Tabs */}
                 <nav className="mtb__nav" aria-label="Choose an industry">
                   {industryTabs.map((tab) => {
@@ -902,6 +625,7 @@ export default function Home({ onOpenModal }) {
                 <div
                   className="EngagementReference_artwork__WpHwG"
                   role="img"
+                  data-art-motion="running"
                   aria-label="A defined-scope checklist connected to a blue delivery checkmark."
                 >
                   <ProjectDeliverySVG />
@@ -930,6 +654,7 @@ export default function Home({ onOpenModal }) {
                 <div
                   className="EngagementReference_artwork__WpHwG"
                   role="img"
+                  data-art-motion="running"
                   aria-label="Your team and specialists shown as overlapping blue circles with a shared team at their intersection."
                 >
                   <DedicatedTeamsSVG />
@@ -958,6 +683,7 @@ export default function Home({ onOpenModal }) {
                 <div
                   className="EngagementReference_artwork__WpHwG"
                   role="img"
+                  data-art-motion="running"
                   aria-label="One partner at the centre of strategy, build, operate, optimize, secure and advise."
                 >
                   <DigitalDepartmentSVG />
