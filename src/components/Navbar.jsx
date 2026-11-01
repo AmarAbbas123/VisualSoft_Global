@@ -204,6 +204,7 @@ export default function Navbar({ onOpenModal }) {
         id="global-header"
         data-header-state={isTransparent ? "hero" : "sticky"}
         data-header-surface={isTransparent ? "dark" : "light"}
+        style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', zIndex: 9999 }}
         className={`site-header fixed top-0 left-0 right-0 z-40 border-b transition-all duration-300 ${
           isTransparent
             ? "border-transparent bg-transparent py-5 shadow-none"

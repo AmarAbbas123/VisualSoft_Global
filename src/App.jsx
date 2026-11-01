@@ -37,11 +37,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      {/* Fixed Frosted White Glass Navbar with exact site menu */}
+      <Navbar onOpenModal={() => setIsConsultModalOpen(true)} />
+
       <div className="site-wrapper">
-
-        {/* Fixed Frosted White Glass Navbar with exact site menu */}
-        <Navbar onOpenModal={() => setIsConsultModalOpen(true)} />
-
         {/* Multi-Page Routes */}
         <main>
           <Routes>
