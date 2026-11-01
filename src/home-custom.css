@@ -218,65 +218,54 @@
    ==================================================== */
 .site-header {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  isolation: isolate;
 }
 
-/* Scrolled state backdrop */
-.site-header[data-header-state="scrolled"] {
-  background: rgba(7, 17, 32, 0.94) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+/* Sticky state matching mt-bytes.io: crisp frosted white with subtle border */
+.site-header[data-header-state="sticky"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.7) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
 }
 
-/* Mega Menu Dropdown animation */
+/* Hero state: pure seamless transparency */
+.site-header[data-header-state="hero"] {
+  background-color: transparent !important;
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mega Menu Dropdown animation & bridge */
 #mega-menu-what-we-do,
 #mega-menu-who-we-are,
 #mega-menu-what-we-think {
-  animation: megaMenuIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: megaMenuDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-@keyframes megaMenuIn {
+/* Invisible bridge so mouse never leaves between button and menu */
+#mega-menu-what-we-do::before,
+#mega-menu-who-we-are::before,
+#mega-menu-what-we-think::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
+@keyframes megaMenuDropdownFade {
   0% {
     opacity: 0;
-    transform: translate(-50%, 8px);
+    margin-top: -6px;
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-@media (min-width: 1280px) {
-  #mega-menu-what-we-do {
-    animation-name: megaMenuInXlWhatWeDo;
-  }
-  #mega-menu-who-we-are,
-  #mega-menu-what-we-think {
-    animation-name: megaMenuInXlOther;
-  }
-}
-
-@keyframes megaMenuInXlWhatWeDo {
-  0% {
-    opacity: 0;
-    transform: translate(-45%, 8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-45%, 0);
-  }
-}
-
-@keyframes megaMenuInXlOther {
-  0% {
-    opacity: 0;
-    transform: translate(-38%, 8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-38%, 0);
+    margin-top: 0;
   }
 }
 

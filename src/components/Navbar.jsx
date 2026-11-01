@@ -27,7 +27,8 @@ import {
 import BrandLogo from './BrandLogo';
 
 export default function Navbar({ onOpenModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [surface, setSurface] = useState('dark');
+  const [isHero, setIsHero] = useState(true);
   const [activeMenu, setActiveMenu] = useState(null); // 'what-we-do' | 'who-we-are' | 'what-we-think' | null
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState('what-we-do');
@@ -35,21 +36,33 @@ export default function Navbar({ onOpenModal }) {
 
   const location = useLocation();
   const navRef = useRef(null);
-  const closeTimeoutRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
-  // Scroll detection
+  // Dynamic overlay & scroll detection matching mt-bytes.io
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+    const handleScrollOrOverlay = () => {
+      const overlayEl = document.querySelector('[data-header-overlay]');
+      if (!overlayEl) {
+        setSurface(null);
+        setIsHero(false);
+        return;
       }
+      const surf = overlayEl.getAttribute('data-header-overlay') === 'dark' ? 'dark' : 'light';
+      setSurface(surf);
+      const headerEl = document.getElementById('global-header');
+      const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 76;
+      const rect = overlayEl.getBoundingClientRect();
+      setIsHero(rect.bottom > headerHeight);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    handleScrollOrOverlay();
+    window.addEventListener('scroll', handleScrollOrOverlay, { passive: true });
+    window.addEventListener('resize', handleScrollOrOverlay, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrOverlay);
+      window.removeEventListener('resize', handleScrollOrOverlay);
+    };
+  }, [location.pathname]);
 
   // Close menus on route change
   useEffect(() => {
@@ -78,23 +91,37 @@ export default function Navbar({ onOpenModal }) {
     };
   }, []);
 
-  // Hover helpers with slight debounce
-  const handleMouseEnter = (menuName) => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+  // Determine appearance state
+  // On hero section with dark overlay: transparent header with white text
+  // Once scrolled past hero, or on subpages: frosted white header with dark text
+  const isTransparent = isHero && surface === 'dark';
+
+  const navTextClass = isTransparent
+    ? 'text-white hover:text-[#52B7FF]'
+    : 'text-neutral-700 hover:text-[#233DFF]';
+
+  const chevronClass = isTransparent
+    ? 'text-slate-400 group-hover/navbtn:text-[#52B7FF]'
+    : 'text-neutral-400 group-hover/navbtn:text-[#233DFF]';
+
+  const logoColorClass = isTransparent ? 'text-white' : 'text-[#071120]';
+
+  // Smooth hover helpers with debounce
+  const handleMenuEnter = (menuName) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setActiveMenu(menuName);
   };
 
-  const handleMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
+  const handleMenuLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-    }, 150);
+    }, 180);
   };
 
   const toggleMenu = (menuName) => {
     setActiveMenu((prev) => (prev === menuName ? null : menuName));
   };
 
-  // Close all helper
   const closeAll = () => {
     setActiveMenu(null);
     setMobileOpen(false);
@@ -175,12 +202,12 @@ export default function Navbar({ onOpenModal }) {
       {/* ================= GLOBAL FIXED HEADER ================= */}
       <header
         id="global-header"
-        data-header-state={isScrolled ? "scrolled" : "hero"}
-        data-header-surface="dark"
+        data-header-state={isTransparent ? "hero" : "sticky"}
+        data-header-surface={isTransparent ? "dark" : "light"}
         className={`site-header fixed top-0 left-0 right-0 z-40 border-b transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#071120]/95 backdrop-blur-md shadow-lg py-3.5 border-white/10'
-            : 'border-transparent bg-transparent py-5 shadow-none'
+          isTransparent
+            ? "border-transparent bg-transparent py-5 shadow-none"
+            : "border-neutral-100/70 bg-white/95 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.03)] backdrop-blur-md"
         }`}
         ref={navRef}
       >
@@ -189,7 +216,7 @@ export default function Navbar({ onOpenModal }) {
             {/* Logo */}
             <div className="flex items-center gap-3 pl-3 sm:pl-5">
               <Link to="/" className="flex items-center group" aria-label="MT BYTES Home" onClick={closeAll}>
-                <BrandLogo className="h-9 w-auto hover:scale-[1.015] active:scale-[0.985] text-white transition-all" />
+                <BrandLogo className={`h-9 w-auto hover:scale-[1.015] active:scale-[0.985] transition-all ${logoColorClass}`} />
               </Link>
             </div>
 
@@ -199,22 +226,20 @@ export default function Navbar({ onOpenModal }) {
                 {/* 1. What We Do */}
                 <div
                   className="relative"
-                  onMouseEnter={() => handleMouseEnter('what-we-do')}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => handleMenuEnter('what-we-do')}
+                  onMouseLeave={handleMenuLeave}
                 >
                   <button
                     type="button"
                     onClick={() => toggleMenu('what-we-do')}
                     aria-expanded={activeMenu === 'what-we-do'}
                     aria-controls="mega-menu-what-we-do"
-                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors group/navbtn cursor-pointer ${
-                      activeMenu === 'what-we-do' ? 'text-[#52B7FF]' : 'text-white hover:text-[#52B7FF]'
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233DFF] group/navbtn cursor-pointer ${navTextClass}`}
                   >
                     <span>What We Do</span>
                     <ChevronDown
-                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                        activeMenu === 'what-we-do' ? 'rotate-180 text-[#52B7FF]' : 'text-slate-400 group-hover/navbtn:text-[#52B7FF]'
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${chevronClass} ${
+                        activeMenu === 'what-we-do' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
@@ -225,9 +250,9 @@ export default function Navbar({ onOpenModal }) {
                       id="mega-menu-what-we-do"
                       role="navigation"
                       aria-label="Explore What We Do"
-                      onMouseEnter={() => handleMouseEnter('what-we-do')}
-                      onMouseLeave={handleMouseLeave}
-                      className="fixed left-1/2 top-[72px] z-50 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[920px] -translate-x-1/2 grid-cols-12 gap-5 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl xl:w-[920px] xl:-translate-x-[45%] xl:grid-cols-[275px_300px_250px] xl:gap-0 xl:py-7 xl:pl-7 xl:pr-3 animate-in fade-in slide-in-from-top-2 duration-200"
+                      onMouseEnter={() => handleMenuEnter('what-we-do')}
+                      onMouseLeave={handleMenuLeave}
+                      className="fixed left-1/2 top-[78px] z-50 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[920px] -translate-x-1/2 grid-cols-12 gap-5 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl xl:w-auto xl:max-w-none xl:-translate-x-[40%] xl:grid-cols-[275px_300px_250px] xl:gap-0 xl:py-7 xl:pl-7 xl:pr-3"
                     >
                       {/* Col 1: Featured Platform */}
                       <div className="col-span-12 md:col-span-4 flex flex-col h-full rounded-xl bg-[#B7E4FF]/15 backdrop-blur-md border border-[#B7E4FF]/45 text-neutral-900 p-5 relative overflow-hidden group xl:col-span-1 xl:mr-5">
@@ -239,11 +264,11 @@ export default function Navbar({ onOpenModal }) {
                           <h4 className="mt-3 text-lg font-bold leading-snug text-neutral-900">
                             Digital Department as a Service (DDaaS)
                           </h4>
-                          <p className="mt-2 text-xs text-neutral-600 leading-relaxed font-light">
+                          <p className="mt-2 text-xs text-neutral-600 leading-relaxed font-light font-sans">
                             Rather than managing disconnected agencies, integrate a fully structured, cross-discipline technical department directly into your systems with guaranteed strategic velocity.
                           </p>
                         </div>
-                        <div className="relative mt-auto pt-4 border-t border-neutral-200/60 z-10">
+                        <div className="relative mt-auto pt-4 border-t border-neutral-100 z-10">
                           <Link
                             to="/#engagement-models"
                             onClick={closeAll}
@@ -273,7 +298,7 @@ export default function Navbar({ onOpenModal }) {
                                 key={c.title}
                                 to={c.path}
                                 onClick={closeAll}
-                                className="flex items-start gap-2 p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg transition-all group"
+                                className="flex items-start gap-2 p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg transition-all group"
                               >
                                 <div className="mt-0.5 group-hover:scale-110 transition-transform">
                                   <IconComponent className="h-4 w-4 text-[#233DFF]" />
@@ -327,22 +352,20 @@ export default function Navbar({ onOpenModal }) {
                 {/* 2. Who We Are */}
                 <div
                   className="relative"
-                  onMouseEnter={() => handleMouseEnter('who-we-are')}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => handleMenuEnter('who-we-are')}
+                  onMouseLeave={handleMenuLeave}
                 >
                   <button
                     type="button"
                     onClick={() => toggleMenu('who-we-are')}
                     aria-expanded={activeMenu === 'who-we-are'}
                     aria-controls="mega-menu-who-we-are"
-                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors group/navbtn cursor-pointer ${
-                      activeMenu === 'who-we-are' ? 'text-[#52B7FF]' : 'text-white hover:text-[#52B7FF]'
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233DFF] group/navbtn cursor-pointer ${navTextClass}`}
                   >
                     <span>Who We Are</span>
                     <ChevronDown
-                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                        activeMenu === 'who-we-are' ? 'rotate-180 text-[#52B7FF]' : 'text-slate-400 group-hover/navbtn:text-[#52B7FF]'
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${chevronClass} ${
+                        activeMenu === 'who-we-are' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
@@ -353,9 +376,9 @@ export default function Navbar({ onOpenModal }) {
                       id="mega-menu-who-we-are"
                       role="navigation"
                       aria-label="Explore Who We Are"
-                      onMouseEnter={() => handleMouseEnter('who-we-are')}
-                      onMouseLeave={handleMouseLeave}
-                      className="fixed left-1/2 top-[72px] z-50 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
+                      onMouseEnter={() => handleMenuEnter('who-we-are')}
+                      onMouseLeave={handleMenuLeave}
+                      className="fixed left-1/2 top-[78px] z-55 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-1/2 md:-translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl"
                     >
                       {/* Col 1: Company */}
                       <div className="col-span-12 md:col-span-4">
@@ -372,7 +395,7 @@ export default function Navbar({ onOpenModal }) {
                               key={item.title}
                               to={item.path}
                               onClick={closeAll}
-                              className="block p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
+                              className="block p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
                             >
                               <div className="flex items-center gap-1.5">
                                 <h5 className="text-[13px] font-bold text-neutral-900 group-hover:text-[#233DFF]">
@@ -396,7 +419,7 @@ export default function Navbar({ onOpenModal }) {
                               key={item.title}
                               to={item.path}
                               onClick={closeAll}
-                              className="block p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
+                              className="block p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
                             >
                               <h5 className="text-[13px] font-bold text-neutral-900 group-hover:text-[#233DFF]">
                                 {item.title}
@@ -422,7 +445,7 @@ export default function Navbar({ onOpenModal }) {
                               key={item.title}
                               to={item.path}
                               onClick={closeAll}
-                              className="block p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
+                              className="block p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
                             >
                               <span className="text-[12px] font-bold text-neutral-900 group-hover:text-[#233DFF] transition-colors">
                                 {item.title}
@@ -439,22 +462,20 @@ export default function Navbar({ onOpenModal }) {
                 {/* 3. What We Think */}
                 <div
                   className="relative"
-                  onMouseEnter={() => handleMouseEnter('what-we-think')}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => handleMenuEnter('what-we-think')}
+                  onMouseLeave={handleMenuLeave}
                 >
                   <button
                     type="button"
                     onClick={() => toggleMenu('what-we-think')}
                     aria-expanded={activeMenu === 'what-we-think'}
                     aria-controls="mega-menu-what-we-think"
-                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors group/navbtn cursor-pointer ${
-                      activeMenu === 'what-we-think' ? 'text-[#52B7FF]' : 'text-white hover:text-[#52B7FF]'
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-md py-2 text-[14px] font-semibold tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#233DFF] group/navbtn cursor-pointer ${navTextClass}`}
                   >
                     <span>What We Think</span>
                     <ChevronDown
-                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                        activeMenu === 'what-we-think' ? 'rotate-180 text-[#52B7FF]' : 'text-slate-400 group-hover/navbtn:text-[#52B7FF]'
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${chevronClass} ${
+                        activeMenu === 'what-we-think' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
@@ -465,9 +486,9 @@ export default function Navbar({ onOpenModal }) {
                       id="mega-menu-what-we-think"
                       role="navigation"
                       aria-label="Explore What We Think"
-                      onMouseEnter={() => handleMouseEnter('what-we-think')}
-                      onMouseLeave={handleMouseLeave}
-                      className="fixed left-1/2 top-[72px] z-50 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
+                      onMouseEnter={() => handleMenuEnter('what-we-think')}
+                      onMouseLeave={handleMenuLeave}
+                      className="fixed left-1/2 top-[78px] z-55 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-1/2 md:-translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl"
                     >
                       {/* Col 1: Perspectives */}
                       <div className="col-span-12 md:col-span-4">
@@ -484,7 +505,7 @@ export default function Navbar({ onOpenModal }) {
                               key={item.title}
                               to={item.path}
                               onClick={closeAll}
-                              className="block p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
+                              className="block p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg group transition-all"
                             >
                               <h5 className="text-[13px] font-bold text-neutral-900 group-hover:text-[#233DFF] transition-colors">
                                 {item.title}
@@ -504,13 +525,13 @@ export default function Navbar({ onOpenModal }) {
                         >
                           SOLUTION STUDIES
                         </Link>
-                        <div className="space-y-2">
+                        <div className="space-y-1.5">
                           {solutionStudies.map((item) => (
                             <Link
                               key={item.title}
                               to={item.path}
                               onClick={closeAll}
-                              className="block p-2.5 bg-slate-50 border border-slate-100/60 hover:bg-neutral-100/60 rounded-lg group transition-all"
+                              className="block p-1.5 px-2 bg-slate-50 border border-slate-100/50 hover:bg-neutral-50 rounded-lg group transition-all"
                             >
                               <span
                                 className={`inline-block px-1.5 py-0.5 rounded text-[8px] font-bold text-white tracking-wider ${
@@ -519,17 +540,17 @@ export default function Navbar({ onOpenModal }) {
                               >
                                 {item.badge}
                               </span>
-                              <h5 className="text-[13px] font-bold text-neutral-900 mt-1.5 group-hover:text-[#233DFF] transition-colors leading-snug">
+                              <h5 className="text-[13px] font-bold text-neutral-900 mt-1 group-hover:text-[#233DFF] transition-colors leading-snug">
                                 {item.title}
                               </h5>
-                              <p className="text-[10px] text-neutral-500 mt-1 leading-relaxed">{item.desc}</p>
+                              <p className="text-[10px] text-neutral-500 mt-0.5 leading-relaxed">{item.desc}</p>
                             </Link>
                           ))}
                         </div>
                       </div>
 
                       {/* Col 3: Resources Card */}
-                      <div className="col-span-12 md:col-span-4 flex flex-col mb-1 rounded-xl bg-[#B7E4FF]/10 border border-[#B7E4FF]/30 text-neutral-900 p-5 relative overflow-hidden group">
+                      <div className="col-span-12 md:col-span-4 flex flex-col mb-2 rounded-xl bg-[#B7E4FF]/10 border border-[#B7E4FF]/30 text-neutral-900 p-5 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#233DFF]/5 to-transparent pointer-events-none" />
                         <div className="relative">
                           <div className="text-[11px] font-bold text-neutral-600 uppercase tracking-widest border-b border-neutral-100 pb-2 mb-3">
@@ -564,7 +585,7 @@ export default function Navbar({ onOpenModal }) {
                           </div>
                         </div>
 
-                        <div className="relative mt-5 pt-3 border-t border-neutral-200/50 z-10">
+                        <div className="relative mt-6 pt-4 border-t border-neutral-100 z-10">
                           <Link
                             to="/case-studies"
                             onClick={closeAll}
@@ -598,7 +619,11 @@ export default function Navbar({ onOpenModal }) {
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-navigation-drawer"
                 aria-label="Toggle Mobile Menu"
-                className="min-h-11 min-w-11 rounded-lg p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#233DFF] text-white hover:bg-white/10"
+                className={`min-h-11 min-w-11 rounded-lg p-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#233DFF] transition-colors ${
+                  isTransparent
+                    ? 'text-white hover:bg-white/10 hover:text-white'
+                    : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900'
+                }`}
               >
                 <Menu className="h-6 w-6" />
               </button>
@@ -614,7 +639,7 @@ export default function Navbar({ onOpenModal }) {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-0 z-50 flex h-dvh w-full flex-col overflow-hidden bg-white lg:hidden animate-in slide-in-from-right duration-250"
+          className="fixed inset-0 z-50 flex h-dvh w-full flex-col overflow-hidden bg-white lg:hidden"
         >
           {/* Mobile Drawer Header */}
           <div className="flex shrink-0 items-center justify-between border-b border-neutral-100 px-4 py-4 sm:px-6 sm:py-5">
