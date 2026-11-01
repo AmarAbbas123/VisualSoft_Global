@@ -237,38 +237,6 @@
   box-shadow: none !important;
 }
 
-/* Mega Menu Dropdown animation & bridge */
-#mega-menu-what-we-do,
-#mega-menu-who-we-are,
-#mega-menu-what-we-think {
-  animation: megaMenuDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
-}
-
-/* Invisible bridge so mouse never leaves between button and menu */
-#mega-menu-what-we-do::before,
-#mega-menu-who-we-are::before,
-#mega-menu-what-we-think::before {
-  content: '';
-  position: absolute;
-  top: -16px;
-  left: 0;
-  right: 0;
-  height: 16px;
-  background: transparent;
-}
-
-@keyframes megaMenuDropdownFade {
-  0% {
-    opacity: 0;
-    margin-top: -6px;
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-  }
-}
-
 /* Mobile Navigation Drawer animation */
 #mobile-navigation-drawer {
   animation: drawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;

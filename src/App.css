@@ -51,52 +51,119 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Mega Menu Panels */
-#mega-menu-what-we-do,
-#mega-menu-who-we-are,
-#mega-menu-what-we-think {
+/* ====================================================
+   MEGA MENU DROPDOWN ANIMATION & BRIDGE
+   ==================================================== */
+@keyframes megaMenuDropdownFade {
+  0% {
+    opacity: 0;
+    margin-top: 8px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+/* ====================================================
+   MEGA MENU GRID & COLUMN ARCHITECTURE
+   ==================================================== */
+.mtb-mega-menu {
   position: fixed !important;
-  top: 78px !important;
+  top: 76px !important;
   left: 50% !important;
   z-index: 10000 !important;
   background: #ffffff !important;
-  border: 1px solid #eef2f6 !important;
-  border-radius: 1rem !important;
-  padding: 1.75rem !important;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
-  max-height: calc(100vh - 94px) !important;
+  border: 1px solid rgba(229, 231, 235, 0.85) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+  max-height: calc(100vh - 90px) !important;
   overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  animation: megaMenuDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* Hover bridge prevents mouseleave when crossing between header & dropdown */
+.mtb-mega-menu::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -28px !important;
+  left: -20px !important;
+  right: -20px !important;
+  height: 28px !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+}
+
+/* 1. What We Do Mega Menu */
+#mega-menu-what-we-do {
+  transform: translateX(-40%) !important;
+  display: grid !important;
+  grid-template-columns: 275px 300px 250px !important;
+  gap: 16px !important;
+  width: auto !important;
+  max-width: 920px !important;
+  padding: 24px 20px 20px 24px !important;
+}
+
+#mega-menu-what-we-do .mm-col-featured {
+  grid-column: 1 !important;
+  width: 275px !important;
+  min-width: 275px !important;
   box-sizing: border-box !important;
 }
 
-#mega-menu-what-we-do::before,
-#mega-menu-who-we-are::before,
-#mega-menu-what-we-think::before {
-  content: '';
-  position: absolute;
-  top: -16px;
-  left: 0;
-  right: 0;
-  height: 16px;
+#mega-menu-what-we-do .mm-col-capabilities {
+  grid-column: 2 !important;
+  width: 300px !important;
+  min-width: 300px !important;
+  box-sizing: border-box !important;
+  padding-left: 10px !important;
 }
 
-#mega-menu-what-we-do {
-  width: min(920px, calc(100vw - 2rem)) !important;
-  transform: translateX(-40%) !important;
+#mega-menu-what-we-do .mm-col-industries {
+  grid-column: 3 !important;
+  width: 250px !important;
+  min-width: 250px !important;
+  box-sizing: border-box !important;
+  padding-left: 10px !important;
 }
 
+#mega-menu-what-we-do .mm-bottom-bar {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Who We Are & 3. What We Think Mega Menus */
 #mega-menu-who-we-are,
 #mega-menu-what-we-think {
-  width: min(850px, calc(100vw - 2rem)) !important;
   transform: translateX(-38%) !important;
+  display: grid !important;
+  grid-template-columns: 260px 260px 260px !important;
+  gap: 20px !important;
+  width: auto !important;
+  max-width: 860px !important;
+  padding: 24px !important;
 }
 
-@media (max-width: 1024px) {
+#mega-menu-who-we-are .mm-col,
+#mega-menu-what-we-think .mm-col {
+  grid-column: span 1 !important;
+  width: 260px !important;
+  min-width: 260px !important;
+  box-sizing: border-box !important;
+}
+
+/* Tablet / compact desktop (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
   #mega-menu-what-we-do,
   #mega-menu-who-we-are,
   #mega-menu-what-we-think {
     transform: translateX(-50%) !important;
-    width: calc(100vw - 2rem) !important;
+    width: calc(100vw - 2.5rem) !important;
+    max-width: 900px !important;
   }
 }
 

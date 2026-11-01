@@ -30,6 +30,7 @@ export default function Navbar({ onOpenModal }) {
   const [surface, setSurface] = useState('dark');
   const [isHero, setIsHero] = useState(true);
   const [activeMenu, setActiveMenu] = useState(null); // 'what-we-do' | 'who-we-are' | 'what-we-think' | null
+  const [pinnedMenu, setPinnedMenu] = useState(null); // Locked open on click
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState('what-we-do');
   const [mobileSubsection, setMobileSubsection] = useState('capabilities');
@@ -66,6 +67,7 @@ export default function Navbar({ onOpenModal }) {
 
   // Close menus on route change
   useEffect(() => {
+    setPinnedMenu(null);
     setActiveMenu(null);
     setMobileOpen(false);
   }, [location.pathname]);
@@ -74,11 +76,13 @@ export default function Navbar({ onOpenModal }) {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
+        setPinnedMenu(null);
         setActiveMenu(null);
       }
     };
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
+        setPinnedMenu(null);
         setActiveMenu(null);
         setMobileOpen(false);
       }
@@ -106,23 +110,36 @@ export default function Navbar({ onOpenModal }) {
 
   const logoColorClass = isTransparent ? 'text-white' : 'text-[#071120]';
 
-  // Smooth hover helpers with debounce
+  // Hover and click interaction helpers
   const handleMenuEnter = (menuName) => {
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setActiveMenu(menuName);
   };
 
   const handleMenuLeave = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    // If pinned by user click, DO NOT CLOSE on mouse leave
+    if (pinnedMenu) return;
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-    }, 180);
+    }, 350);
   };
 
+  // Click-to-pin toggle
   const toggleMenu = (menuName) => {
-    setActiveMenu((prev) => (prev === menuName ? null : menuName));
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    if (pinnedMenu === menuName) {
+      setPinnedMenu(null);
+      setActiveMenu(null);
+    } else {
+      setPinnedMenu(menuName);
+      setActiveMenu(menuName);
+    }
   };
 
   const closeAll = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setPinnedMenu(null);
     setActiveMenu(null);
     setMobileOpen(false);
   };
@@ -253,10 +270,10 @@ export default function Navbar({ onOpenModal }) {
                       aria-label="Explore What We Do"
                       onMouseEnter={() => handleMenuEnter('what-we-do')}
                       onMouseLeave={handleMenuLeave}
-                      className="fixed left-1/2 top-[78px] z-50 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[920px] -translate-x-1/2 grid-cols-12 gap-5 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl xl:w-auto xl:max-w-none xl:-translate-x-[40%] xl:grid-cols-[275px_300px_250px] xl:gap-0 xl:py-7 xl:pl-7 xl:pr-3"
+                      className="mtb-mega-menu"
                     >
                       {/* Col 1: Featured Platform */}
-                      <div className="col-span-12 md:col-span-4 flex flex-col h-full rounded-xl bg-[#B7E4FF]/15 backdrop-blur-md border border-[#B7E4FF]/45 text-neutral-900 p-5 relative overflow-hidden group xl:col-span-1 xl:mr-5">
+                      <div className="mm-col-featured flex flex-col h-full rounded-xl bg-[#B7E4FF]/15 backdrop-blur-md border border-[#B7E4FF]/45 text-neutral-900 p-5 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#233DFF]/5 to-transparent pointer-events-none" />
                         <div className="relative">
                           <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-bold tracking-widest font-mono bg-[#233DFF]/10 text-[#233DFF] uppercase">
@@ -283,7 +300,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 2: Capabilities */}
-                      <div className="col-span-12 md:col-span-4 xl:col-span-1 xl:pl-5">
+                      <div className="mm-col-capabilities">
                         <Link
                           to="/ai-enabled-custom-software-development"
                           onClick={closeAll}
@@ -299,7 +316,7 @@ export default function Navbar({ onOpenModal }) {
                                 key={c.title}
                                 to={c.path}
                                 onClick={closeAll}
-                                className="flex items-start gap-2 p-1 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg transition-all group"
+                                className="flex items-start gap-2 p-1.5 pl-2 hover:bg-neutral-50 hover:border-l-2 hover:border-[#233DFF] border-l-2 border-transparent rounded-lg transition-all group"
                               >
                                 <div className="mt-0.5 group-hover:scale-110 transition-transform">
                                   <IconComponent className="h-4 w-4 text-[#233DFF]" />
@@ -317,7 +334,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 3: Industry Focus */}
-                      <div className="col-span-12 md:col-span-4 pl-0 md:pl-4 xl:col-span-1 xl:pr-2">
+                      <div className="mm-col-industries">
                         <Link
                           to="/#industry-dashboard"
                           onClick={closeAll}
@@ -344,6 +361,31 @@ export default function Navbar({ onOpenModal }) {
                               </Link>
                             );
                           })}
+                        </div>
+                      </div>
+
+                      {/* Col 4 / Bottom Bar: Engagement Models */}
+                      <div className="mm-bottom-bar flex items-center justify-between border-t border-neutral-100 pt-3.5 mt-2 text-[11px] font-bold text-neutral-500">
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                          <span className="text-[10px] font-extrabold text-neutral-600 uppercase tracking-widest">
+                            Engagement Models:
+                          </span>
+                          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 font-semibold text-neutral-600">
+                            {engagementModels.map((em) => {
+                              const IconComponent = em.icon;
+                              return (
+                                <Link
+                                  key={em.title}
+                                  to={em.path}
+                                  onClick={closeAll}
+                                  className="flex items-center gap-1.5 text-neutral-700 hover:text-[#233DFF] transition-colors uppercase tracking-wider text-[11px]"
+                                >
+                                  <IconComponent className="h-3.5 w-3.5 text-[#233DFF]" />
+                                  <span>{em.title}</span>
+                                </Link>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -379,10 +421,10 @@ export default function Navbar({ onOpenModal }) {
                       aria-label="Explore Who We Are"
                       onMouseEnter={() => handleMenuEnter('who-we-are')}
                       onMouseLeave={handleMenuLeave}
-                      className="fixed left-1/2 top-[78px] z-55 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-1/2 md:-translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl"
+                      className="mtb-mega-menu"
                     >
                       {/* Col 1: Company */}
-                      <div className="col-span-12 md:col-span-4">
+                      <div className="mm-col">
                         <Link
                           to="/about-us"
                           onClick={closeAll}
@@ -410,7 +452,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 2: Principles & Approach */}
-                      <div className="col-span-12 md:col-span-4">
+                      <div className="mm-col">
                         <div className="text-[11px] font-bold text-neutral-600 uppercase tracking-widest border-b border-neutral-100 pb-2 mb-2">
                           PRINCIPLES & APPROACH
                         </div>
@@ -432,7 +474,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 3: Ecosystem Programs */}
-                      <div className="col-span-12 md:col-span-4">
+                      <div className="mm-col">
                         <Link
                           to="/#ecosystem"
                           onClick={closeAll}
@@ -489,10 +531,10 @@ export default function Navbar({ onOpenModal }) {
                       aria-label="Explore What We Think"
                       onMouseEnter={() => handleMenuEnter('what-we-think')}
                       onMouseLeave={handleMenuLeave}
-                      className="fixed left-1/2 top-[78px] z-55 grid max-h-[calc(100dvh-94px)] w-[calc(100vw-2rem)] max-w-[850px] -translate-x-1/2 md:-translate-x-[38%] grid-cols-12 gap-6 overflow-x-hidden overflow-y-auto rounded-2xl border border-neutral-100 bg-white p-7 text-left shadow-2xl"
+                      className="mtb-mega-menu"
                     >
                       {/* Col 1: Perspectives */}
-                      <div className="col-span-12 md:col-span-4">
+                      <div className="mm-col">
                         <Link
                           to="/case-studies"
                           onClick={closeAll}
@@ -518,7 +560,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 2: Solution Studies */}
-                      <div className="col-span-12 md:col-span-4">
+                      <div className="mm-col">
                         <Link
                           to="/case-studies"
                           onClick={closeAll}
@@ -551,7 +593,7 @@ export default function Navbar({ onOpenModal }) {
                       </div>
 
                       {/* Col 3: Resources Card */}
-                      <div className="col-span-12 md:col-span-4 flex flex-col mb-2 rounded-xl bg-[#B7E4FF]/10 border border-[#B7E4FF]/30 text-neutral-900 p-5 relative overflow-hidden group">
+                      <div className="mm-col flex flex-col mb-2 rounded-xl bg-[#B7E4FF]/10 border border-[#B7E4FF]/30 text-neutral-900 p-5 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#233DFF]/5 to-transparent pointer-events-none" />
                         <div className="relative">
                           <div className="text-[11px] font-bold text-neutral-600 uppercase tracking-widest border-b border-neutral-100 pb-2 mb-3">
